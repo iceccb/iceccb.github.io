@@ -66,6 +66,85 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-loader-note" class="article article-type-post" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/01/19/loader-note/">Node loader</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2015/01/19/loader-note/" class="article-date">
+  <time datetime="2015-01-19T12:40:23.000Z" itemprop="datePublished">1月 19 2015</time>
+</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+      
+<a href="/2015/01/19/loader-note/#comments" class="article-comment-link" data-thread-key="ciktp4y5r001jhcvgz7hpirue" data-short-name="iceccb" style="display:none">comments</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="什么是loader"><a href="#什么是loader" class="headerlink" title="什么是loader"></a>什么是loader</h1><p>Node静态资源加载器。该模块通过两个步骤配合完成，代码部分根据环境生成标签。上线时，需要调用minify方法进行静态资源的合并和压缩。</p>
+<pre><code>npm install loader
+</code></pre><p>render：</p>
+<pre><code>res.render(&apos;index&apos;, {
+  Loader: require(&apos;loader&apos;)
+});
+</code></pre><p>或在app.js中：</p>
+<pre><code>app.locals({
+  Loader: require(&apos;loader&apos;)
+});
+</code></pre><p>模板文件：</p>
+<pre><code>&lt;%- Loader(&quot;/public/javascripts/aa.js&quot;, &quot;/public/stylesheets/style.css&quot;)
+.js(&quot;/public/javascripts/a.js&quot;)
+.js(&quot;/public/javascripts/b.js&quot;)
+.css(&quot;/public/stylesheets/style.css&quot;)
+.done(assetsMap, prefix, combo) %&gt;
+</code></pre><h1 id="环境判别"><a href="#环境判别" class="headerlink" title="环境判别"></a>环境判别</h1><p>环境判别由<code>done</code>方法的第三个参数决定，如果传入combo值，将决定选用线下版本(<code>false</code>)还是线上版本(<code>true</code>)。如果不传入第三个参数，将由环境变量决定。</p>
+<pre><code>// 设置window下node环境变量
+// 生产环境
+set NODE_ENV=&quot;production&quot;
+// 开发环境
+set NODE_ENV=&quot;development&quot;
+</code></pre><h1 id="线上输出"><a href="#线上输出" class="headerlink" title="线上输出"></a>线上输出</h1><p>在应用根目录下使用命令：</p>
+<pre><code>// loader views_dir base_dir
+loader ./views ./
+</code></pre><p>会在根目录下生成assets.json文件：</p>
+<pre><code>{&quot;/public/javascripts/aa.js&quot;:&quot;/public/javascripts/aa.2e4c08f9.min.js&quot;,&quot;/public/stylesheets/style.css&quot;:&quot;/public/stylesheets/style.b6b3ce7e.min.css&quot;}
+</code></pre><p>在app.js中：</p>
+<pre><code>app.locals({
+  Loader: Loader,
+  assets: require(&apos;./assets.json&apos;),
+  mini_assets: true
+});
+</code></pre><p><code>done</code>方法参数为：</p>
+<pre><code>.done(assets, &apos;&apos;, mini_assets)
+</code></pre><p>html为：</p>
+<pre><code>&lt;script src=&quot;/public/javascripts/aa.2e4c08f9.min.js&quot;&gt;&lt;/script&gt;
+&lt;link rel=&quot;stylesheet&quot; href=&quot;/public/stylesheets/style.b6b3ce7e.min.css&quot; media=&quot;all&quot;&gt;
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
     <article id="post-ejs-note-4" class="article article-type-post" itemscope itemprop="blogPost">
   
   <div class="article-inner">
@@ -88,7 +167,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ejs/">ejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
 
       
-<a href="/2015/01/19/ejs-note-4/#comments" class="article-comment-link" data-thread-key="ciktn37k8001qy0vgrlyexlcu" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2015/01/19/ejs-note-4/#comments" class="article-comment-link" data-thread-key="ciktp4y6c001vhcvgwtlfexz7" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -161,7 +240,7 @@ app.engine(&apos;.html&apos;, require(&apos;ejs&apos;).__express)；
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ejs/">ejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
 
       
-<a href="/2014/12/29/ejs-node-3/#comments" class="article-comment-link" data-thread-key="ciktn37k80021y0vgadopmjy4" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2014/12/29/ejs-node-3/#comments" class="article-comment-link" data-thread-key="ciktp4y6s0026hcvggqiqczuo" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -216,7 +295,7 @@ app.engine(&apos;.html&apos;, require(&apos;ejs&apos;).__express)；
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
 
       
-<a href="/2014/12/14/google-style-guide/#comments" class="article-comment-link" data-thread-key="ciktn37jt001iy0vgeu3a83ai" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2014/12/14/google-style-guide/#comments" class="article-comment-link" data-thread-key="ciktp4y69001nhcvg42x03djy" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -266,7 +345,7 @@ app.engine(&apos;.html&apos;, require(&apos;ejs&apos;).__express)；
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ejs/">ejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
 
       
-<a href="/2014/12/06/ejs-note-2/#comments" class="article-comment-link" data-thread-key="ciktn37k8001wy0vgqmp8es3t" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2014/12/06/ejs-note-2/#comments" class="article-comment-link" data-thread-key="ciktp4y6c0021hcvgpawve4nt" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -317,7 +396,7 @@ app.engine(&apos;.html&apos;, require(&apos;ejs&apos;).__express)；
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ejs/">ejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
 
       
-<a href="/2014/11/29/-ejs-note-1/#comments" class="article-comment-link" data-thread-key="ciktn37ku002cy0vgldozvpuj" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2014/11/29/-ejs-note-1/#comments" class="article-comment-link" data-thread-key="ciktp4y6s002hhcvg5zycbbfr" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -369,7 +448,7 @@ app.engine(&apos;.html&apos;, require(&apos;ejs&apos;).__express)；
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读后感/">读后感</a></li></ul>
 
       
-<a href="/2014/11/29/book-review-1/#comments" class="article-comment-link" data-thread-key="ciktn37kp0029y0vgivua15wd" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2014/11/29/book-review-1/#comments" class="article-comment-link" data-thread-key="ciktp4y6s002ehcvgza04fqri" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -420,7 +499,7 @@ app.engine(&apos;.html&apos;, require(&apos;ejs&apos;).__express)；
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/language/">language</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
 
       
-<a href="/2014/11/28/markdown-note/#comments" class="article-comment-link" data-thread-key="ciktn37jt0019y0vgugqbup7m" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2014/11/28/markdown-note/#comments" class="article-comment-link" data-thread-key="ciktp4y5r001ehcvg138ju215" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -479,6 +558,10 @@ app.engine(&apos;.html&apos;, require(&apos;ejs&apos;).__express)；
       <ul>
         
           <li>
+            <a href="/2016/02/19/react-note-1/">React入门</a>
+          </li>
+        
+          <li>
             <a href="/2016/02/18/suibi-20160218/">乌合之众</a>
           </li>
         
@@ -494,10 +577,6 @@ app.engine(&apos;.html&apos;, require(&apos;ejs&apos;).__express)；
             <a href="/2016/02/09/suibi-20160209/">美人鱼有感</a>
           </li>
         
-          <li>
-            <a href="/2016/02/03/suibi-20160203/">如果自杀的话</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -507,7 +586,7 @@ app.engine(&apos;.html&apos;, require(&apos;ejs&apos;).__express)；
   <div class="widget-wrap">
     <h3 class="widget-title widget-title-tag">标签</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/ejs/" style="font-size: 16px;">ejs</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/language/" style="font-size: 10px;">language</a> <a href="/tags/nodejs/" style="font-size: 12px;">nodejs</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/电影/" style="font-size: 14px;">电影</a> <a href="/tags/话剧/" style="font-size: 10px;">话剧</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a> <a href="/tags/读后感/" style="font-size: 14px;">读后感</a> <a href="/tags/随笔/" style="font-size: 18px;">随笔</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/ejs/" style="font-size: 15px;">ejs</a> <a href="/tags/javascript/" style="font-size: 16.67px;">javascript</a> <a href="/tags/language/" style="font-size: 10px;">language</a> <a href="/tags/nodejs/" style="font-size: 11.67px;">nodejs</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/电影/" style="font-size: 13.33px;">电影</a> <a href="/tags/话剧/" style="font-size: 10px;">话剧</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a> <a href="/tags/读后感/" style="font-size: 13.33px;">读后感</a> <a href="/tags/随笔/" style="font-size: 18.33px;">随笔</a>
     </div>
   </div>
 
