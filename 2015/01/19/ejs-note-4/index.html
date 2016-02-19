@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>ejs学习笔记--nodejs（四） | Ice&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="ejs模板引擎因为express默认的模板引擎为jade，如果你想生成ejs的程序骨架，可以使用以下命令生成程序：
+express -e myapp
+// 安装依赖包，这里是express和ejs
+cd myapp &amp;amp;&amp;amp; npm install
+在app.js
+// 设置视图的路径
+app.set(&amp;apos;views&amp;apos;, path.join(__dirname, &amp;a">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ejs学习笔记--nodejs（四）">
+<meta property="og:url" content="http://iceccb.github.io/2015/01/19/ejs-note-4/index.html">
+<meta property="og:site_name" content="Ice's Blog">
+<meta property="og:description" content="ejs模板引擎因为express默认的模板引擎为jade，如果你想生成ejs的程序骨架，可以使用以下命令生成程序：
+express -e myapp
+// 安装依赖包，这里是express和ejs
+cd myapp &amp;amp;&amp;amp; npm install
+在app.js
+// 设置视图的路径
+app.set(&amp;apos;views&amp;apos;, path.join(__dirname, &amp;a">
+<meta property="og:updated_time" content="2015-01-19T12:26:06.281Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ejs学习笔记--nodejs（四）">
+<meta name="twitter:description" content="ejs模板引擎因为express默认的模板引擎为jade，如果你想生成ejs的程序骨架，可以使用以下命令生成程序：
+express -e myapp
+// 安装依赖包，这里是express和ejs
+cd myapp &amp;amp;&amp;amp; npm install
+在app.js
+// 设置视图的路径
+app.set(&amp;apos;views&amp;apos;, path.join(__dirname, &amp;a">
+  
+    <link rel="alternative" href="/atom.xml" title="Ice&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+<!--   <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      
+<header id="header">
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Ice&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">everything will be ok</a>
+        </h2>
+      
+    </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">博文</a>
+        
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+      </nav>
+      
+    </div>
+  </div>
+  <!--fork me on github-->
+  <!--<a href="https://github.com/iceccb" id="fork-me-link"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>-->
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ejs-note-4" class="article article-type-post" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ejs学习笔记--nodejs（四）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2015/01/19/ejs-note-4/" class="article-date">
+  <time datetime="2015-01-19T12:23:31.000Z" itemprop="datePublished">1月 19 2015</time>
+</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ejs/">ejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nodejs/">nodejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+      
+<a href="/2015/01/19/ejs-note-4/#comments" class="article-comment-link" data-thread-key="ciktn37k8001qy0vgrlyexlcu" data-short-name="iceccb" style="display:none">comments</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="ejs模板引擎"><a href="#ejs模板引擎" class="headerlink" title="ejs模板引擎"></a>ejs模板引擎</h2><p>因为express默认的模板引擎为jade，如果你想生成ejs的程序骨架，可以使用以下命令生成程序：</p>
+<pre><code>express -e myapp
+// 安装依赖包，这里是express和ejs
+cd myapp &amp;&amp; npm install
+</code></pre><p>在app.js</p>
+<pre><code>// 设置视图的路径
+app.set(&apos;views&apos;, path.join(__dirname, &apos;views&apos;));
+// 设置模板引擎为ejs
+app.set(&apos;view engine&apos;, &apos;ejs&apos;);
+// 如果你的ejs模板后缀为.html
+app.set(&apos;view engine&apos;, &apos;html&apos;);
+app.engine(&apos;.html&apos;, require(&apos;ejs&apos;).__express)；
+</code></pre><h3 id="一个简单的例子"><a href="#一个简单的例子" class="headerlink" title="一个简单的例子"></a>一个简单的例子</h3><p>在app.js中：</p>
+<pre><code>app.get(&apos;/&apos;, function(req, res) {
+  res.render(&apos;index&apos;, {title: &apos;Express Ejs&apos;, message: &apos;hello world!&apos;});
+});
+</code></pre><p>./views/index.ejs:</p>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;zh_CN&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;&lt;%= title %&gt;&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;%= message%&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><a id="more"></a>
+<h3 id="ejs参数设置及全局变量"><a href="#ejs参数设置及全局变量" class="headerlink" title="ejs参数设置及全局变量"></a>ejs参数设置及全局变量</h3><pre><code>app.get(&apos;/&apos;, function(req, res) {
+  /*
+    debug: 输出编译生成的函数体
+    compileDebug：当为false时输出堆栈信息
+    open: Open tag, defaulting to &quot;&lt;%&quot;
+    close: Closing tag, defaulting to &quot;%&gt;&quot;
+    escape: 转义字符函数
+  */
+  res.render(&apos;index&apos;, {title: &apos;Express Ejs&apos;, message: &apos;hello world!&apos;, debug: true});
+});
+// debug == true
+var buf = [];
+with (locals || {}) { (function(){
+ buf.push(&apos;&lt;!doctype html&gt;\n&lt;html lang=&quot;zh_CN&quot;&gt;\n&lt;head&gt;\n  &lt;meta charset=&quot;UTF-8&quot;&gt;\n  &lt;title&gt;&apos;, escape((5,  title )), &apos;&lt;/
+title&gt;\n&lt;/head&gt;\n&lt;body&gt;\n  &apos;, escape((8,  message)), &apos;\n\n&lt;/body&gt;\n&lt;/html&gt;&apos;); })();
+}
+</code></pre><p>使用全局变量：</p>
+<pre><code>// 使用app.locals为所有模板提供应用级变量
+// 所有模板都能访问到header1变量
+app.locals.header1 = &apos;app-level local variable&apos;;
+// or
+app.locals({header1: &apos;app-level local variable&apos;});
+// 使用app.set
+// 模板中通过settings可访问
+app.set(&apos;header2&apos;, &apos;single app-level local variable: settings&apos;)
+&lt;%= settings.header2%&gt;
+</code></pre><h2 id="使用ejs的layout模板"><a href="#使用ejs的layout模板" class="headerlink" title="使用ejs的layout模板"></a>使用ejs的layout模板</h2><p>由于express3以上的版本把layout默认给取消了，所以生成的ejs程序骨架时在views文件夹下并没有生成layout.ejs，如果想继续使用layout，可以安装express-partials</p>
+<pre><code>npm install express-partials --save
+</code></pre><p>然后在app.js中：</p>
+<pre><code>app.set(&apos;view engine&apos;, &apos;ejs&apos;);
+app.use(require(&apos;express-partials&apos;)());
+app.get(&apos;/&apos;, function(req, res) {
+  res.render(&apos;index&apos;, {layout: &apos;模板名称(缺省使用layout.ejs)&apos;});
+});
+</code></pre><p>views/layout.ejs文件：</p>
+<pre><code>&lt;!doctype html&gt;
+&lt;html lang=&quot;zh_CN&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;UTF-8&quot;&gt;
+  &lt;title&gt;express ejs&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class=&quot;container&quot;&gt;
+    &lt;%- body %&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><p>如果不想使用模板可以：</p>
+<pre><code>res.render(&apos;index&apos;, {layout: false});
+// 所有视图都不使用layout
+app.locals({layout: false});
+</code></pre><h3 id="使用partial"><a href="#使用partial" class="headerlink" title="使用partial"></a>使用partial</h3><pre><code>app.get(&apos;/&apos;, function(req, res) {
+  res.render(&apos;index&apos;, {user: user});
+});
+</code></pre><p>views/index.ejs文件中：(注意<code>{user:user}</code>一定要，不然会报错)</p>
+<pre><code>&lt;%- partial(&apos;partials/user&apos;, {user:user})%&gt;
+</code></pre><p>views/partials/user.ejs文件：</p>
+<pre><code>&lt;h3&gt;Hello:&lt;%= user.name%&gt;&lt;/h3&gt;
+</code></pre>
+      
+    </div>
+    
+      <footer class="article-footer">
+        
+<!-- baidu share -->
+<div class="bdsharebuttonbox" style="float: right">
+  <a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a>
+  <a title="分享到人人网" href="#" class="bds_renren" data-cmd="renren"></a>
+  <a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a>
+  <a title="分享到Facebook" href="#" class="bds_fbook" data-cmd="fbook"></a>
+  <a title="分享到Twitter" href="#" class="bds_twi" data-cmd="twi"></a>
+  <a href="#" class="bds_more" data-cmd="more"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+<!-- End baidu share -->
+
+
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/01/19/loader-note/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Node loader
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/12/29/ejs-node-3/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ejs学习笔记-源码（三）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="ciktn37k8001qy0vgrlyexlcu" data-title="ejs学习笔记--nodejs（四）" data-url="http://iceccb.github.io/2015/01/19/ejs-note-4/" id="duoshuo"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"iceccb"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title widget-title-category">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习笔记/">学习笔记</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书/">读书</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title widget-title-recent">最近</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/02/18/suibi-20160218/">乌合之众</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/15/suibi-20160215/">生命不息</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/12/suibi-20160212/">爱带我回家</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/09/suibi-20160209/">美人鱼有感</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/03/suibi-20160203/">如果自杀的话</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title widget-title-tag">标签</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/ejs/" style="font-size: 16px;">ejs</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/language/" style="font-size: 10px;">language</a> <a href="/tags/nodejs/" style="font-size: 12px;">nodejs</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/电影/" style="font-size: 14px;">电影</a> <a href="/tags/话剧/" style="font-size: 10px;">话剧</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a> <a href="/tags/读后感/" style="font-size: 14px;">读后感</a> <a href="/tags/随笔/" style="font-size: 18px;">随笔</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Ice Chan<br>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">博文</a>
+  
+</nav>
+    
+<script src="/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>ejs学习笔记-源码（三） | Ice&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="EJS全局属性EJS有三个比较重要的全局属性，分别为：
+
+cache，设置模板是否缓存，默认值为true当你通过element或url创建EJS实例时，会在EJS.templates_directory对象中添加相应的属性（属性名为element的id或url），该属性为对象，其中text属性值为模板的内容。相应的有EJS.get(path, cache)和EJS.update(path, tem">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ejs学习笔记-源码（三）">
+<meta property="og:url" content="http://iceccb.github.io/2014/12/29/ejs-node-3/index.html">
+<meta property="og:site_name" content="Ice's Blog">
+<meta property="og:description" content="EJS全局属性EJS有三个比较重要的全局属性，分别为：
+
+cache，设置模板是否缓存，默认值为true当你通过element或url创建EJS实例时，会在EJS.templates_directory对象中添加相应的属性（属性名为element的id或url），该属性为对象，其中text属性值为模板的内容。相应的有EJS.get(path, cache)和EJS.update(path, tem">
+<meta property="og:updated_time" content="2015-01-19T12:25:57.937Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ejs学习笔记-源码（三）">
+<meta name="twitter:description" content="EJS全局属性EJS有三个比较重要的全局属性，分别为：
+
+cache，设置模板是否缓存，默认值为true当你通过element或url创建EJS实例时，会在EJS.templates_directory对象中添加相应的属性（属性名为element的id或url），该属性为对象，其中text属性值为模板的内容。相应的有EJS.get(path, cache)和EJS.update(path, tem">
+  
+    <link rel="alternative" href="/atom.xml" title="Ice&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+<!--   <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      
+<header id="header">
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Ice&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">everything will be ok</a>
+        </h2>
+      
+    </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">博文</a>
+        
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+      </nav>
+      
+    </div>
+  </div>
+  <!--fork me on github-->
+  <!--<a href="https://github.com/iceccb" id="fork-me-link"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>-->
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ejs-node-3" class="article article-type-post" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ejs学习笔记-源码（三）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2014/12/29/ejs-node-3/" class="article-date">
+  <time datetime="2014-12-29T12:46:48.000Z" itemprop="datePublished">12月 29 2014</time>
+</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ejs/">ejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+      
+<a href="/2014/12/29/ejs-node-3/#comments" class="article-comment-link" data-thread-key="ciktn37k80021y0vgadopmjy4" data-short-name="iceccb" style="display:none">comments</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="EJS全局属性"><a href="#EJS全局属性" class="headerlink" title="EJS全局属性"></a>EJS全局属性</h1><p>EJS有三个比较重要的全局属性，分别为：</p>
+<ul>
+<li><code>cache</code>，设置模板是否缓存，默认值为<code>true</code><br>当你通过element或url创建EJS实例时，会在<code>EJS.templates_directory</code>对象中添加相应的属性（属性名为element的id或url），该属性为对象，其中<code>text</code>属性值为模板的内容。相应的有<code>EJS.get(path, cache)</code>和<code>EJS.update(path, template)</code>的方法获取、更新缓存</li>
+<li><code>type</code>，设置模板的匹配符，默认为<code>&lt;</code></li>
+<li><code>ext</code>，通过url加载模板的文件后缀，默认为<code>.ejs</code></li>
+</ul>
+<h1 id="EJS-Scanner类"><a href="#EJS-Scanner类" class="headerlink" title="EJS.Scanner类"></a>EJS.Scanner类</h1><p>我理解这个<code>Scanner</code>为一个解析器，用来解析EJS模板，它会解析模板非空的每行代码，然后对每行代码通过匹配符分隔后的字符串进行编译。匹配符为<code>/(&lt;%%)|(%%%%&gt;)|(&lt;%=)|(&lt;%#)|(&lt;%)|(%&gt;\n)|(%&gt;)|(\n)/</code>或<code>/(\[%%)|(%%\])|(\[%=)|(\[%#)|(\[%)|(%\]\n)|(%\])|(\n)/</code>。</p>
+<h2 id="原型方法scan"><a href="#原型方法scan" class="headerlink" title="原型方法scan"></a>原型方法scan</h2><p>解析字符串，用分隔符<code>\n</code>将字符串分隔，保存到数组中，实现代码如下：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var source_split = rsplit(this.source, /\n/);&#10;for(var i=0; i&#60;source_split.length; i++) &#123;&#10; var item = source_split[i];&#10; this.scanline(item, regex, block);&#10;&#125;&#10;//&#22914;&#20197;&#19979;&#20195;&#30721;&#10;&#60;h1&#62;date_tag&#60;/h1&#62;&#10;&#60;div class=&#34;row&#34;&#62;&#60;%= date_tag(&#39;date&#39;, new Date())%&#62;&#60;/div&#62;&#10;&#60;% var a = &#39;hello&#39;; %&#62;&#10;//source_split&#25968;&#32452;&#20540;&#20026;&#10;[0] &#39;&#60;h1&#62;date_tag&#60;/h1&#62;&#39;&#10;[1] &#39;\n&#39;&#10;[2] &#39;&#60;div class=&#34;row&#34;&#62;&#60;%= date_tag(&#39;date&#39;, new Date())%&#62;&#60;/div&#62;&#39;&#10;[3] &#39;\n&#39;&#10;[4] &#39;&#60;% var a = &#39;hello&#39;; %&#62;&#39;</span><br></pre></td></tr></table></figure></p>
+<h2 id="原型方法scanline"><a href="#原型方法scanline" class="headerlink" title="原型方法scanline"></a>原型方法scanline</h2><p>解析字符串，通过分隔符将字符串分隔，然后执行回调函数。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var line_split = rsplit(line, regex);&#10;for(var i=0; i &#60; line_split.length; i++) &#123;&#10;    var token = line_split[i];&#10;    if (token != null) &#123;&#10;        try&#123;&#10;            block(token, this);&#10;        &#125;catch(e)&#123;&#10;            throw &#123;type: &#39;EJS.Scanner&#39;, line: this.lines&#125;;&#10;        &#125;&#10;    &#125;&#10;&#125;&#10;&#33509;line = &#60;% var a = &#34;hello&#34;; %&#62;&#10;&#21017;line_split = [&#39;&#60;%&#39;, &#39; var a = &#34;hello&#34;&#39;; &#39;%&#62;&#39;]</span><br></pre></td></tr></table></figure></p>
+<h2 id="EJS-Scanner-to-text"><a href="#EJS-Scanner-to-text" class="headerlink" title="EJS.Scanner.to_text"></a>EJS.Scanner.to_text</h2><p>如果参数是<code>Date</code>对象则返回<code>toDateString()</code>，若为其他对象返回<code>toString()</code>，否则返回空字符串。</p>
+<a id="more"></a>
+<h1 id="EJS-Compiler类"><a href="#EJS-Compiler类" class="headerlink" title="EJS.Compiler类"></a>EJS.Compiler类</h1><p>这是EJS核心，该类对模板进行编译，其中实例属性<code>scanner</code>为<code>EJS.scanner</code>实例对象。</p>
+<h2 id="原型方法compile"><a href="#原型方法compile" class="headerlink" title="原型方法compile"></a>原型方法compile</h2><p>编译模板，生成字符串<code>to_be_evaled</code>，再通过<code>eval(to_be_evaled)</code>声明EJS.Compiler方法<code>process</code>。</p>
+<p>如模板：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;h1&#62;headers&#60;/h1&#62;&#10;&#60;h2&#62;&#60;%= title%&#62;&#60;/h2&#62;&#10;&#60;%# this is comment %&#62;&#10;&#60;%&#10;var choices = [ &#10;  &#123;value: 1, text: &#39;First Choice&#39; &#125;, &#10;  &#123;value: 2, text: &#39;Second Choice&#39;&#125;,&#10;  &#123;value: 3, text: &#39;Third Choice&#39;&#125;&#10;];&#10;%&#62;&#10;&#60;div&#62;&#60;%= select_tag(&#39;selectElm&#39;, 2, choices)%&#62;&#60;/div&#62;</span><br></pre></td></tr></table></figure></p>
+<p>则<code>process</code>方法为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.process = function(_CONTEXT,_VIEW) &#123;&#10;    try &#123; &#10;        with(_VIEW) &#123; &#10;            with (_CONTEXT) &#123;&#10;                var ___ViewO = [];; ___ViewO.push(&#34;&#60;h1&#62;headers&#60;/h1&#62;\n&#34;);&#10;                ___ViewO.push(&#34;&#60;h2&#62;&#34;); &#10;                ___ViewO.push((EJS.Scanner.to_text( title)));&#10;                ___ViewO.push(&#34;&#60;/h2&#62;\n&#34;);&#10;                ___ViewO.push(&#34;\n&#34;);&#10;                var choices = [ &#10;                  &#123;value: 1, text: &#39;First Choice&#39; &#125;, &#10;                  &#123;value: 2, text: &#39;Second Choice&#39;&#125;,&#10;                  &#123;value: 3, text: &#39;Third Choice&#39;&#125;&#10;                ];&#10;                ___ViewO.push(&#34;\n&#34;);&#10;                ___ViewO.push(&#34;&#60;div&#62;&#34;);&#10;                ___ViewO.push((EJS.Scanner.to_text( select_tag(&#39;selectElm&#39;, 2, choices)))); &#10;                ___ViewO.push(&#34;&#60;/div&#62;&#34;); &#10;                return ___ViewO.join(&#39;&#39;);&#10;            &#125;&#10;        &#125;&#10;    &#125;&#10;    catch(e)&#123;e.lineNumber=null;throw e;&#125;&#10;&#125;;</span><br></pre></td></tr></table></figure></p>
+<h1 id="EJS类"><a href="#EJS类" class="headerlink" title="EJS类"></a>EJS类</h1><p>EJS模板引擎类，初始化模板，并解析编译。</p>
+<h2 id="原型方法render"><a href="#原型方法render" class="headerlink" title="原型方法render"></a>原型方法render</h2><p>返回为<code>return this.template.process.call(object, object,v)</code>，其中<code>this.template.process</code>为<code>EJS.Compiler</code>实例对象编译模板后动态定义的<code>process</code>方法，其返回值为字符串，见上文“原型方法complie”。</p>
+<p>参数<code>v</code>为<code>EJS.Helpers</code>实例对象，使模板能使用视图工具。</p>
+<h2 id="原型方法update"><a href="#原型方法update" class="headerlink" title="原型方法update"></a>原型方法update</h2><p>用法参考<a href="/">ejs学习笔记（一）</a>，这里注意的是该方法最后调用的还是原型方法<code>render</code>，见<code>element.innerHTML = this.render(options)</code>。</p>
+<h1 id="预编译ejs模板"><a href="#预编译ejs模板" class="headerlink" title="预编译ejs模板"></a>预编译ejs模板</h1><p>EJS构造函数初始化实例时，有以下代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">if(options.precompiled)&#123;&#10;    this.template = &#123;&#125;;&#10;    this.template.process = options.precoimpiled;&#10;    EJS.update(this.name, this);&#10;    return;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>如此你使用EJS模板引擎时，可预编译好模板，在页面中加载时就省去编译模板的时间，对繁杂且大的模板很有用。如你有编译好的模板<code>template.js</code>，该文件记得是加上<code>myTemplateFunction =</code>，函数名随便取。在页面就可以这样使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var url = &#39;template.js&#39;;&#10;new EJS(&#123;url: url, precompiled: eval(EJS.request(url))&#125;);</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        
+<!-- baidu share -->
+<div class="bdsharebuttonbox" style="float: right">
+  <a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a>
+  <a title="分享到人人网" href="#" class="bds_renren" data-cmd="renren"></a>
+  <a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a>
+  <a title="分享到Facebook" href="#" class="bds_fbook" data-cmd="fbook"></a>
+  <a title="分享到Twitter" href="#" class="bds_twi" data-cmd="twi"></a>
+  <a href="#" class="bds_more" data-cmd="more"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+<!-- End baidu share -->
+
+
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2015/01/19/ejs-note-4/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          ejs学习笔记--nodejs（四）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/12/14/google-style-guide/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">google代码风格指南</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="ciktn37k80021y0vgadopmjy4" data-title="ejs学习笔记-源码（三）" data-url="http://iceccb.github.io/2014/12/29/ejs-node-3/" id="duoshuo"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"iceccb"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title widget-title-category">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习笔记/">学习笔记</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书/">读书</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title widget-title-recent">最近</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/02/18/suibi-20160218/">乌合之众</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/15/suibi-20160215/">生命不息</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/12/suibi-20160212/">爱带我回家</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/09/suibi-20160209/">美人鱼有感</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/03/suibi-20160203/">如果自杀的话</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title widget-title-tag">标签</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/ejs/" style="font-size: 16px;">ejs</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/language/" style="font-size: 10px;">language</a> <a href="/tags/nodejs/" style="font-size: 12px;">nodejs</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/电影/" style="font-size: 14px;">电影</a> <a href="/tags/话剧/" style="font-size: 10px;">话剧</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a> <a href="/tags/读后感/" style="font-size: 14px;">读后感</a> <a href="/tags/随笔/" style="font-size: 18px;">随笔</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Ice Chan<br>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">博文</a>
+  
+</nav>
+    
+<script src="/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>

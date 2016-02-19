@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>google代码风格指南 | Ice&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="本文翻译自Google HTML/CSS Style Guide
+通用风格规则协议嵌入资源时省略协议。嵌入的图像或其他媒体资源、样式表、脚本的url地址是“http:”、“https:”可省略协议部分。可使URL变成相对地址，避免混合内容问题并略微减少文件大小。1&amp;#60;!-- &amp;#19981;&amp;#25512;&amp;#33616; --&amp;#62;&amp;#10;&amp;#60;script src=&amp;#34;h">
+<meta property="og:type" content="article">
+<meta property="og:title" content="google代码风格指南">
+<meta property="og:url" content="http://iceccb.github.io/2014/12/14/google-style-guide/index.html">
+<meta property="og:site_name" content="Ice's Blog">
+<meta property="og:description" content="本文翻译自Google HTML/CSS Style Guide
+通用风格规则协议嵌入资源时省略协议。嵌入的图像或其他媒体资源、样式表、脚本的url地址是“http:”、“https:”可省略协议部分。可使URL变成相对地址，避免混合内容问题并略微减少文件大小。1&amp;#60;!-- &amp;#19981;&amp;#25512;&amp;#33616; --&amp;#62;&amp;#10;&amp;#60;script src=&amp;#34;h">
+<meta property="og:updated_time" content="2014-12-14T13:56:15.234Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="google代码风格指南">
+<meta name="twitter:description" content="本文翻译自Google HTML/CSS Style Guide
+通用风格规则协议嵌入资源时省略协议。嵌入的图像或其他媒体资源、样式表、脚本的url地址是“http:”、“https:”可省略协议部分。可使URL变成相对地址，避免混合内容问题并略微减少文件大小。1&amp;#60;!-- &amp;#19981;&amp;#25512;&amp;#33616; --&amp;#62;&amp;#10;&amp;#60;script src=&amp;#34;h">
+  
+    <link rel="alternative" href="/atom.xml" title="Ice&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+<!--   <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      
+<header id="header">
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Ice&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">everything will be ok</a>
+        </h2>
+      
+    </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">博文</a>
+        
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+      </nav>
+      
+    </div>
+  </div>
+  <!--fork me on github-->
+  <!--<a href="https://github.com/iceccb" id="fork-me-link"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>-->
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-google-style-guide" class="article article-type-post" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      google代码风格指南
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2014/12/14/google-style-guide/" class="article-date">
+  <time datetime="2014-12-14T13:32:30.000Z" itemprop="datePublished">12月 14 2014</time>
+</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSS/">CSS</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/HTML/">HTML</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+      
+<a href="/2014/12/14/google-style-guide/#comments" class="article-comment-link" data-thread-key="ciktn37jt001iy0vgeu3a83ai" data-short-name="iceccb" style="display:none">comments</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>本文翻译自<a href="https://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml" target="_blank" rel="external">Google HTML/CSS Style Guide</a></p>
+<h1 id="通用风格规则"><a href="#通用风格规则" class="headerlink" title="通用风格规则"></a>通用风格规则</h1><h2 id="协议"><a href="#协议" class="headerlink" title="协议"></a>协议</h2><p><strong>嵌入资源时省略协议</strong>。嵌入的图像或其他媒体资源、样式表、脚本的url地址是“http:”、“https:”可省略协议部分。可使URL变成相对地址，避免混合内容问题并略微减少文件大小。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;!-- &#19981;&#25512;&#33616; --&#62;&#10;&#60;script src=&#34;http://www.google.com/js/gweb/analytics/autotrack.js&#34;&#62;&#60;/script&#62;&#10;.example &#123;&#10;  background: url(http://www.google.com/images/example);&#10;&#125;&#10;&#60;!-- &#25512;&#33616; --&#62;&#10;&#60;script src=&#34;//www.google.com/js/gweb/analytics/autotrack.js&#34;&#62;&#60;/script&#62;&#10;.example &#123;&#10;  background: url(//www.google.com/images/example);&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<h1 id="通用格式话规则"><a href="#通用格式话规则" class="headerlink" title="通用格式话规则"></a>通用格式话规则</h1><h2 id="缩进"><a href="#缩进" class="headerlink" title="缩进"></a>缩进</h2><p><strong>使用2个空格缩进</strong>。不要使用tab或tab混合空格。</p>
+<h2 id="大小写"><a href="#大小写" class="headerlink" title="大小写"></a>大小写</h2><p><strong>只使用小写</strong>。所有代码使用小写，包括HTML标签、属性、属性值（不包括text/CDATA）、CSS选择器、CSS属性、CSS属性值。当然字符串仍可以使用大写。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;!-- &#19981;&#25512;&#33616; --&#62;&#10;&#60;A HREF=&#34;/&#34;&#62;Home&#60;/A&#62;&#10;color: #E5E5E5;&#10;&#60;!-- &#25512;&#33616; --&#62;&#10;&#60;img src=&#34;google.png&#34; alt=&#34;Google&#34;&#62;&#10;color: #e5e5e5;</span><br></pre></td></tr></table></figure></p>
+<h2 id="末尾空格"><a href="#末尾空格" class="headerlink" title="末尾空格"></a>末尾空格</h2><p><strong>移除所有末尾空格</strong>。它们是不必要并可能带来麻烦。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;!-- &#19981;&#25512;&#33616; --&#62;&#10;&#60;p&#62;What?_&#10;&#60;!-- &#25512;&#33616; --&#62;&#10;&#60;p&#62;Yes please.</span><br></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<h1 id="通用元数据规则"><a href="#通用元数据规则" class="headerlink" title="通用元数据规则"></a>通用元数据规则</h1><h2 id="编码"><a href="#编码" class="headerlink" title="编码"></a>编码</h2><p><strong>使用“UTF-8(No BOM)”</strong>。在HTML文件中通过<code>&lt;meta charset=&quot;utf-8&quot;&gt;</code>来指定编码，样式表文件默认为UTF-8因而不需要指定。（更多编码信息参考<a href="//www.w3.org/International/tutorials/tutorial-char-enc/">Handling character encodings in HTML and CSS</a></p>
+<p>【注：“NO BOM”即文件开头无字节顺序（大头、小头）标记，延伸阅读<a href="//www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html">字符编码笔记：ASCII，Unicode和UTF-8</a>】</p>
+<h2 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h2><p><strong>在必要的地方添加注释</strong>。视项目复杂度而定，因为过多注释会导致HTML、CSS文件过于臃肿。</p>
+<h2 id="执行项目"><a href="#执行项目" class="headerlink" title="执行项目"></a>执行项目</h2><p><strong>使用TODO标记todos和执行项目</strong>。在括号内添加联系方式，格式为<code>TODO(contact)</code>，在冒号后添加执行项目，格式为<code>TODO: action item</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;# TODO(john.doe): revisit centering #&#125;&#10;&#60;center&#62;Test&#60;/center&#62;&#10;&#10;&#60;!-- TODO: remove optional tags --&#62;&#10;&#60;ul&#62;&#10;  &#60;li&#62;Apples&#60;/li&#62;&#10;  &#60;li&#62;Oranges&#60;/li&#62;&#10;&#60;/ul&#62;</span><br></pre></td></tr></table></figure></p>
+<h1 id="HTML风格规则"><a href="#HTML风格规则" class="headerlink" title="HTML风格规则"></a>HTML风格规则</h1><h2 id="文档格式"><a href="#文档格式" class="headerlink" title="文档格式"></a>文档格式</h2><p><strong>使用HTML文档格式，<code>&lt;!DOCTYPE html&gt;</code></strong>。不要使用XHTML，不要关闭空元素，如<code>&lt;br&gt;</code>而不是<code>&lt;br /&gt;</code>。</p>
+<h2 id="HTML合规性"><a href="#HTML合规性" class="headerlink" title="HTML合规性"></a>HTML合规性</h2><p><strong>尽可能使用合法的HTML代码</strong>。除非是为了缩小文件大小，但保证HTML有效性是底线。使用工具校验HTML，如：<a href="//validator.w3.org/nu/">W3C HTML validator </a>。</p>
+<h2 id="语义化"><a href="#语义化" class="headerlink" title="语义化"></a>语义化</h2><p><strong>根据用途使用合适HTML元素</strong>。如标题使用<code>h1~h6</code>，段落用<code>p</code>，链接用<code>a</code>等。这很重要，涉及到可访问性、重用以及代码效率的问题。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;!-- &#19981;&#25512;&#33616; --&#62;&#10;&#60;div onclick=&#34;goToRecommendations();&#34;&#62;All recommendations&#60;/div&#62;&#10;&#60;!-- &#25512;&#33616; --&#62;&#10;&#60;a href=&#34;recommendations/&#34;&#62;All recommendations&#60;/a&#62;</span><br></pre></td></tr></table></figure></p>
+<h2 id="多媒体替代文本"><a href="#多媒体替代文本" class="headerlink" title="多媒体替代文本"></a>多媒体替代文本</h2><p><strong>给多媒体提供替代文本</strong>。对于图片、音频、视频、画布，确保提供替代文本，如对图片使用有意义的<code>alt</code>属性值。这很重要，让那些使用屏幕阅读器的盲人用户也能更好地浏览网页。如果图片过多造成负担，或者图片只是在样式渲染之前起一个临时作用，那么可以写成<code>alt=&quot;&quot;</code>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;!-- &#19981;&#25512;&#33616; --&#62;&#10;&#60;img src=&#34;spreadsheet.png&#34;&#62;&#10;&#60;!-- &#25512;&#33616; --&#62;&#10;&#60;img src=&#34;spreadsheet.png&#34; alt=&#34;Spreadsheet screenshot.&#34;&#62;</span><br></pre></td></tr></table></figure></p>
+<h2 id="结构分离"><a href="#结构分离" class="headerlink" title="结构分离"></a>结构分离</h2><p><strong>结构、表现、行为分离</strong>。严格分离结构（标记）、表现（样式）和行为（脚本），并确保这三者的交互最小化。也就是说HTML文档和模板只包含HTML结构性内容，将表现性的东西放进样式表文件，将行为性的东西放进脚本文件。另也要尽量减少外部样式表和脚本文件的数量。这点对维护很重要，一般上维护样式表或脚本文件比维护HTML文档更容易。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;!-- &#19981;&#25512;&#33616; --&#62;&#10;&#60;!DOCTYPE html&#62;&#10;&#60;title&#62;HTML sucks&#60;/title&#62;&#10;&#60;link rel=&#34;stylesheet&#34; href=&#34;base.css&#34; media=&#34;screen&#34;&#62;&#10;&#60;link rel=&#34;stylesheet&#34; href=&#34;grid.css&#34; media=&#34;screen&#34;&#62;&#10;&#60;link rel=&#34;stylesheet&#34; href=&#34;print.css&#34; media=&#34;print&#34;&#62;&#10;&#60;h1 style=&#34;font-size: 1em;&#34;&#62;HTML sucks&#60;/h1&#62;&#10;&#60;p&#62;I&#8217;ve read about this on a few sites but now I&#8217;m sure:&#10;  &#60;u&#62;HTML is stupid!!1&#60;/u&#62;&#10;&#60;center&#62;I can&#8217;t believe there&#8217;s no way to control the styling of&#10;  my website without doing everything all over again!&#60;/center&#62;&#10;&#10;&#60;!-- &#25512;&#33616; --&#62;&#10;&#60;!DOCTYPE html&#62;&#10;&#60;title&#62;My first CSS-only redesign&#60;/title&#62;&#10;&#60;link rel=&#34;stylesheet&#34; href=&#34;default.css&#34;&#62;&#10;&#60;h1&#62;My first CSS-only redesign&#60;/h1&#62;&#10;&#60;p&#62;I&#8217;ve read about this on a few sites but today I&#8217;m actually&#10;  doing it: separating concerns and avoiding anything in the HTML of&#10;  my website that is presentational.&#10;&#60;p&#62;It&#8217;s awesome!</span><br></pre></td></tr></table></figure></p>
+<h2 id="实体引用"><a href="#实体引用" class="headerlink" title="实体引用"></a>实体引用</h2><p><strong>不要使用&mdash;，&rdquo;，&#x263a;等实体引用</strong>，当然前提是要保证团队内的编码格式统一。可以使用实体的情况有下面几种：对于在HTML中具有特殊意义的字符（如&lt;和&amp;），控制字符，和不可见的字符如&nbsp;（no-break space）。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;!-- &#19981;&#25512;&#33616; --&#62;&#10;The currency symbol for the Euro is &#38;ldquo;&#38;eur;&#38;rdquo;.&#10;&#60;!-- &#25512;&#33616; --&#62;&#10;The currency symbol for the Euro is &#8220;&#8364;&#8221;.</span><br></pre></td></tr></table></figure></p>
+<h2 id="可选标签（本规则可选）"><a href="#可选标签（本规则可选）" class="headerlink" title="可选标签（本规则可选）"></a>可选标签（本规则可选）</h2><p><strong>省略可选标签</strong>。出于减小文件体积等目的，<a href="//html.spec.whatwg.org/multipage/syntax.html#syntax-tag-omission">HTML5规范</a>规定了一些可以省略的标签。（这一点可能需要更多的时间去适应，因为目前的众多开发者都还不习惯这么做。但是出于一致性和简洁性的原因，把可选标签全都省略掉是最好的做法。）</p>
+<h2 id="type属性"><a href="#type属性" class="headerlink" title="type属性"></a>type属性</h2><p><strong>省略样式表和脚本的type属性</strong>，除非不是CSS和Javascript。因为HTML5中text/css和text/javascript为默认。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;!-- &#19981;&#25512;&#33616; --&#62;&#10;&#60;link rel=&#34;stylesheet&#34; href=&#34;//www.google.com/css/maia.css&#34;&#10;  type=&#34;text/css&#34;&#62;&#10;&#60;script src=&#34;//www.google.com/js/gweb/analytics/autotrack.js&#34;&#10;  type=&#34;text/javascript&#34;&#62;&#60;/script&#62;&#10;&#10;&#60;!-- &#25512;&#33616; --&#62;&#10;&#60;link rel=&#34;stylesheet&#34; href=&#34;//www.google.com/css/maia.css&#34;&#62;&#10;&#60;script src=&#34;//www.google.com/js/gweb/analytics/autotrack.js&#34;&#62;&#60;/script&#62;</span><br></pre></td></tr></table></figure></p>
+<h1 id="HTML格式化规则"><a href="#HTML格式化规则" class="headerlink" title="HTML格式化规则"></a>HTML格式化规则</h1><h2 id="通用格式化"><a href="#通用格式化" class="headerlink" title="通用格式化"></a>通用格式化</h2><p><strong>每一块、列表、表格另起新行，其子元素使用缩进</strong>。如果不想让列表项之间出现空文本节点，可以把所有的li放在一行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;blockquote&#62;&#10;  &#60;p&#62;&#60;em&#62;Space&#60;/em&#62;, the final frontier.&#60;/p&#62;&#10;&#60;/blockquote&#62;&#10;&#10;&#60;ul&#62;&#10;  &#60;li&#62;Moe&#10;  &#60;li&#62;Larry&#10;  &#60;li&#62;Curly&#10;&#60;/ul&#62;&#10;&#10;&#60;table&#62;&#10;  &#60;thead&#62;&#10;    &#60;tr&#62;&#10;      &#60;th scope=&#34;col&#34;&#62;Income&#10;      &#60;th scope=&#34;col&#34;&#62;Taxes&#10;  &#60;tbody&#62;&#10;    &#60;tr&#62;&#10;      &#60;td&#62;$ 5.00&#10;      &#60;td&#62;$ 4.50&#10;&#60;/table&#62;</span><br></pre></td></tr></table></figure></p>
+<h2 id="HTML引号"><a href="#HTML引号" class="headerlink" title="HTML引号"></a>HTML引号</h2><p><strong>HTML属性值一律使用双引号</strong>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#60;!-- &#19981;&#25512;&#33616; --&#62;&#10;&#60;a class=&#39;maia-button maia-button-secondary&#39;&#62;Sign in&#60;/a&#62;&#10;&#10;&#60;!-- &#25512;&#33616; --&#62;&#10;&#60;a class=&#34;maia-button maia-button-secondary&#34;&#62;Sign in&#60;/a&#62;</span><br></pre></td></tr></table></figure></p>
+<h1 id="CSS风格规则"><a href="#CSS风格规则" class="headerlink" title="CSS风格规则"></a>CSS风格规则</h1><h2 id="CSS样式合规性"><a href="#CSS样式合规性" class="headerlink" title="CSS样式合规性"></a>CSS样式合规性</h2><p><strong>使用合法的css，除非使用浏览器的私有属性</strong>。用<a href="//jigsaw.w3.org/css-validator/">W3C CSS validator</a>校验css样式文件。</p>
+<h2 id="ID和class命名"><a href="#ID和class命名" class="headerlink" title="ID和class命名"></a>ID和class命名</h2><p><strong>使用有意义或通用的ID和class</strong>。使用能表达元素功能或通用的，且最容易理解不易改变的命名，而不是表现层或具有隐喻的命名。使用结构化的命名以减少不必要的文档更新。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/* &#19981;&#25512;&#33616;: meaningless */&#10;#yee-1901 &#123;&#125;&#10;&#10;/* &#19981;&#25512;&#33616;: presentational */&#10;.button-green &#123;&#125;&#10;.clear &#123;&#125;&#10;&#10;/* &#25512;&#33616;: specific */&#10;#gallery &#123;&#125;&#10;#login &#123;&#125;&#10;.video &#123;&#125;&#10;&#10;/* &#25512;&#33616;: generic */&#10;.aux &#123;&#125;&#10;.alt &#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="ID和class命名风格"><a href="#ID和class命名风格" class="headerlink" title="ID和class命名风格"></a>ID和class命名风格</h2><p><strong>使用简洁明了的命名</strong>。这样有助于代码可读性和代码效率。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/* &#19981;&#25512;&#33616; */&#10;#navigation &#123;&#125;&#10;.atr &#123;&#125;&#10;&#10;/* &#25512;&#33616; */&#10;#nav &#123;&#125;&#10;.author &#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="类型选择器"><a href="#类型选择器" class="headerlink" title="类型选择器"></a>类型选择器</h2><p><strong>不要在ID和class前加元素，除非有必要</strong>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/* &#19981;&#25512;&#33616; */&#10;ul#example &#123;&#125;&#10;div.error &#123;&#125;&#10;&#10;/* &#25512;&#33616; */&#10;#example &#123;&#125;&#10;.error &#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="属性缩写"><a href="#属性缩写" class="headerlink" title="属性缩写"></a>属性缩写</h2><p><strong>尽可能使用属性缩写</strong>。CSS提供了许多缩写的属性，如<code>font</code>，即使只设置一个属性值。这有助于代码可读性和代码效率。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/* &#19981;&#25512;&#33616; */&#10;border-top-style: none;&#10;font-family: palatino, georgia, serif;&#10;font-size: 100%;&#10;line-height: 1.6;&#10;padding-bottom: 2em;&#10;padding-left: 1em;&#10;padding-right: 1em;&#10;padding-top: 0;&#10;&#10;/* &#25512;&#33616; */&#10;border-top: 0;&#10;font: 100%/1.6 palatino, georgia, serif;&#10;padding: 0 1em 2em;</span><br></pre></td></tr></table></figure></p>
+<h2 id="0单位"><a href="#0单位" class="headerlink" title="0单位"></a>0单位</h2><p><strong>省略单位若值为0</strong>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">margin: 0;&#10;padding: 0;</span><br></pre></td></tr></table></figure></p>
+<h2 id="0开头"><a href="#0开头" class="headerlink" title="0开头"></a>0开头</h2><p><strong>省略0若值以0开头</strong>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">font-size: .8em;</span><br></pre></td></tr></table></figure></p>
+<h2 id="Hex-颜色值"><a href="#Hex-颜色值" class="headerlink" title="Hex 颜色值"></a>Hex 颜色值</h2><p><strong>可缩写的16进制颜色使用3个字符</strong>。这样更简洁。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/* &#19981;&#25512;&#33616; */&#10;color: #eebbcc;&#10;&#10;/* &#25512;&#33616; */&#10;color: #ebc;</span><br></pre></td></tr></table></figure></p>
+<h2 id="前缀（本规则可选）"><a href="#前缀（本规则可选）" class="headerlink" title="前缀（本规则可选）"></a>前缀（本规则可选）</h2><p><strong>给选择器加上应用特有的前缀</strong>。在大的项目中可避免命名冲突。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.adw-help &#123;&#125; /* AdWords */&#10;#maia-note &#123;&#125; /* Maia */</span><br></pre></td></tr></table></figure></p>
+<h2 id="ID和class分隔符"><a href="#ID和class分隔符" class="headerlink" title="ID和class分隔符"></a>ID和class分隔符</h2><p><strong>使用连词符分隔ID和class</strong>。不要使用除了连词符外任何字符作为分隔符。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/* &#19981;&#25512;&#33616;: &#27809;&#26377;&#20998;&#38548; &#8220;demo&#8221; &#21644; &#8220;image&#8221; */&#10;.demoimage &#123;&#125;&#10;&#10;/* &#19981;&#25512;&#33616;: &#20351;&#29992;&#20102;&#19979;&#21010;&#32447;&#20998;&#38548; */&#10;.error_status &#123;&#125;&#10;&#10;/* &#25512;&#33616; */&#10;#video-id &#123;&#125;&#10;.ads-sample &#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="CSS-hacks"><a href="#CSS-hacks" class="headerlink" title="CSS hacks"></a>CSS hacks</h2><p><strong>不要首选UA探测和CSS hacks</strong>。基于代码效率和可维护性的考虑，UA探测和hacks应最后的手段考虑。</p>
+<h1 id="CSS格式化规则"><a href="#CSS格式化规则" class="headerlink" title="CSS格式化规则"></a>CSS格式化规则</h1><h2 id="声明顺序"><a href="#声明顺序" class="headerlink" title="声明顺序"></a>声明顺序</h2><p><strong>按字母书序声明</strong>。方便维护，排列时可以不考虑私有属性前缀，但-moz应当排在-webkit前。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">background: fuchsia;&#10;border: 1px solid;&#10;-moz-border-radius: 4px;&#10;-webkit-border-radius: 4px;&#10;border-radius: 4px;&#10;color: black;&#10;text-align: center;&#10;text-indent: 2em;</span><br></pre></td></tr></table></figure></p>
+<h2 id="代码块缩进"><a href="#代码块缩进" class="headerlink" title="代码块缩进"></a>代码块缩进</h2><p><strong>所有代码块都缩进</strong>。结构清晰，可读性高。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">@media screen, projection &#123;&#10;&#10;  html &#123;&#10;    background: #fff;&#10;    color: #444;&#10;  &#125;&#10;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="声明结束"><a href="#声明结束" class="headerlink" title="声明结束"></a>声明结束</h2><p><strong>每条声明使用分号结束</strong>。保持声明一致性和可扩展性。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/* &#19981;&#25512;&#33616; */&#10;.test &#123;&#10;  display: block;&#10;  height: 100px&#10;&#125;&#10;&#10;/* &#25512;&#33616; */&#10;.test &#123;&#10;  display: block;&#10;  height: 100px;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="属性名结尾"><a href="#属性名结尾" class="headerlink" title="属性名结尾"></a>属性名结尾</h2><p><strong>在属性名冒号后加一个空格</strong>。属性名和冒号间没有空格。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/* &#19981;&#25512;&#33616; */&#10;h3 &#123;&#10;  font-weight:bold;&#10;&#125;&#10;&#10;/* &#25512;&#33616; */&#10;h3 &#123;&#10;  font-weight: bold;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="声明块分隔"><a href="#声明块分隔" class="headerlink" title="声明块分隔"></a>声明块分隔</h2><p><strong>在最后一个选择器和声明块加一个空格</strong>。在最后一个选择器和左大括号间加一个空格，且在同一行。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/* &#19981;&#25512;&#33616;: &#32570;&#23569;&#31354;&#26684; */&#10;#video&#123;&#10;  margin-top: 1em;&#10;&#125;&#10;&#10;/* &#19981;&#25512;&#33616;: &#19981;&#24517;&#35201;&#30340;&#25442;&#34892; */&#10;#video&#10;&#123;&#10;  margin-top: 1em;&#10;&#125;&#10;&#10;/* &#25512;&#33616; */&#10;#video &#123;&#10;  margin-top: 1em;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="选择器和声明分隔"><a href="#选择器和声明分隔" class="headerlink" title="选择器和声明分隔"></a>选择器和声明分隔</h2><p><strong>每个选择器和声明都使用新行</strong>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/* &#19981;&#25512;&#33616; */&#10;a:focus, a:active &#123;&#10;  position: relative; top: 1px;&#10;&#125;&#10;&#10;/* &#25512;&#33616; */&#10;h1,&#10;h2,&#10;h3 &#123;&#10;  font-weight: normal;&#10;  line-height: 1.2;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="规则分隔"><a href="#规则分隔" class="headerlink" title="规则分隔"></a>规则分隔</h2><p><strong>规则间用空行分隔</strong>。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">html &#123;&#10;  background: #fff;&#10;&#125;&#10;&#10;body &#123;&#10;  margin: auto;&#10;  width: 50%;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="CSS引号"><a href="#CSS引号" class="headerlink" title="CSS引号"></a>CSS引号</h2><p><strong>属性选择器和属性值使用单引号</strong>。url值不适用引号，使用charset时用双引号。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/* &#19981;&#25512;&#33616; */&#10;@import url(&#34;//www.google.com/css/maia.css&#34;);&#10;&#10;html &#123;&#10;  font-family: &#34;open sans&#34;, arial, sans-serif;&#10;&#125;&#10;&#10;/* &#25512;&#33616; */&#10;@import url(//www.google.com/css/maia.css);&#10;&#10;html &#123;&#10;  font-family: &#39;open sans&#39;, arial, sans-serif;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="CSS元规则（本规则可选）"><a href="#CSS元规则（本规则可选）" class="headerlink" title="CSS元规则（本规则可选）"></a>CSS元规则（本规则可选）</h2><p><strong>使用注释为样式分组</strong>。组间用空行分隔。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/* Header */&#10;&#10;#adw-header &#123;&#125;&#10;&#10;/* Footer */&#10;&#10;#adw-footer &#123;&#125;&#10;&#10;/* Gallery */&#10;&#10;.adw-gallery &#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="扩展阅读"><a href="#扩展阅读" class="headerlink" title="扩展阅读"></a>扩展阅读</h3><ul>
+<li><a href="//www.w3.org/International/tutorials/tutorial-char-enc/">Handling character encodings in HTML and CSS</a></li>
+<li><a href="//www.ruanyifeng.com/blog/2007/10/ascii_unicode_and_utf-8.html">字符编码笔记：ASCII,Unicode和UTF-8</a></li>
+<li><a href="//html.spec.whatwg.org/multipage/syntax.html#syntax-tag-omission">HTML可选标签</a></li>
+<li><a href="//www.stevesouders.com/blog/2009/06/18/simplifying-css-selectors/">Simplifying CSS Selectors</a></li>
+<li><a href="//www.paulirish.com/2010/the-protocol-relative-url/">The Protocol-relative URL</a></li>
+</ul>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        
+<!-- baidu share -->
+<div class="bdsharebuttonbox" style="float: right">
+  <a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a>
+  <a title="分享到人人网" href="#" class="bds_renren" data-cmd="renren"></a>
+  <a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a>
+  <a title="分享到Facebook" href="#" class="bds_fbook" data-cmd="fbook"></a>
+  <a title="分享到Twitter" href="#" class="bds_twi" data-cmd="twi"></a>
+  <a href="#" class="bds_more" data-cmd="more"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+<!-- End baidu share -->
+
+
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2014/12/29/ejs-node-3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          ejs学习笔记-源码（三）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2014/12/06/ejs-note-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">ejs学习笔记（二）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="ciktn37jt001iy0vgeu3a83ai" data-title="google代码风格指南" data-url="http://iceccb.github.io/2014/12/14/google-style-guide/" id="duoshuo"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"iceccb"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title widget-title-category">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习笔记/">学习笔记</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书/">读书</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title widget-title-recent">最近</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/02/18/suibi-20160218/">乌合之众</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/15/suibi-20160215/">生命不息</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/12/suibi-20160212/">爱带我回家</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/09/suibi-20160209/">美人鱼有感</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/03/suibi-20160203/">如果自杀的话</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title widget-title-tag">标签</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/ejs/" style="font-size: 16px;">ejs</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/language/" style="font-size: 10px;">language</a> <a href="/tags/nodejs/" style="font-size: 12px;">nodejs</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/电影/" style="font-size: 14px;">电影</a> <a href="/tags/话剧/" style="font-size: 10px;">话剧</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a> <a href="/tags/读后感/" style="font-size: 14px;">读后感</a> <a href="/tags/随笔/" style="font-size: 18px;">随笔</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 Ice Chan<br>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">博文</a>
+  
+</nav>
+    
+<script src="/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
