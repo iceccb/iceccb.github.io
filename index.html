@@ -66,6 +66,165 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-webpack-note-1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/29/webpack-note-1/">webpack入门</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/02/29/webpack-note-1/" class="article-date">
+  <time datetime="2016-02-29T13:30:39.000Z" itemprop="datePublished">2月 29 2016</time>
+</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+      
+<a href="/2016/02/29/webpack-note-1/#comments" class="article-comment-link" data-thread-key="cil80yewh000ayovgx0keiw49" data-short-name="iceccb" style="display:none">comments</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="webpack"><a href="#webpack" class="headerlink" title="webpack"></a>webpack</h1><h2 id="什么是webpack"><a href="#什么是webpack" class="headerlink" title="什么是webpack"></a>什么是webpack</h2><p>webpack是一个模块加载器和打包工具。不只是js文件，webpack把所有资源当作模块（js、图片、样式表、模板等）来处理和使用。</p>
+<p>优势：</p>
+<ul>
+<li>将依赖树分隔成块按需加载</li>
+<li>减少初始化加载时间</li>
+<li>所有静态资源都可以模块化</li>
+<li>扩展性强，插件机制完善</li>
+<li>webpack以commonJS形式书写脚本，也支持AMD/CMD，因此便于代码迁移</li>
+</ul>
+        
+          <p class="article-more-link">
+            <a href="/2016/02/29/webpack-note-1/#more">继续阅读</a>
+          </p>
+        
+      
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-react-note-2" class="article article-type-post" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/29/react-note-2/">React实践（一）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/02/29/react-note-2/" class="article-date">
+  <time datetime="2016-02-29T12:57:23.000Z" itemprop="datePublished">2月 29 2016</time>
+</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+      
+<a href="/2016/02/29/react-note-2/#comments" class="article-comment-link" data-thread-key="cil80yexs001iyovgxkqk49ux" data-short-name="iceccb" style="display:none">comments</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="React组件实践"><a href="#React组件实践" class="headerlink" title="React组件实践"></a>React组件实践</h1><p>最近在学习React，上一篇写了自己React入门的一些笔记。组件<em>component</em>作为React的主要特性，于是作为自己的实践开发了评论组件，一般上是需要与后台交互，但为了简便就省了这一步，而直接在页面造了假数据进行测试。</p>
+<h2 id="组件结构"><a href="#组件结构" class="headerlink" title="组件结构"></a>组件结构</h2><p>|– CommentBox<br>    |– CommentList<br>        |– Comment<br>        |– Pagination<br>    |– CommentForm</p>
+<h2 id="Comment子组件"><a href="#Comment子组件" class="headerlink" title="Comment子组件"></a>Comment子组件</h2><p>该组件相对简单，作为每条评论的UI显示，包括用户名和评论。所以只需使用<code>render（）</code>方法即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var Comment = React.createClass(&#123;&#10;  render: function() &#123;&#10;    return (&#10;      &#60;div className=&#34;list-group-item&#34;&#62;&#10;        &#60;div className=&#34;row-action-primary&#34;&#62;&#10;            &#60;i className=&#34;mdi-file-folder&#34;&#62;&#60;/i&#62;&#10;        &#60;/div&#62;&#10;        &#60;div className=&#34;row-content&#34;&#62;&#10;          &#60;h4 className=&#34;list-group-item-heading&#34;&#62;&#123;this.props.username&#125;&#60;/h4&#62;&#10;          &#60;p className=&#34;list-group-item-text&#34;&#62;&#123;this.props.comment&#125;&#60;/p&#62;&#10;        &#60;/div&#62;&#10;      &#60;/div&#62;&#10;    );&#10;  &#125;&#10;&#125;);</span><br></pre></td></tr></table></figure>
+<p>用户名和评论分别使用组件的参数<code>this.props.username</code>和<code>this.props.comment</code>传递。</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/02/29/react-note-2/#more">继续阅读</a>
+          </p>
+        
+      
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
+    <article id="post-react-note-1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/02/27/react-note-1/">React入门</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/02/27/react-note-1/" class="article-date">
+  <time datetime="2016-02-27T11:37:23.000Z" itemprop="datePublished">2月 27 2016</time>
+</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+      
+<a href="/2016/02/27/react-note-1/#comments" class="article-comment-link" data-thread-key="cil80yexs001lyovgzcgcgazj" data-short-name="iceccb" style="display:none">comments</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="why-React"><a href="#why-React" class="headerlink" title="why React"></a>why React</h1><p>React是Facebook开发的用来创建用户界面的<em>JavaScript库</em>，相当于MVC中的<em>V</em>（视图）。</p>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>构建随着时间数据不断变化的大规模应用程序。</p>
+<ul>
+<li>简单。表达某一个时间点应用程序是个什么样子的，当底层数据改变后，React会决定是否更新用户界面且自动处理。</li>
+<li>声明式。数据变化后自会更新变化的部分。</li>
+</ul>
+<h1 id="主要原理"><a href="#主要原理" class="headerlink" title="主要原理"></a>主要原理</h1><h2 id="Virtual-DOM"><a href="#Virtual-DOM" class="headerlink" title="Virtual DOM"></a>Virtual DOM</h2><p>在web应用中，更新操作DOM通常比较昂贵且耗时，每次更新都可能导致重绘或重排。React通过抽象出一个js对象来模拟DOM，即<em>Virtual DOM</em>，来描述虚拟DOM是什么样子的（React使用<code>render()</code>来描述虚拟的DOM节点），并决定是否更新重绘真实的DOM。等到事件循环结束后，React会利用diff算法比较新旧Virtual DOM，计算出最快的方式更新真实DOM。</p>
+<h2 id="component"><a href="#component" class="headerlink" title="component"></a>component</h2><p>Virtual DOM的节点就是抽象、封装好的组件，通过React你<em>唯一</em>要做的事情就是构建组件。借助组件使React具有可组合性，关注界面分离。当组件的<em>state</em>或<em>props</em>改变，React会比较新旧虚拟DOM，决定是否更新界面。</p>
+<p>可以认为组件是简单的函数，接受 <code>props</code> 和 <code>state</code>作为参数，然后渲染出HTML。组件只能渲染单个根节点，如果想要返回多个节点，它们<em>必须</em>被包含在同一个节点里。</p>
+<p>组件其实是状态机（State Machine）。根据界面不同状态然后渲染这些状态，让用户界面和数据保持一致。<br>React里，只需更新组件的 state（使用唯一的<code>this.setState(data, callback)</code>方法），然后根据新的state 重新渲染用户界面，React 来决定如何最高效地更新 DOM。因此勿在组件里直接操作DOM。</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/02/27/react-note-1/#more">继续阅读</a>
+          </p>
+        
+      
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
     <article id="post-suibi-20160226" class="article article-type-post" itemscope itemprop="blogPost">
   
   <div class="article-inner">
@@ -88,7 +247,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
 
       
-<a href="/2016/02/26/suibi-20160226/#comments" class="article-comment-link" data-thread-key="cil3v5arn000a8svgup82u4rp" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/02/26/suibi-20160226/#comments" class="article-comment-link" data-thread-key="cil80yewh000dyovg9m7bbwps" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -138,7 +297,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
 
       
-<a href="/2016/02/20/suibi-20160220/#comments" class="article-comment-link" data-thread-key="cil3v5arn000f8svgrca19pfv" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/02/20/suibi-20160220/#comments" class="article-comment-link" data-thread-key="cil80yewx000iyovgsgf8sy6i" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -154,82 +313,6 @@
 <blockquote>
 <p>  癞蛤蟆<br>  菲利普·拉金<br>  为什么要让工作这只癞蛤蟆<br>  蜷伏在我的生活上？<br>  难道不能用智慧作长叉<br>  撵走这个丑东西？<br>  一星期六天都被它污玷，<br>  用它令人作呕的毒液–<br>  只为了付清几张小账单！<br>  那可太不划算。<br>  许多家伙靠小聪明过活：<br>  讲师，笨舌头，<br>  无赖，废人，莽汉–<br>  不见得变成穷光蛋；<br>  许多家伙生活在陋巷，<br>  铁桶里面烧着火，<br>  嚼着罐装沙丁鱼和风吹落的野果–<br>  好像也蛮快活。<br>  他们的小子光着脚，<br>  老婆糟得没法说，<br>  皮包骨瘦得像赛狗–但也<br>  没有谁真的挨饿。<br>  啊，但愿我有足够的勇气<br>  大喊一声“去你妈的养老金！”<br>  但我清楚，再清楚不过，那正是<br>  美梦存在的根底：<br>  因为有些什么也盘踞在我心里，<br>  如同一只癞蛤蟆；<br>  它蹲伏的屁股沉得好像坏运气，<br>  冷得有如雪地，<br>  它从不允许我<br>  用哄骗的手段<br>  一口气猎取<br>  名望、金钱和美女。<br>  我不是说，这一个体现<br>  另一个的精神真理；<br>  我是想说，一旦你同时拥有，<br>  就很难将任何一个舍弃。</p>
 </blockquote>
-
-      
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    <article id="post-react-note-1" class="article article-type-post" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/19/react-note-1/">React入门</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2016/02/19/react-note-1/" class="article-date">
-  <time datetime="2016-02-19T12:49:00.000Z" itemprop="datePublished">2月 19 2016</time>
-</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
-
-      
-<a href="/2016/02/19/react-note-1/#comments" class="article-comment-link" data-thread-key="cil3v5ate001f8svgpym0b74i" data-short-name="iceccb" style="display:none">comments</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="why-React"><a href="#why-React" class="headerlink" title="why React"></a>why React</h1><p>React是Facebook开发的用来创建用户界面的<em>JavaScript库</em>，相当于MVC中的<em>V</em>（视图）。</p>
-<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><p>构建随着时间数据不断变化的大规模应用程序。</p>
-<ul>
-<li>简单。表达某一个时间点应用程序是个什么样子的，当底层数据改变后，React会决定是否更新用户界面且自动处理。</li>
-<li>声明式。数据变化后自会更新变化的部分。</li>
-</ul>
-<h1 id="主要原理"><a href="#主要原理" class="headerlink" title="主要原理"></a>主要原理</h1><h2 id="Virtual-DOM"><a href="#Virtual-DOM" class="headerlink" title="Virtual DOM"></a>Virtual DOM</h2><p>在web应用中，更新操作DOM通常比较昂贵且耗时，每次更新都可能导致重绘或重排。React通过抽象出一个js对象来模拟DOM，即<em>Virtual DOM</em>，来描述虚拟DOM是什么样子的（React使用<code>render()</code>来描述虚拟的DOM节点），并决定是否更新重绘真实的DOM。等到事件循环结束后，React会利用diff算法比较新旧Virtual DOM，计算出最快的方式更新真实DOM。</p>
-<h2 id="component"><a href="#component" class="headerlink" title="component"></a>component</h2><p>Virtual DOM的节点就是抽象、封装好的组件，通过React你<em>唯一</em>要做的事情就是构建组件。借助组件使React具有可组合性，关注界面分离。当组件的<em>state</em>或<em>props</em>改变，React会比较新旧虚拟DOM，决定是否更新界面。</p>
-<p>可以认为组件是简单的函数，接受 <code>props</code> 和 <code>state</code>作为参数，然后渲染出HTML。组件只能渲染单个根节点，如果想要返回多个节点，它们<em>必须</em>被包含在同一个节点里。</p>
-<p>组件其实是状态机（State Machine）。根据界面不同状态然后渲染这些状态，让用户界面和数据保持一致。<br>React里，只需更新组件的 state（使用唯一的<code>this.setState(data, callback)</code>方法），然后根据新的state 重新渲染用户界面，React 来决定如何最高效地更新 DOM。因此勿在组件里直接操作DOM。</p>
-<p>以下是一个简单使用组合组件的带显示剩余输入字数的文本框例子：</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> WordCount = React.createClass(&#123;</span><br><span class="line">  render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="title">p</span> <span class="attribute">className</span>=<span class="value">"text-right"</span>&gt;</span>&#123;this.props.remain&#125;/&#123;this.props.total&#125;<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">    )</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> TextAreaCount = React.createClass(&#123;</span><br><span class="line">  getInitialState: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;remain: <span class="keyword">this</span>.props.total&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  getDefaultProps: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      total: <span class="number">100</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  handleChange: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> total = <span class="keyword">this</span>.props.total,</span><br><span class="line">      elm = event.target,</span><br><span class="line">      remain = total - elm.value.length;</span><br><span class="line">    <span class="keyword">if</span>(remain &lt; <span class="number">0</span>) &#123;</span><br><span class="line">      remain = <span class="number">0</span>;</span><br><span class="line">      elm.value = elm.value.substring(<span class="number">0</span>, total);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;remain: remain&#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">  render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> remain = <span class="keyword">this</span>.state.remain;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="title">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">textarea</span> <span class="attribute">onChange</span>=<span class="value">&#123;this.handleChange&#125;</span> <span class="attribute">className</span>=<span class="value">"form-control"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">WordCount</span> <span class="attribute">remain</span>=<span class="value">&#123;remain&#125;</span> <span class="attribute">total</span> = &#123;<span class="attribute">this.props.total</span>&#125; /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    )</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">React.render(</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="title">TextAreaCount</span>  /&gt;</span>,</span><br><span class="line">  document.getElementById('example')</span><br><span class="line">);</span></span><br></pre></td></tr></table></figure>
-<h2 id="组件的生命周期"><a href="#组件的生命周期" class="headerlink" title="组件的生命周期"></a>组件的生命周期</h2><p>组件生命周期包含3个阶段</p>
-<ul>
-<li>Mounting，组件正添加到DOM</li>
-<li>Updating，组件正重新渲染</li>
-<li>Unmounting，组件正从DOM移除</li>
-</ul>
-<h3 id="Mounting"><a href="#Mounting" class="headerlink" title="Mounting"></a>Mounting</h3><ul>
-<li><code>getInitialState()</code>，在组件添加到DOM前执行，初始化状态。</li>
-<li><code>componentWillMount()</code>，在Mounting前执行</li>
-<li><code>componentDidMount()</code>，在Mounting后执行，即组件添加到DOM完成后。子组件先于父亲执行。</li>
-</ul>
-<h3 id="Unpdating"><a href="#Unpdating" class="headerlink" title="Unpdating"></a>Unpdating</h3><ul>
-<li><code>componentWillReceiveProps(object nextProps)</code>，当一个已经mounted的组件接收新的属性时，可使用该方法判断新旧值，使用<code>this.setState()</code>初始化</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var MyComponent3 = React.createClass(&#123;&#10;  getInitialState: function() &#123;&#10;      return &#123;likesIncreasing: false&#125;;&#10;  &#125;,&#10;  componentWillReceiveProps: function(nextProps) &#123;&#10;    this.setState(&#123;&#10;      likesIncreasing: nextProps.likeCount &#62; this.props.likeCount&#10;    &#125;);&#10;  &#125;,&#10;  render: function() &#123;&#10;    var likesIncreasing = this.state.likesIncreasing? &#39;likes increasing&#39;:&#39;&#39;&#10;    return (&#10;      &#60;div&#62;&#10;        &#60;p&#62;current like count:&#123;this.props.likeCount&#125;. &#123;likesIncreasing&#125;&#60;/p&#62;&#10;      &#60;/div&#62;&#10;    );&#10;  &#125;&#10;&#125;);&#10;&#10;React.render(&#10;  &#60;MyComponent3 likeCount=&#39;1&#39;/&#62;,&#10;  document.getElementById(&#39;example3&#39;)&#10;);&#10;setTimeout(function() &#123;&#10;    React.render(&#10;      &#60;MyComponent3 likeCount=&#39;2&#39;/&#62;,&#10;      document.getElementById(&#39;example3&#39;)&#10;    );&#10;&#125;,1000)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><code>shouldComponentUpdate(object nextProps, object nextState):boolean</code>，返回false时，不更新dom。当使用<code>forceUpdate</code>时此方法不执行。</li>
-<li><code>componentWillUpdate(object nextProps, object nextState)</code>，不能使用<code>this.setState()</code></li>
-<li><code>componentDidUpdate(object prevProps, object prevState)</code></li>
-</ul>
-<h3 id="Unmounting"><a href="#Unmounting" class="headerlink" title="Unmounting"></a>Unmounting</h3><ul>
-<li><code>componentWillUnmount()</code></li>
-</ul>
 
       
     </div>
@@ -266,7 +349,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
 
       
-<a href="/2016/02/18/suibi-20160218/#comments" class="article-comment-link" data-thread-key="cil3v5as3000i8svgtn2f1oma" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/02/18/suibi-20160218/#comments" class="article-comment-link" data-thread-key="cil80yewx000lyovg71sr24az" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -331,7 +414,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读后感/">读后感</a></li></ul>
 
       
-<a href="/2016/02/15/suibi-20160215/#comments" class="article-comment-link" data-thread-key="cil3v5as3000n8svgs7t311db" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/02/15/suibi-20160215/#comments" class="article-comment-link" data-thread-key="cil80yewx000qyovg6f2oonke" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -378,7 +461,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/电影/">电影</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
 
       
-<a href="/2016/02/12/suibi-20160212/#comments" class="article-comment-link" data-thread-key="cil3v5as3000r8svg3jcwr60y" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/02/12/suibi-20160212/#comments" class="article-comment-link" data-thread-key="cil80yexd000uyovgd9j0g2ni" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -426,7 +509,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/电影/">电影</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
 
       
-<a href="/2016/02/09/suibi-20160209/#comments" class="article-comment-link" data-thread-key="cil3v5asj000w8svgngr5cktl" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/02/09/suibi-20160209/#comments" class="article-comment-link" data-thread-key="cil80yexd000zyovg12tq9elh" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -474,7 +557,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
 
       
-<a href="/2016/02/03/suibi-20160203/#comments" class="article-comment-link" data-thread-key="cil3v5asj00108svgv2nut4kj" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/02/03/suibi-20160203/#comments" class="article-comment-link" data-thread-key="cil80yexd0013yovg87889bzu" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -498,103 +581,9 @@
 
 
   
-    <article id="post-suibi-20160130" class="article article-type-post" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/30/suibi-20160130/">男女的友谊-当哈利遇上莎莉</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2016/01/30/suibi-20160130/" class="article-date">
-  <time datetime="2016-01-30T15:25:23.000Z" itemprop="datePublished">1月 30 2016</time>
-</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/电影/">电影</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-
-      
-<a href="/2016/01/30/suibi-20160130/#comments" class="article-comment-link" data-thread-key="cil3v5asy00138svg7otdww0e" data-short-name="iceccb" style="display:none">comments</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>有一部电影常常听人说起，这么一部经典的电影经常与男女之间的友谊扯上关系。作为电影爱好者的我却一直没看，在艳阳天的周末，一个人静静的欣赏了这部好片“当哈利遇到莎莉”。</p>
-<p>大学毕业后莎莉和哈利结伴驱车到纽约，两人由此相识，但却是一个糟糕的开始。途中两人言语相左，成为对方讨厌的人，到纽约后两人得出不可能成为朋友的结论后，不欢而散。也由此引出经典的男女问题，排除性男女之间是否有纯友谊。</p>
-<p>男女之间是否存在纯友谊？这个问题被人反复讨论了无数次，跟大多数问题一样没有定论，相信和不相信者自由其理论。此命题首先界定了主体为两个异性的人类，但我想先将命题变换为两个同性的主体。同性之间是否存在纯友谊？</p>
-        
-          <p class="article-more-link">
-            <a href="/2016/01/30/suibi-20160130/#more">继续阅读</a>
-          </p>
-        
-      
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    <article id="post-suibi-20160123" class="article article-type-post" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/23/suibi-20160123/">谎言</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2016/01/23/suibi-20160123/" class="article-date">
-  <time datetime="2016-01-23T15:22:53.000Z" itemprop="datePublished">1月 23 2016</time>
-</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/话剧/">话剧</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-
-      
-<a href="/2016/01/23/suibi-20160123/#comments" class="article-comment-link" data-thread-key="cil3v5asy00178svg9maimxe3" data-short-name="iceccb" style="display:none">comments</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="chapter-1"><a href="#chapter-1" class="headerlink" title="chapter 1"></a>chapter 1</h1><p>阿香从小喜欢说谎，她在每次说谎中得到乐趣得到满足，即使母亲都打骂教育她不能说谎，但她总是左耳进右耳出。一天，她见好友买了新鞋便欺骗对方父亲也给她买了，只是过几天才能穿。她在河边找到了正在垂钓的父亲，想问父亲拿钱，在父亲的追问下道出想买鞋的实情，还说父亲上次答应了考100分就可以买鞋。父亲问她把考卷拿出来看，她支支吾吾把考卷拿出来但却不肯给父亲看，最后特意扔进湖。阿香和父亲的感情很好，在打闹嬉笑中父女之情表露无遗。父亲笑着说我帮你捡起来随之跳进湖里，却再也没起来过。当然阿香没考100，当然阿香没想到一个小小的谎言葬送了父亲的性命，当然阿香无法原谅自己。从此阿香不再说谎，她母亲也是个不说谎的人，只是阿香无法向任何人说真话父亲是自己害死的。说真话的阿香不再是以前受人欢迎的那个嘴巴甜的姑娘，长大后阿香要去城市里，母亲告诉她城里是个没有谎言、充满真理的地方。阿香告别母亲，前往那个没有谎言的地方。可是前途未知，阿香不知道，世上根本不存在没有谎言的地方。</p>
-        
-          <p class="article-more-link">
-            <a href="/2016/01/23/suibi-20160123/#more">继续阅读</a>
-          </p>
-        
-      
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
     </nav>
   
 </section>
@@ -605,7 +594,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title widget-title-category">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习笔记/">学习笔记</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书/">读书</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">8</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习笔记/">学习笔记</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书/">读书</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -617,23 +606,23 @@
       <ul>
         
           <li>
+            <a href="/2016/02/29/webpack-note-1/">webpack入门</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/29/react-note-2/">React实践（一）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/27/react-note-1/">React入门</a>
+          </li>
+        
+          <li>
             <a href="/2016/02/26/suibi-20160226/">婚姻</a>
           </li>
         
           <li>
             <a href="/2016/02/20/suibi-20160220/">工作or生活</a>
-          </li>
-        
-          <li>
-            <a href="/2016/02/19/react-note-1/">React入门</a>
-          </li>
-        
-          <li>
-            <a href="/2016/02/18/suibi-20160218/">乌合之众</a>
-          </li>
-        
-          <li>
-            <a href="/2016/02/15/suibi-20160215/">生命不息</a>
           </li>
         
       </ul>
@@ -645,7 +634,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title widget-title-tag">标签</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/ejs/" style="font-size: 16px;">ejs</a> <a href="/tags/javascript/" style="font-size: 18px;">javascript</a> <a href="/tags/language/" style="font-size: 10px;">language</a> <a href="/tags/nodejs/" style="font-size: 12px;">nodejs</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/电影/" style="font-size: 14px;">电影</a> <a href="/tags/话剧/" style="font-size: 10px;">话剧</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a> <a href="/tags/读后感/" style="font-size: 14px;">读后感</a> <a href="/tags/随笔/" style="font-size: 20px;">随笔</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/ejs/" style="font-size: 16px;">ejs</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/language/" style="font-size: 10px;">language</a> <a href="/tags/nodejs/" style="font-size: 12px;">nodejs</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/电影/" style="font-size: 14px;">电影</a> <a href="/tags/话剧/" style="font-size: 10px;">话剧</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a> <a href="/tags/读后感/" style="font-size: 14px;">读后感</a> <a href="/tags/随笔/" style="font-size: 18px;">随笔</a>
     </div>
   </div>
 

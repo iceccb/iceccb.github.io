@@ -14,7 +14,7 @@
 主要原理Virtual DOM在web应用中，更新操作DOM通常比较昂贵且">
 <meta property="og:type" content="article">
 <meta property="og:title" content="React入门">
-<meta property="og:url" content="http://iceccb.github.io/2016/02/19/react-note-1/index.html">
+<meta property="og:url" content="http://iceccb.github.io/2016/02/27/react-note-1/index.html">
 <meta property="og:site_name" content="Ice's Blog">
 <meta property="og:description" content="why ReactReact是Facebook开发的用来创建用户界面的JavaScript库，相当于MVC中的V（视图）。
 目标构建随着时间数据不断变化的大规模应用程序。
@@ -23,7 +23,7 @@
 声明式。数据变化后自会更新变化的部分。
 
 主要原理Virtual DOM在web应用中，更新操作DOM通常比较昂贵且">
-<meta property="og:updated_time" content="2016-02-19T12:52:12.509Z">
+<meta property="og:updated_time" content="2016-02-29T13:31:24.384Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="React入门">
 <meta name="twitter:description" content="why ReactReact是Facebook开发的用来创建用户界面的JavaScript库，相当于MVC中的V（视图）。
@@ -98,14 +98,14 @@
       </header>
     
     <div class="article-meta">
-      <a href="/2016/02/19/react-note-1/" class="article-date">
-  <time datetime="2016-02-19T12:49:00.000Z" itemprop="datePublished">2月 19 2016</time>
+      <a href="/2016/02/27/react-note-1/" class="article-date">
+  <time datetime="2016-02-27T11:37:23.000Z" itemprop="datePublished">2月 27 2016</time>
 </a>
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/React/">React</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
 
       
-<a href="/2016/02/19/react-note-1/#comments" class="article-comment-link" data-thread-key="cil3v5ate001f8svgpym0b74i" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/02/27/react-note-1/#comments" class="article-comment-link" data-thread-key="cil80yexs001lyovgzcgcgazj" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -120,6 +120,7 @@
 <h2 id="component"><a href="#component" class="headerlink" title="component"></a>component</h2><p>Virtual DOM的节点就是抽象、封装好的组件，通过React你<em>唯一</em>要做的事情就是构建组件。借助组件使React具有可组合性，关注界面分离。当组件的<em>state</em>或<em>props</em>改变，React会比较新旧虚拟DOM，决定是否更新界面。</p>
 <p>可以认为组件是简单的函数，接受 <code>props</code> 和 <code>state</code>作为参数，然后渲染出HTML。组件只能渲染单个根节点，如果想要返回多个节点，它们<em>必须</em>被包含在同一个节点里。</p>
 <p>组件其实是状态机（State Machine）。根据界面不同状态然后渲染这些状态，让用户界面和数据保持一致。<br>React里，只需更新组件的 state（使用唯一的<code>this.setState(data, callback)</code>方法），然后根据新的state 重新渲染用户界面，React 来决定如何最高效地更新 DOM。因此勿在组件里直接操作DOM。</p>
+<a id="more"></a>
 <p>以下是一个简单使用组合组件的带显示剩余输入字数的文本框例子：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> WordCount = React.createClass(&#123;</span><br><span class="line">  render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">    <span class="xml"><span class="tag">&lt;<span class="title">p</span> <span class="attribute">className</span>=<span class="value">"text-right"</span>&gt;</span>&#123;this.props.remain&#125;/&#123;this.props.total&#125;<span class="tag">&lt;/<span class="title">p</span>&gt;</span></span><br><span class="line">    )</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"><span class="keyword">var</span> TextAreaCount = React.createClass(&#123;</span><br><span class="line">  getInitialState: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;remain: <span class="keyword">this</span>.props.total&#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  getDefaultProps: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      total: <span class="number">100</span></span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  handleChange: <span class="function"><span class="keyword">function</span>(<span class="params">event</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> total = <span class="keyword">this</span>.props.total,</span><br><span class="line">      elm = event.target,</span><br><span class="line">      remain = total - elm.value.length;</span><br><span class="line">    <span class="keyword">if</span>(remain &lt; <span class="number">0</span>) &#123;</span><br><span class="line">      remain = <span class="number">0</span>;</span><br><span class="line">      elm.value = elm.value.substring(<span class="number">0</span>, total);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.setState(&#123;remain: remain&#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">  render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">var</span> remain = <span class="keyword">this</span>.state.remain;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">      <span class="xml"><span class="tag">&lt;<span class="title">div</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">textarea</span> <span class="attribute">onChange</span>=<span class="value">&#123;this.handleChange&#125;</span> <span class="attribute">className</span>=<span class="value">"form-control"</span> /&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="title">WordCount</span> <span class="attribute">remain</span>=<span class="value">&#123;remain&#125;</span> <span class="attribute">total</span> = &#123;<span class="attribute">this.props.total</span>&#125; /&gt;</span></span><br><span class="line">      <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">    )</span>;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br><span class="line">React.render(</span><br><span class="line">  <span class="xml"><span class="tag">&lt;<span class="title">TextAreaCount</span>  /&gt;</span>,</span><br><span class="line">  document.getElementById('example')</span><br><span class="line">);</span></span><br></pre></td></tr></table></figure>
 <h2 id="组件的生命周期"><a href="#组件的生命周期" class="headerlink" title="组件的生命周期"></a>组件的生命周期</h2><p>组件生命周期包含3个阶段</p>
@@ -145,6 +146,21 @@
 <h3 id="Unmounting"><a href="#Unmounting" class="headerlink" title="Unmounting"></a>Unmounting</h3><ul>
 <li><code>componentWillUnmount()</code></li>
 </ul>
+<h2 id="refs-和-findDOMNode"><a href="#refs-和-findDOMNode" class="headerlink" title="refs 和 findDOMNode()"></a>refs 和 findDOMNode()</h2><p>若你想引用DOM节点，可以使用<code>React.findDOMNode(component)</code>，但此方法只限该节点已添加到DOM中，因此在<code>render()</code>使用该方法将报错。</p>
+<p>除了使用<code>this</code>获取当前的组件，也可以使用<code>refs</code>来获取节点。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var MyComponent1 = React.createClass(&#123;&#10;  handleChange: function() &#123;&#10;    var reg = new RegExp(this.props.reg);&#10;    var myTextInput = React.findDOMNode(this.refs.myTextInput);&#10;    var helpText = React.findDOMNode(this.refs.helpText);&#10;        $(helpText).css(&#39;display&#39;,&#39;none&#39;);&#10;    if(!reg.test(myTextInput.value)) &#123;&#10;      $(helpText).css(&#39;display&#39;,&#39;&#39;);&#10;    &#125;&#10;  &#125;,&#10;  render: function() &#123;&#10;    return (&#10;      &#60;div&#62;&#10;        &#60;input type=&#34;text&#34;&#10;          className=&#34;form-control&#34;&#10;          ref=&#34;myTextInput&#34;&#10;          &#123;...this.props&#125;&#10;          onChange=&#123;this.handleChange&#125;&#10;          /&#62;&#10;        &#60;label ref=&#34;helpText&#34; className=&#34;help-block&#34; style=&#123;&#123;display:&#34;none&#34;&#125;&#125;&#62;&#123;this.props.msg&#125;&#60;/label&#62;&#10;      &#60;/div&#62;&#10;    );&#10;  &#125;&#10;&#125;);&#10;&#10;React.render(&#10;  &#60;MyComponent1 reg=&#39;^\d*$&#39; msg=&#39;please input number&#39; /&#62;,&#10;  document.getElementById(&#39;example1&#39;)&#10;);</span><br></pre></td></tr></table></figure>
+<h2 id="state工作原理"><a href="#state工作原理" class="headerlink" title="state工作原理"></a>state工作原理</h2><p>React 把用户界面当作简单状态机。把用户界面想像成拥有不同状态然后渲染这些状态，可以轻松让用户界面和数据保持一致。</p>
+<p>React 里，只需更新组件的 state，然后根据新的 state 重新渲染用户界面（不要操作 DOM）。React 来决定如何最高效地更新 DOM。</p>
+<h3 id="哪些组件需要使用state"><a href="#哪些组件需要使用state" class="headerlink" title="哪些组件需要使用state"></a>哪些组件需要使用state</h3><p>但是，有时需要对用户输入、服务器请求或者时间变化等作出响应，这时才需要使用 State。</p>
+<p><strong> 尝试把尽可能多的组件无状态化。</strong> 这样做能隔离 state，把它放到最合理的地方，也能减少冗余并，同时易于解释程序运作过程。</p>
+<p>常用的模式是创建多个只负责渲染数据的无状态（stateless）组件，在它们的上层创建一个有状态（stateful）组件并把它的状态通过 <code>props</code> 传给子级。这个有状态的组件封装了所有用户的交互逻辑，而这些无状态组件则负责声明式地渲染数据。大部分组件的工作应该是从 <code>props</code> 里取数据并渲染出来。</p>
+<p>需要使用state情况：</p>
+<ul>
+<li>对用户输入进行响应</li>
+<li>服务器请求</li>
+<li>时间变化的响应</li>
+</ul>
+<p><strong>State 应该包括那些可能被组件的事件处理器改变并触发用户界面更新的数据。</strong> ，尽可能使用 props 来作为惟一数据来源。把 props 保存到 state 的一个有效的场景是需要知道它以前值的时候，因为未来的 props 可能会变化。</p>
 
       
     </div>
@@ -171,19 +187,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2016/02/20/suibi-20160220/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2016/02/29/react-note-2/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          工作or生活
+          React实践（一）
         
       </div>
     </a>
   
   
-    <a href="/2016/02/18/suibi-20160218/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2016/02/26/suibi-20160226/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">乌合之众</div>
+      <div class="article-nav-title">婚姻</div>
     </a>
   
 </nav>
@@ -194,7 +210,7 @@
 
 <section id="comments">
   <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="cil3v5ate001f8svgpym0b74i" data-title="React入门" data-url="http://iceccb.github.io/2016/02/19/react-note-1/" id="duoshuo"></div>
+  <div class="ds-thread" data-thread-key="cil80yexs001lyovgzcgcgazj" data-title="React入门" data-url="http://iceccb.github.io/2016/02/27/react-note-1/" id="duoshuo"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
@@ -222,7 +238,7 @@ var duoshuoQuery = {short_name:"iceccb"};
   <div class="widget-wrap">
     <h3 class="widget-title widget-title-category">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习笔记/">学习笔记</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书/">读书</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">8</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习笔记/">学习笔记</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书/">读书</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -234,23 +250,23 @@ var duoshuoQuery = {short_name:"iceccb"};
       <ul>
         
           <li>
+            <a href="/2016/02/29/webpack-note-1/">webpack入门</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/29/react-note-2/">React实践（一）</a>
+          </li>
+        
+          <li>
+            <a href="/2016/02/27/react-note-1/">React入门</a>
+          </li>
+        
+          <li>
             <a href="/2016/02/26/suibi-20160226/">婚姻</a>
           </li>
         
           <li>
             <a href="/2016/02/20/suibi-20160220/">工作or生活</a>
-          </li>
-        
-          <li>
-            <a href="/2016/02/19/react-note-1/">React入门</a>
-          </li>
-        
-          <li>
-            <a href="/2016/02/18/suibi-20160218/">乌合之众</a>
-          </li>
-        
-          <li>
-            <a href="/2016/02/15/suibi-20160215/">生命不息</a>
           </li>
         
       </ul>
@@ -262,7 +278,7 @@ var duoshuoQuery = {short_name:"iceccb"};
   <div class="widget-wrap">
     <h3 class="widget-title widget-title-tag">标签</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/React/" style="font-size: 10px;">React</a> <a href="/tags/ejs/" style="font-size: 16px;">ejs</a> <a href="/tags/javascript/" style="font-size: 18px;">javascript</a> <a href="/tags/language/" style="font-size: 10px;">language</a> <a href="/tags/nodejs/" style="font-size: 12px;">nodejs</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/电影/" style="font-size: 14px;">电影</a> <a href="/tags/话剧/" style="font-size: 10px;">话剧</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a> <a href="/tags/读后感/" style="font-size: 14px;">读后感</a> <a href="/tags/随笔/" style="font-size: 20px;">随笔</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/ejs/" style="font-size: 16px;">ejs</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/language/" style="font-size: 10px;">language</a> <a href="/tags/nodejs/" style="font-size: 12px;">nodejs</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/电影/" style="font-size: 14px;">电影</a> <a href="/tags/话剧/" style="font-size: 10px;">话剧</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a> <a href="/tags/读后感/" style="font-size: 14px;">读后感</a> <a href="/tags/随笔/" style="font-size: 18px;">随笔</a>
     </div>
   </div>
 
