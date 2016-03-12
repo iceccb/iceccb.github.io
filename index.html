@@ -66,6 +66,66 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-console-note" class="article article-type-post" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/13/console-note/">console调试简介</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/03/13/console-note/" class="article-date">
+  <time datetime="2016-03-12T16:00:55.000Z" itemprop="datePublished">3月 13 2016</time>
+</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+      
+<a href="/2016/03/13/console-note/#comments" class="article-comment-link" data-thread-key="cilpbrf79002lsgvg68ywzbaz" data-short-name="iceccb" style="display:none">comments</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="console是什么"><a href="#console是什么" class="headerlink" title="console是什么"></a>console是什么</h1><p>现代的浏览器都自带功能非常完善且好用的web开发者工具，如firefox和chrome，或者firebug工具，提供element查看器、Console控制台、调试器、性能和网络等功能。而Console功能面板可以用于显示JS和DOM对象信息，如错误信息、调试信息、js和dom对象的信息等。并且提供了一个JS对象<code>console</code>，使用该对象api， 可以输出信息到Console面板中。打开该功能面板可以使用快捷键<code>Ctrl+Shift+k</code>（firefox）或F12（chrome、ie），下文以我常用的firefox浏览器为例介绍总结<code>console</code>。</p>
+<p><img src="/images/console_1.png" alt="firefox Console 面板" title="firefox Console 面板"></p>
+<h1 id="console-api"><a href="#console-api" class="headerlink" title="console api"></a>console api</h1><p>在控制台中输入<code>console</code>，会显示该对象，点击后右侧显示该对象的信息。</p>
+<p><img src="/images/console_2.png" alt="firefox Console API" title="firefox Console API"></p>
+<h2 id="console-log-debug"><a href="#console-log-debug" class="headerlink" title="console.log/debug"></a>console.log/debug</h2><p>这个方法是我们见到最多和使用最多的方法，简单输出信息到Console面板，支持多个参数。</p>
+<p><img src="/images/console_3.png" alt="firefox Console API" title="firefox Console API"></p>
+<p>log方法第一个参数支持字符串替换模式：</p>
+<ul>
+<li>%s 代替字符串</li>
+<li>%d 代替整数</li>
+<li>%f 代替浮点数</li>
+<li>%o 代替Object</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(&#39;%s,this is integer:%d,this is Object:%o&#39;,&#39;Hello&#39;,100,&#123;name:&#39;ice&#39;&#125;)&#10;// Hello,this is integer:100,this is Object: Object &#123; name: &#34;ice&#34; &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="console-info，warn，error-exception"><a href="#console-info，warn，error-exception" class="headerlink" title="console.info，warn，error/exception"></a>console.info，warn，error/exception</h2><p>这4种方法与<code>console.log</code>方法一样，只是显示的图标和文字颜色不一样。</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/03/13/console-note/#more">继续阅读</a>
+          </p>
+        
+      
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
     <article id="post-webpack-note-1" class="article article-type-post" itemscope itemprop="blogPost">
   
   <div class="article-inner">
@@ -88,7 +148,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
 
       
-<a href="/2016/02/29/webpack-note-1/#comments" class="article-comment-link" data-thread-key="cil80yewh000ayovgx0keiw49" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/02/29/webpack-note-1/#comments" class="article-comment-link" data-thread-key="cilpbrf5b000asgvg7h6u04y9" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -142,7 +202,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
 
       
-<a href="/2016/02/29/react-note-2/#comments" class="article-comment-link" data-thread-key="cil80yexs001iyovgxkqk49ux" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/02/29/react-note-2/#comments" class="article-comment-link" data-thread-key="cilpbrf6f001isgvg86iqi455" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -192,7 +252,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
 
       
-<a href="/2016/02/27/react-note-1/#comments" class="article-comment-link" data-thread-key="cil80yexs001lyovgzcgcgazj" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/02/27/react-note-1/#comments" class="article-comment-link" data-thread-key="cilpbrf6i001lsgvgq4ozqb1h" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -247,7 +307,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
 
       
-<a href="/2016/02/26/suibi-20160226/#comments" class="article-comment-link" data-thread-key="cil80yewh000dyovg9m7bbwps" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/02/26/suibi-20160226/#comments" class="article-comment-link" data-thread-key="cilpbrf5f000dsgvgghjhiqrk" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -297,7 +357,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
 
       
-<a href="/2016/02/20/suibi-20160220/#comments" class="article-comment-link" data-thread-key="cil80yewx000iyovgsgf8sy6i" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/02/20/suibi-20160220/#comments" class="article-comment-link" data-thread-key="cilpbrf5i000isgvgduc3t14n" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -349,7 +409,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
 
       
-<a href="/2016/02/18/suibi-20160218/#comments" class="article-comment-link" data-thread-key="cil80yewx000lyovg71sr24az" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/02/18/suibi-20160218/#comments" class="article-comment-link" data-thread-key="cilpbrf5l000lsgvgfr02cf18" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -414,7 +474,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读后感/">读后感</a></li></ul>
 
       
-<a href="/2016/02/15/suibi-20160215/#comments" class="article-comment-link" data-thread-key="cil80yewx000qyovg6f2oonke" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/02/15/suibi-20160215/#comments" class="article-comment-link" data-thread-key="cilpbrf5r000qsgvgmtqkwatb" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -461,7 +521,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/电影/">电影</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
 
       
-<a href="/2016/02/12/suibi-20160212/#comments" class="article-comment-link" data-thread-key="cil80yexd000uyovgd9j0g2ni" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/02/12/suibi-20160212/#comments" class="article-comment-link" data-thread-key="cilpbrf5w000usgvg2x52iuxc" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -509,7 +569,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/电影/">电影</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
 
       
-<a href="/2016/02/09/suibi-20160209/#comments" class="article-comment-link" data-thread-key="cil80yexd000zyovg12tq9elh" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/02/09/suibi-20160209/#comments" class="article-comment-link" data-thread-key="cilpbrf5z000zsgvgye7g3w9m" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -520,52 +580,6 @@
         
           <p class="article-more-link">
             <a href="/2016/02/09/suibi-20160209/#more">继续阅读</a>
-          </p>
-        
-      
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    <article id="post-suibi-20160203" class="article article-type-post" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/03/suibi-20160203/">如果自杀的话</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2016/02/03/suibi-20160203/" class="article-date">
-  <time datetime="2016-02-03T15:27:18.000Z" itemprop="datePublished">2月 3 2016</time>
-</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-
-      
-<a href="/2016/02/03/suibi-20160203/#comments" class="article-comment-link" data-thread-key="cil80yexd0013yovg87889bzu" data-short-name="iceccb" style="display:none">comments</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>咋一看题目，这应该是一封遗书。如果是遗书的话，你们就看不到此文了。前阵子突然想到这个诡异的问题，“如果自杀，我需要做些什么？”如果你一定要问我为什么要考虑这个问题，是否有那么一瞬间想要自杀，那这是个诙谐的指控。如果你看到报道说马云身家几百亿，你或许会想，这么多钱他该怎么花，但不说明你也有这么多钱。如果你看到哪个宇航员在太空待了多久后，你可能会想，他在上面怎么排泄，但这不证明你也想在地球外大小便。举了两个无趣的例子，似乎无法让你撤销对我的指控。无妨，哲学家、思想家就喜欢没事思考生与死的问题，而我是个没事喜欢胡思乱想的呆子。这个问题在我脑子里萦绕了很久，终于还是打算把它当“遗书”写下来，不管行文是否流畅，不管是否把想法讲清楚。</p>
-        
-          <p class="article-more-link">
-            <a href="/2016/02/03/suibi-20160203/#more">继续阅读</a>
           </p>
         
       
@@ -594,7 +608,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title widget-title-category">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习笔记/">学习笔记</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书/">读书</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">8</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习笔记/">学习笔记</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书/">读书</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">8</span></li></ul>
     </div>
   </div>
 
@@ -604,6 +618,10 @@
     <h3 class="widget-title widget-title-recent">最近</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/03/13/console-note/">console调试简介</a>
+          </li>
         
           <li>
             <a href="/2016/02/29/webpack-note-1/">webpack入门</a>
@@ -619,10 +637,6 @@
         
           <li>
             <a href="/2016/02/26/suibi-20160226/">婚姻</a>
-          </li>
-        
-          <li>
-            <a href="/2016/02/20/suibi-20160220/">工作or生活</a>
           </li>
         
       </ul>
