@@ -17,7 +17,7 @@
 <meta property="og:image" content="http://iceccb.github.io/images/console_4.png">
 <meta property="og:image" content="http://iceccb.github.io/images/console_5.jpg">
 <meta property="og:image" content="http://iceccb.github.io/images/console_6.jpg">
-<meta property="og:updated_time" content="2016-03-12T16:14:40.458Z">
+<meta property="og:updated_time" content="2016-03-13T04:06:06.724Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="console调试简介">
 <meta name="twitter:description" content="console是什么现代的浏览器都自带功能非常完善且好用的web开发者工具，如firefox和chrome，或者firebug工具，提供element查看器、Console控制台、调试器、性能和网络等功能。而Console功能面板可以用于显示JS和DOM对象信息，如错误信息、调试信息、js和dom对象的信息等。并且提供了一个JS对象console，使用该对象api， 可以输出信息到Console面">
@@ -93,7 +93,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
 
       
-<a href="/2016/03/13/console-note/#comments" class="article-comment-link" data-thread-key="cilpbrf79002lsgvg68ywzbaz" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/03/13/console-note/#comments" class="article-comment-link" data-thread-key="cilq1hm15002lr0vgwa7sqost" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -131,6 +131,8 @@
 <h2 id="console-time-console-timeEnd"><a href="#console-time-console-timeEnd" class="headerlink" title="console.time/console.timeEnd"></a>console.time/console.timeEnd</h2><p>计时方法，用于显示代码的运行时间。</p>
 <p><img src="/images/console_6.jpg" alt="firefox Console API" title="firefox Console API"></p>
 <h2 id="console-trace"><a href="#console-trace" class="headerlink" title="console.trace"></a>console.trace</h2><p>跟踪函数的调用栈。</p>
+<h1 id="低版本ie兼容"><a href="#低版本ie兼容" class="headerlink" title="低版本ie兼容"></a>低版本ie兼容</h1><p>虽然<code>console</code>是个令人激动的功能，但ie9以下的浏览器会报错，为了能使用这个API也能兼容旧浏览器，可添加以下的代码进行兼容：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(function()&#123;&#10;  var noop = function()&#123;&#125;,&#10;    methods = &#39;assert clear count debug dir dirxml error exception group groupCollapsed groupEnd info log markTimeline profile profileEnd table time time timeEnd timeStamp trace warn&#39;.split(&#39; &#39;),&#10;    len = methods.length,&#10;    method;&#10;    window.console = window.console || &#123;&#125;;&#10;    while(len--) &#123;&#10;      method = methods[len];&#10;      if(!window.console[method])&#10;        window.console[method] = noop;&#10;    &#125;&#10;&#125;)()</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -171,7 +173,7 @@
 
 <section id="comments">
   <!-- 多说评论框 start -->
-  <div class="ds-thread" data-thread-key="cilpbrf79002lsgvg68ywzbaz" data-title="console调试简介" data-url="http://iceccb.github.io/2016/03/13/console-note/" id="duoshuo"></div>
+  <div class="ds-thread" data-thread-key="cilq1hm15002lr0vgwa7sqost" data-title="console调试简介" data-url="http://iceccb.github.io/2016/03/13/console-note/" id="duoshuo"></div>
 <!-- 多说评论框 end -->
 <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 <script type="text/javascript">
