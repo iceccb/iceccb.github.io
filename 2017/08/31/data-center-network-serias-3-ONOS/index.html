@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>数据中心网络系列(3)--ONOS | Ice&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="标准化组织目前全球SDN产业正从技术研究走向商用部署、方案落地，全球范围内已开始出现商业应用的案例。在电信网络中，SDN受到全球众多运营商和ICT企业的高度关注和推进。SDN已经开始向传输网路、云端服务、无线通讯等各个相关领域延伸。
+谷歌、微软等互联网公司均在SDN领域投入了大量的科研力量，思科、华为、爱立信、IBM、HP等IT厂商也正在研制SDN控制器和交换机。业界也成立了相应的标准化组织，比如">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数据中心网络系列(3)--ONOS">
+<meta property="og:url" content="http://iceccb.github.io/2017/08/31/data-center-network-serias-3-ONOS/index.html">
+<meta property="og:site_name" content="Ice's Blog">
+<meta property="og:description" content="标准化组织目前全球SDN产业正从技术研究走向商用部署、方案落地，全球范围内已开始出现商业应用的案例。在电信网络中，SDN受到全球众多运营商和ICT企业的高度关注和推进。SDN已经开始向传输网路、云端服务、无线通讯等各个相关领域延伸。
+谷歌、微软等互联网公司均在SDN领域投入了大量的科研力量，思科、华为、爱立信、IBM、HP等IT厂商也正在研制SDN控制器和交换机。业界也成立了相应的标准化组织，比如">
+<meta property="og:image" content="http://iceccb.github.io/../images/onos-distributed-core.png">
+<meta property="og:image" content="http://iceccb.github.io/../images/onos-intent-framework.png">
+<meta property="og:image" content="http://iceccb.github.io/../iamges/onos-onos-layers.png">
+<meta property="og:image" content="http://iceccb.github.io/../images/onos-modules.png">
+<meta property="og:image" content="http://iceccb.github.io/../images/ONOS-Multi-layer-SDN-control.png">
+<meta property="og:image" content="http://iceccb.github.io/iamge/ONOS-SDN-IP.png">
+<meta property="og:image" content="http://iceccb.github.io/ONOS-NFaaS-in-Central-Office.png">
+<meta property="og:image" content="http://iceccb.github.io/../images/ONOS-Segment-Routing.png">
+<meta property="og:updated_time" content="2017-08-31T00:34:52.909Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="数据中心网络系列(3)--ONOS">
+<meta name="twitter:description" content="标准化组织目前全球SDN产业正从技术研究走向商用部署、方案落地，全球范围内已开始出现商业应用的案例。在电信网络中，SDN受到全球众多运营商和ICT企业的高度关注和推进。SDN已经开始向传输网路、云端服务、无线通讯等各个相关领域延伸。
+谷歌、微软等互联网公司均在SDN领域投入了大量的科研力量，思科、华为、爱立信、IBM、HP等IT厂商也正在研制SDN控制器和交换机。业界也成立了相应的标准化组织，比如">
+  
+    <link rel="alternative" href="/atom.xml" title="Ice&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+<!--   <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css"> -->
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  
+
+</head>
+<body>
+  <div id="container">
+    <div id="wrap">
+      
+<header id="header">
+  <div id="header-outer" class="outer">
+    
+    <div id="header-inner" class="inner">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Ice&#39;s Blog</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">everything will be ok</a>
+        </h2>
+      
+    </div>
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">博文</a>
+        
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+      </nav>
+      
+    </div>
+  </div>
+  <!--fork me on github-->
+  <!--<a href="https://github.com/iceccb" id="fork-me-link"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png"></a>-->
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-data-center-network-serias-3-ONOS" class="article article-type-post" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      数据中心网络系列(3)--ONOS
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2017/08/31/data-center-network-serias-3-ONOS/" class="article-date">
+  <time datetime="2017-08-31T00:32:14.000Z" itemprop="datePublished">8月 31 2017</time>
+</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/network-sdn/">network sdn</a></li></ul>
+
+      
+<a href="/2017/08/31/data-center-network-serias-3-ONOS/#comments" class="article-comment-link" data-thread-key="cj6zpy46v002i8gvghq18fnz3" data-short-name="iceccb" style="display:none">comments</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="标准化组织"><a href="#标准化组织" class="headerlink" title="标准化组织"></a>标准化组织</h1><p>目前全球SDN产业正从技术研究走向商用部署、方案落地，全球范围内已开始出现商业应用的案例。在电信网络中，SDN受到全球众多运营商和ICT企业的高度关注和推进。SDN已经开始向传输网路、云端服务、无线通讯等各个相关领域延伸。</p>
+<p>谷歌、微软等互联网公司均在SDN领域投入了大量的科研力量，思科、华为、爱立信、IBM、HP等IT厂商也正在研制SDN控制器和交换机。业界也成立了相应的标准化组织，比如ONF和OpenDaylight。</p>
+<h1 id="ONOS"><a href="#ONOS" class="headerlink" title="ONOS"></a>ONOS</h1><p>由斯坦福大学和加州大学伯克利分校SDN先驱创立的非营利性组织ON.Lab推出了自己的开源SDN操作系统——ONOS。ONOS是一个高可靠、高性能、可扩展和灵活的抽象成SDN操作系统。</p>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>ONOS是第一个开源的SDN操作系统，面向服务提供商和企业骨干网。ONOS旨在满足高可靠、高性能和可扩展性的网络需求。ONOS的北向接口抽象层和API使得应用开发变得更加简单，而通过南向接口抽象层和接口则可以管控OpenFlow或者传统设备。</p>
+<ul>
+<li>使得SDN控制层具有电信级特征（可扩展、可靠、性能）</li>
+<li>保证网络敏捷性</li>
+<li>帮助服务提供商从现有网络迁移到白牌机</li>
+<li>减少服务提供商的资本支出和运营开支</li>
+</ul>
+<h2 id="服务提供商需求"><a href="#服务提供商需求" class="headerlink" title="服务提供商需求"></a>服务提供商需求</h2><p>随着移动设备的不断普及以及基于云的OTT服务和内容分发的兴起，导致服务提供商的网络迫切需要进行一次网络变革。服务提供商希望网络可以变得更加敏捷高效来应对指数级带宽增长所带来的挑战，同时希望能从创新型服务和新型业务模式中分一杯羹。</p>
+<h2 id="SDN和ONOS解决方案"><a href="#SDN和ONOS解决方案" class="headerlink" title="SDN和ONOS解决方案"></a>SDN和ONOS解决方案</h2><p>SDN问世后迅速成为实现移动性、虚拟化、云服务的技术选择。存储和计算虚拟化已经相对成熟，但是云计算技术的价值并未完全开发出来，由于它们都需要连接在网络上，通过网络与应用连接，但是网络无法满足这些新兴技术的需求，因此成了它们发展的瓶颈。</p>
+<p>SDN的核心理念是将竖井式结构的网络设备的控制平面和数据平面分离。控制平面通过像OpenFlow这样的开放性协议对数据平面进行高效的管控。另外，通过解除网络硬件与软件的绑定关系使得两者可以独立演进并促使商业硬件和开源软件替代昂贵的专用硬件。利用操作系统管理网络资源并且提供管理、监控的抽象层和API接口，通过对网络设备的编程可以极大地简化运行在大量硬件平台上的创新应用和服务的开发。ONOS就定位于上述操作系统，并且致力于以下目标：</p>
+<ul>
+<li>将网络应用开发者从复杂的专用硬件中解放出来</li>
+<li>让网络运营者摆脱基于专用型接口和协议的运维复杂难题</li>
+<li>解除软件与硬件的捆绑，分别独立进行创新发展</li>
+</ul>
+<h2 id="为什么需要网络操作系统"><a href="#为什么需要网络操作系统" class="headerlink" title="为什么需要网络操作系统"></a>为什么需要网络操作系统</h2><p>即使现在有许多开源的SDN控制器，但它们只具有比较原始的编程接口和面向设备的抽象，不具备商业化的属性：可靠、性能、可扩展。这些控制器直接向网络应用发送OpenFlow消息，而网络应用直接为网络设备创建OpenFlow消息。这样看来，这些控制器更像是设备驱动。因此才需要有网络操作系统，并具备下述功能：</p>
+<ul>
+<li>提供资源消费者公平、合理管理有限的资源</li>
+<li>隔离和保护NOS用户，应用和设备复用所有的资源，且能虚拟化部分或全部资源分配给用户的OS虚拟化实例</li>
+<li>提供安全保障</li>
+<li>提供可复用的服务</li>
+</ul>
+<h2 id="ONOS架构"><a href="#ONOS架构" class="headerlink" title="ONOS架构"></a>ONOS架构</h2><p>ONOS的核心功能：</p>
+<ul>
+<li>分布式核心：提供可扩展性、高可靠性和高性能。以集群方式运行使得SDN控制平台和服务提供商网络具有类似Web风格的灵活性</li>
+<li>北向接口抽象层/APIs：将网络和应用与控制、管理和配置服务的发展解耦</li>
+<li>南向接口抽象层/APIs：通过插件式南向接口协议可以控制OpenFlow设备和传统设备。南向接口抽象层隔离ONOS的核心功能和底层设备，屏蔽底层设备和协议的差异性。南向接口是从传统设备向OpenFlow白牌设备迁移的关键</li>
+<li>软件模块化：让ONOS像软件系统一样，便于社区开发者和提供者进行开发、调试、维护和升级</li>
+</ul>
+<h3 id="分布式核心"><a href="#分布式核心" class="headerlink" title="分布式核心"></a>分布式核心</h3><p>ONOS以集群方式部署，支持快速故障恢复、无中断的扩展，轻松扩容控制平面。对于应用和网络设备来说平台这是透明的，无需关注与ONOS实例交互。</p>
+<p><img src="../images/onos-distributed-core.png" alt="ONOS分布式核心" title="ONOS分布式核心"></p>
+<p>分布式核心提供实例间通信（Publish/Subscribe模型）、状态管理和leader选举。ONOS使用多种机制管理实例的操作状态，并且每种机制与状态类型一一对应。其中典型的例子就是应用意图、拓扑数据库和流表，每个都有独一无二的规模、读/写模式和持久化需求。这保证集群的高吞吐量、低时延以及高可用性。</p>
+<p>这意味着，对设备而言，只有一个leader ONOS实例，leader出现故障时无需重新创建新实例并重新同步流表。对于应用而言，可以通过网络图形抽象层持续获取网络的视图。此外，实例故障和数据平面的故障对应用来说是透明的，这样可以极大地简化应用开发和错误处理。从业务角度上，其提供可高可用、无中断的、易扩容的环境。</p>
+<h3 id="北向抽象层"><a href="#北向抽象层" class="headerlink" title="北向抽象层"></a>北向抽象层</h3><p>包括意图框架和全局网络视图。意图框架允许应用向网络请求服务（与API类似），提供高层次的编程。</p>
+<p>意图框架实例：</p>
+<ul>
+<li>主机A和主机B建立通信</li>
+<li>在交换机X和交换机Y间建立带宽Z的通道</li>
+<li>不允许主机A和主机B通信</li>
+</ul>
+<p><img src="../images/onos-intent-framework.png" alt="ONOS意图框架" title="ONOS意图框架"></p>
+<p>意图框架处理所有应用的请求，判断可以满足哪些应用，解决应用之间的冲突，执行管理者的策略，对网络编程提供请求的功能，交付请求的服务给应用。一个意图转化为多个目标。例如，一个连接2个主机的意图转化为2个目标，各提供一个方向的流。将意图转化的目标编译成指令发送给网络设备，整个流程按照网络运维人员指定的策略进行。从某种程度上说这个方法可以解决意图之间的冲突。</p>
+<p>全局网络视图为应用提供了网络视图，包括主机、交换机以及网络相关的状态参数，如利用率。应用可以通过APIs对网络视图进行编程，一个API可以为应用以网络图的形式提供网络视图。包括：</p>
+<ul>
+<li>创建一个简单应用，在该应用获得网络视图后计算最短路径</li>
+<li>通过监控网络视图和编程修改路径来调节负载（流量工程），最大化网络利用率</li>
+<li>将流量从正在升级或因病毒被隔离的网络中引导出来</li>
+</ul>
+<p>北向接口抽象层和APIs将应用与网络细节进行隔离。而且也可以隔离需要了解网络事件（如链路中断）的应用和其它应用。将网络操作系统与应用隔离，网络操作系统可以管理来自多个、竞争应用的请求。从业务角度看，提高了应用开发速度，允许网络改变并且保证应用不会当机。</p>
+<h3 id="南向抽象层"><a href="#南向抽象层" class="headerlink" title="南向抽象层"></a>南向抽象层</h3><p>南向抽象层由网络组件如交换机、主机和链路组成。ONOS南向抽象层将每个网络组件在一个通用表中表示为对象。通过这种抽象，分布式核心可以在不用了解底层设备细节的情况下维护网络组件的状态。分布式核心可以实现南向接口协议和设备无感知。网络组件抽象允许添加新设备和协议，允许可插拨的形式支持扩展，插件根据规格映射（或翻译）通用网络组件描述或操控设备。因此ONOS可以控制和管理使用不同协议（Openflow、NetConf等）的设备。</p>
+<p><img src="../iamges/onos-onos-layers.png" alt="ONOS层次" title="ONOS层次"></p>
+<p>在架构上，底层为网络设备或组件，ONOS通过协议与之交互。协议细节被网络组件插件或适配器屏蔽。因此南向接口的核心可以在不了解道具体协议细节和网络组件的条件下维护网络组件对象（设备、主机、链路），通过适配层API，分布式核心可以与网络组件对象的状态保持一致，适配层API将分布式核心与协议细节和网络组件相隔离。</p>
+<p>南向抽象层的主要优点：</p>
+<ul>
+<li>管理使用不同协议的不同设备，并不影响系统的分布式核心</li>
+<li>可扩展新设备和新协议</li>
+<li>非常简单的实现传统设备向支持Openflow的白牌设备转移</li>
+</ul>
+<h3 id="软件模块化"><a href="#软件模块化" class="headerlink" title="软件模块化"></a>软件模块化</h3><p>软件模块化是ONOS一大特征，基于软件的形式可以很方便地进行添加、改变和维护。</p>
+<p>从宏观结构上说，北向接口与南向接口API将应用、分布式核心和适配层相互隔离，可以独立添加新的应用和协议适配器。</p>
+<p>同样，从具体细节来看，分布式核心内部的子结构也能体现模块化特征，分布式核心的存在价值就是约束所有子系统的规模并保证模块的可拓展性。此外，连接不同模块的接口是至关重要的，允许模块不依赖其他模块独立更新。这样就可以不断更新算法和数据结构，并且不会影响整体系统或是应用。</p>
+<p>显然，接口可以促进模块业务和职责的分离，尽量使子系统之间的交互更为自然、简单。这一特点是确保软件稳定更新的关键。例如，尽量提供南向API的抽象程度，避免将不同协议的偏差传递到上层，并且强化分布式核心而不是适配层来创建网络模型对象。</p>
+<p>ONOS源代码的树形结构不仅仅为了遵循而是要加强这些结构原则。合理控制模块大小并且模块之间保持适当依赖形成一个非循环的结构图，模块之间通过API模块相互关联。</p>
+<p><img src="../images/onos-modules.png" alt="ONOS Modules" title="ONOS Modules"></p>
+<p>软甲模块化的优点：</p>
+<ul>
+<li>架构的完整性和连贯性</li>
+<li>简化测试结果，允许更多集成测试</li>
+<li>降低维护难度，且降低因为改变造成的负面影响</li>
+<li>可扩展和可定制的组件</li>
+<li>避免循环依赖</li>
+</ul>
+<h2 id="ONOS价值主张-运营商用例"><a href="#ONOS价值主张-运营商用例" class="headerlink" title="ONOS价值主张-运营商用例"></a>ONOS价值主张-运营商用例</h2><h3 id="多层SDN控制"><a href="#多层SDN控制" class="headerlink" title="多层SDN控制"></a>多层SDN控制</h3><p>服务提供商运营多层的网络。如，一个服务提供商可能同时运营IP数据网络和传输网络或是光网络。IP层上可能有一个隧道层，创建类似于虚拟IP层网络这样的服务。目前这些层都是独立管理，这导致了较低的网络利用率、高运维成本和较长的重新配置周期。例如，在现在的环境下，数据网络设计者一般会预留一定的带宽用于解决网络故障和网络潮汐现象。而传输网络设计者也会做相同的预留。再者，数据网络设计者倾向于网络平均利用率保持在30%。所以，总计会造成网络容量4-5倍的过度配置。</p>
+<p>SDN多层网络控制解决了上述问题。解决方案包括：</p>
+<ol>
+<li>扩展Openflow，如向光传输单元（如ROADMs）添加可编程性</li>
+<li>ONOS为每层网络创建网络图形视图并且维护它们间通信和映射</li>
+<li>在ONOS上开发PCE应用根据多重关联网络视图来建立、拆除路径</li>
+</ol>
+<p>PCE应用是一个单独可以配置、监控和编排各层网络的单元。如，IP连接改变可以触发光路径的自动化配置。这样，运营商可以通过中心控制降低运营成本、提高各层的网络利用率和快速重新配置网络。这种网络能力的应用之一就是带宽计划应用，允许带宽预留。ONOS预备数据层和光网络层资源提供带宽保证，并监控资源，根据最新的网络事件和其他改变进行重路由和调整操作。</p>
+<p><img src="../images/ONOS-Multi-layer-SDN-control.png" alt="ONOS Multi layer SDN control" title="Multi layer SDN control"></p>
+<p>SDN多层网络控制是ONOS怎样实现SDN控制的典型范例，可以有效地降低资本开支和运营开支，并且方便创建新型服务。</p>
+<h3 id="SDN-IP-Peering和SDN控制平面扩展"><a href="#SDN-IP-Peering和SDN控制平面扩展" class="headerlink" title="SDN-IP Peering和SDN控制平面扩展"></a>SDN-IP Peering和SDN控制平面扩展</h3><p>现今，自治系统（AS）与互联网连接，并通过BGP彼此共享路由信息。ONOS的SDN-IP peering应用帮助运营商有小到大发展他们的SDN网络。运营商可部署一个小型的SDN网络或孤岛如AS，并且通过SDN-IP peering应用利用BGP协议将SDN网络与网络其他部分进行无缝互联。这样，一个SDN网络对互联网其他部分而言只是另外一个AS。并可以通过互联各个SDN网络构建更大的SDN网络。</p>
+<p>SDN-IP 应用与AS边缘路由器互联，像现今标准自治系统间交换IP前缀路由信息。SDN-IP peering应用使用路由信息为SDN网络中多个网络前缀建立转发路径。所以，SDN网络对于一些前缀而言跟传输网一样可以向或者从任何可达IP地址转发IP流量。</p>
+<p>另外，SDN-IP应用可以被用来扩展以ONOS为基础的SDN控制平台。例如，SDN网络可以像非SDN自治系统一样通过BGP互联，考虑到这些SDN网络以同样的方式工作，其它互联网可以将一组SDN域看成是一个单独的AS。</p>
+<p><img src="iamge/ONOS-SDN-IP.png" alt="ONSO SDN-IP" title="ONSO SDN-IP"></p>
+<h3 id="中心局的网络功能即服务（NFaaS）"><a href="#中心局的网络功能即服务（NFaaS）" class="headerlink" title="中心局的网络功能即服务（NFaaS）"></a>中心局的网络功能即服务（NFaaS）</h3><p>电信运行商拥有最宝贵的财富即中心局，这些中心局从地理位置上更靠近大量的终端用户，所以这也是保证电信运营商为大量用户提供灵活高效服务的关键。一个典型的中心局有很多接入、交换容量，各种网络功能的中间设备。尽管中心局对电信运营商很重要，但是已经发展了很多年并且在网络交换/路由、中间设备和用户终端方面复杂性越来越高，这就意味着需要大量的资本开支和运营开支。</p>
+<p>不出意外，电信运营商想重构中心局，希望将数据中心的经济、灵活应用到中心局。这就意味着使用SDN来设计中心局结构，将中间设备的网络功能以软件的形式转移到x86服务器（NFV网络功能虚拟化），通过编排系统为用户和企业用户编排网络功能和网络流量，动态地服务各类用户实现用户及提供者双方各种各样的策略。</p>
+<p><img src="ONOS-NFaaS-in-Central-Office.png" alt="NFaaS" title="NFaaS"></p>
+<p>中心局的这一转变可以让服务提供商能够快速地建立、部署、提供新的服务，与此同时大大缩减了成本开支和运营开支。ONOS及其应用和OpenFlow交换机将助推中心局网络结构转型为SDN结构，为网络功能即服务提供所需的灵活度。我们希望从两个方向深化这个用例：演示ONOS可以作为重新构建中心局的网络操作系统的灵活性和性能；演示SDN和网络功能即服务怎样适应更大规模的中心局架构。</p>
+<h3 id="分段路由-发展和改进MPLS"><a href="#分段路由-发展和改进MPLS" class="headerlink" title="分段路由-发展和改进MPLS"></a>分段路由-发展和改进MPLS</h3><p>如今，IP/MPLS网络非常复杂且难以管理。标签分发、路由工程和VPN都是复杂的操作和服务，依赖于控制平台上分布式协议的集合。网络调试难度大，很难顾及控制平台和标签交换数据平台上多个协议间的同步性和状态管理问题。</p>
+<p>IETF已经为MPLS引入了分段路由的概念。它引入了不需要每一跳都交换的全局标签。还引入了基于标签的源路由，消除对标签分发和LSP建立中复杂协议（如LDP、RSVP）的依赖。就这样分段路由简化了MPLS网络的控制层和数据层。然而SR的路由和标签分发依旧依赖一个内部网关协议，它使外部控制器可以控制源路由器发起的端到端隧道。</p>
+<p>分段路由用例正寻求与ONF的SPRING-OPEN项目合作。这个项目演示怎样基于ONOS和SR应用打造的SDN控制平台实现分段路由，并且能够运行在基于现有芯片的路由器裸机上。这个方案并没有使用路由器内嵌的分布式IGP，而是使用了ONOS上的一个路由应用。而且该应用控制边缘路由器和中心路由器的缺省路由和基于策略的路由，使用分段路由规则进行转发。网络操作者可以向控制器传达自己的策略需求，ONOS及其应用管理网络中的标签就可以在IP/MPLS网络上实现这些策略控制。</p>
+<p><img src="../images/ONOS-Segment-Routing.png" alt="Segment Routing" title="Segment Routing"></p>
+<p>所以ONOS的分段路由演示了服务提供商怎样在MPLS数据平面上构建简单的控制层，所以它兼具SR MPLS数据平面的简单性和SDN控制平面的灵活性。</p>
+
+      
+    </div>
+    
+      <footer class="article-footer">
+        
+<!-- baidu share -->
+<div class="bdsharebuttonbox" style="float: right">
+  <a title="分享到新浪微博" href="#" class="bds_tsina" data-cmd="tsina"></a>
+  <a title="分享到人人网" href="#" class="bds_renren" data-cmd="renren"></a>
+  <a title="分享到微信" href="#" class="bds_weixin" data-cmd="weixin"></a>
+  <a title="分享到Facebook" href="#" class="bds_fbook" data-cmd="fbook"></a>
+  <a title="分享到Twitter" href="#" class="bds_twi" data-cmd="twi"></a>
+  <a href="#" class="bds_more" data-cmd="more"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"1","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+<!-- End baidu share -->
+
+
+      </footer>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2017/08/25/data-center-network-serias-2-openflow/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">数据中心网络系列(2)--openflow</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<section id="comments">
+  <!-- 多说评论框 start -->
+  <div class="ds-thread" data-thread-key="cj6zpy46v002i8gvghq18fnz3" data-title="数据中心网络系列(3)--ONOS" data-url="http://iceccb.github.io/2017/08/31/data-center-network-serias-3-ONOS/" id="duoshuo"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"iceccb"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共JS代码 end -->
+</section>
+
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title widget-title-category">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/学习笔记/">学习笔记</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/读书/">读书</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/随笔/">随笔</a><span class="category-list-count">6</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title widget-title-recent">最近</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/08/31/data-center-network-serias-3-ONOS/">数据中心网络系列(3)--ONOS</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/25/data-center-network-serias-2-openflow/">数据中心网络系列(2)--openflow</a>
+          </li>
+        
+          <li>
+            <a href="/2017/08/22/data-center-network-serias-1-sdn/">数据中心网络系列(1)--SDN</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/13/suibi-20160313/">破茧的蝴蝶--《生命之轮》读后感</a>
+          </li>
+        
+          <li>
+            <a href="/2016/03/13/console-note/">console调试简介</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title widget-title-tag">标签</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/ejs/" style="font-size: 16px;">ejs</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/language/" style="font-size: 10px;">language</a> <a href="/tags/network-openflow/" style="font-size: 10px;">network openflow</a> <a href="/tags/network-sdn/" style="font-size: 12px;">network sdn</a> <a href="/tags/nodejs/" style="font-size: 12px;">nodejs</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/电影/" style="font-size: 14px;">电影</a> <a href="/tags/话剧/" style="font-size: 10px;">话剧</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a> <a href="/tags/读后感/" style="font-size: 14px;">读后感</a> <a href="/tags/随笔/" style="font-size: 18px;">随笔</a>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Ice Chan<br>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">博文</a>
+  
+</nav>
+    
+<script src="/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css" type="text/css">
+  <script src="/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+
+
+<script src="/js/script.js" type="text/javascript"></script>
+
+  </div>
+</body>
+</html>
