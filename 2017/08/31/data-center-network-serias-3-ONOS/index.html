@@ -13,15 +13,15 @@
 <meta property="og:site_name" content="Ice's Blog">
 <meta property="og:description" content="标准化组织目前全球SDN产业正从技术研究走向商用部署、方案落地，全球范围内已开始出现商业应用的案例。在电信网络中，SDN受到全球众多运营商和ICT企业的高度关注和推进。SDN已经开始向传输网路、云端服务、无线通讯等各个相关领域延伸。
 谷歌、微软等互联网公司均在SDN领域投入了大量的科研力量，思科、华为、爱立信、IBM、HP等IT厂商也正在研制SDN控制器和交换机。业界也成立了相应的标准化组织，比如">
-<meta property="og:image" content="http://iceccb.github.io/../images/onos-distributed-core.png">
-<meta property="og:image" content="http://iceccb.github.io/../images/onos-intent-framework.png">
+<meta property="og:image" content="http://iceccb.github.io/images/onos-distributed-core.png">
+<meta property="og:image" content="http://iceccb.github.io/images/onos-intent-framework.png">
 <meta property="og:image" content="http://iceccb.github.io/../iamges/onos-onos-layers.png">
-<meta property="og:image" content="http://iceccb.github.io/../images/onos-modules.png">
-<meta property="og:image" content="http://iceccb.github.io/../images/ONOS-Multi-layer-SDN-control.png">
+<meta property="og:image" content="http://iceccb.github.io/images/onos-modules.png">
+<meta property="og:image" content="http://iceccb.github.io/images/ONOS-Multi-layer-SDN-control.png">
 <meta property="og:image" content="http://iceccb.github.io/iamge/ONOS-SDN-IP.png">
 <meta property="og:image" content="http://iceccb.github.io/ONOS-NFaaS-in-Central-Office.png">
-<meta property="og:image" content="http://iceccb.github.io/../images/ONOS-Segment-Routing.png">
-<meta property="og:updated_time" content="2017-08-31T01:01:57.472Z">
+<meta property="og:image" content="http://iceccb.github.io/images/ONOS-Segment-Routing.png">
+<meta property="og:updated_time" content="2017-08-31T01:11:21.986Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据中心网络系列(3)--ONOS">
 <meta name="twitter:description" content="标准化组织目前全球SDN产业正从技术研究走向商用部署、方案落地，全球范围内已开始出现商业应用的案例。在电信网络中，SDN受到全球众多运营商和ICT企业的高度关注和推进。SDN已经开始向传输网路、云端服务、无线通讯等各个相关领域延伸。
@@ -137,7 +137,7 @@
 <li>软件模块化：让ONOS像软件系统一样，便于社区开发者和提供者进行开发、调试、维护和升级</li>
 </ul>
 <h3 id="分布式核心"><a href="#分布式核心" class="headerlink" title="分布式核心"></a>分布式核心</h3><p>ONOS以集群方式部署，支持快速故障恢复、无中断的扩展，轻松扩容控制平面。对于应用和网络设备来说平台这是透明的，无需关注与ONOS实例交互。</p>
-<p><img src="../images/onos-distributed-core.png" alt="ONOS分布式核心" title="ONOS分布式核心"></p>
+<p><img src="/images/onos-distributed-core.png" alt="ONOS分布式核心" title="ONOS分布式核心"></p>
 <p>分布式核心提供实例间通信（Publish/Subscribe模型）、状态管理和leader选举。ONOS使用多种机制管理实例的操作状态，并且每种机制与状态类型一一对应。其中典型的例子就是应用意图、拓扑数据库和流表，每个都有独一无二的规模、读/写模式和持久化需求。这保证集群的高吞吐量、低时延以及高可用性。</p>
 <p>这意味着，对设备而言，只有一个leader ONOS实例，leader出现故障时无需重新创建新实例并重新同步流表。对于应用而言，可以通过网络图形抽象层持续获取网络的视图。此外，实例故障和数据平面的故障对应用来说是透明的，这样可以极大地简化应用开发和错误处理。从业务角度上，其提供可高可用、无中断的、易扩容的环境。</p>
 <h3 id="北向抽象层"><a href="#北向抽象层" class="headerlink" title="北向抽象层"></a>北向抽象层</h3><p>包括意图框架和全局网络视图。意图框架允许应用向网络请求服务（与API类似），提供高层次的编程。</p>
@@ -147,7 +147,7 @@
 <li>在交换机X和交换机Y间建立带宽Z的通道</li>
 <li>不允许主机A和主机B通信</li>
 </ul>
-<p><img src="../images/onos-intent-framework.png" alt="ONOS意图框架" title="ONOS意图框架"></p>
+<p><img src="/images/onos-intent-framework.png" alt="ONOS意图框架" title="ONOS意图框架"></p>
 <p>意图框架处理所有应用的请求，判断可以满足哪些应用，解决应用之间的冲突，执行管理者的策略，对网络编程提供请求的功能，交付请求的服务给应用。一个意图转化为多个目标。例如，一个连接2个主机的意图转化为2个目标，各提供一个方向的流。将意图转化的目标编译成指令发送给网络设备，整个流程按照网络运维人员指定的策略进行。从某种程度上说这个方法可以解决意图之间的冲突。</p>
 <p>全局网络视图为应用提供了网络视图，包括主机、交换机以及网络相关的状态参数，如利用率。应用可以通过APIs对网络视图进行编程，一个API可以为应用以网络图的形式提供网络视图。包括：</p>
 <ul>
@@ -170,7 +170,7 @@
 <p>同样，从具体细节来看，分布式核心内部的子结构也能体现模块化特征，分布式核心的存在价值就是约束所有子系统的规模并保证模块的可拓展性。此外，连接不同模块的接口是至关重要的，允许模块不依赖其他模块独立更新。这样就可以不断更新算法和数据结构，并且不会影响整体系统或是应用。</p>
 <p>显然，接口可以促进模块业务和职责的分离，尽量使子系统之间的交互更为自然、简单。这一特点是确保软件稳定更新的关键。例如，尽量提供南向API的抽象程度，避免将不同协议的偏差传递到上层，并且强化分布式核心而不是适配层来创建网络模型对象。</p>
 <p>ONOS源代码的树形结构不仅仅为了遵循而是要加强这些结构原则。合理控制模块大小并且模块之间保持适当依赖形成一个非循环的结构图，模块之间通过API模块相互关联。</p>
-<p><img src="../images/onos-modules.png" alt="ONOS Modules" title="ONOS Modules"></p>
+<p><img src="/images/onos-modules.png" alt="ONOS Modules" title="ONOS Modules"></p>
 <p>软甲模块化的优点：</p>
 <ul>
 <li>架构的完整性和连贯性</li>
@@ -187,7 +187,7 @@
 <li>在ONOS上开发PCE应用根据多重关联网络视图来建立、拆除路径</li>
 </ol>
 <p>PCE应用是一个单独可以配置、监控和编排各层网络的单元。如，IP连接改变可以触发光路径的自动化配置。这样，运营商可以通过中心控制降低运营成本、提高各层的网络利用率和快速重新配置网络。这种网络能力的应用之一就是带宽计划应用，允许带宽预留。ONOS预备数据层和光网络层资源提供带宽保证，并监控资源，根据最新的网络事件和其他改变进行重路由和调整操作。</p>
-<p><img src="../images/ONOS-Multi-layer-SDN-control.png" alt="ONOS Multi layer SDN control" title="Multi layer SDN control"></p>
+<p><img src="/images/ONOS-Multi-layer-SDN-control.png" alt="ONOS Multi layer SDN control" title="Multi layer SDN control"></p>
 <p>SDN多层网络控制是ONOS怎样实现SDN控制的典型范例，可以有效地降低资本开支和运营开支，并且方便创建新型服务。</p>
 <h3 id="SDN-IP-Peering和SDN控制平面扩展"><a href="#SDN-IP-Peering和SDN控制平面扩展" class="headerlink" title="SDN-IP Peering和SDN控制平面扩展"></a>SDN-IP Peering和SDN控制平面扩展</h3><p>现今，自治系统（AS）与互联网连接，并通过BGP彼此共享路由信息。ONOS的SDN-IP peering应用帮助运营商有小到大发展他们的SDN网络。运营商可部署一个小型的SDN网络或孤岛如AS，并且通过SDN-IP peering应用利用BGP协议将SDN网络与网络其他部分进行无缝互联。这样，一个SDN网络对互联网其他部分而言只是另外一个AS。并可以通过互联各个SDN网络构建更大的SDN网络。</p>
 <p>SDN-IP 应用与AS边缘路由器互联，像现今标准自治系统间交换IP前缀路由信息。SDN-IP peering应用使用路由信息为SDN网络中多个网络前缀建立转发路径。所以，SDN网络对于一些前缀而言跟传输网一样可以向或者从任何可达IP地址转发IP流量。</p>
@@ -200,7 +200,7 @@
 <h3 id="分段路由-发展和改进MPLS"><a href="#分段路由-发展和改进MPLS" class="headerlink" title="分段路由-发展和改进MPLS"></a>分段路由-发展和改进MPLS</h3><p>如今，IP/MPLS网络非常复杂且难以管理。标签分发、路由工程和VPN都是复杂的操作和服务，依赖于控制平台上分布式协议的集合。网络调试难度大，很难顾及控制平台和标签交换数据平台上多个协议间的同步性和状态管理问题。</p>
 <p>IETF已经为MPLS引入了分段路由的概念。它引入了不需要每一跳都交换的全局标签。还引入了基于标签的源路由，消除对标签分发和LSP建立中复杂协议（如LDP、RSVP）的依赖。就这样分段路由简化了MPLS网络的控制层和数据层。然而SR的路由和标签分发依旧依赖一个内部网关协议，它使外部控制器可以控制源路由器发起的端到端隧道。</p>
 <p>分段路由用例正寻求与ONF的SPRING-OPEN项目合作。这个项目演示怎样基于ONOS和SR应用打造的SDN控制平台实现分段路由，并且能够运行在基于现有芯片的路由器裸机上。这个方案并没有使用路由器内嵌的分布式IGP，而是使用了ONOS上的一个路由应用。而且该应用控制边缘路由器和中心路由器的缺省路由和基于策略的路由，使用分段路由规则进行转发。网络操作者可以向控制器传达自己的策略需求，ONOS及其应用管理网络中的标签就可以在IP/MPLS网络上实现这些策略控制。</p>
-<p><img src="../images/ONOS-Segment-Routing.png" alt="Segment Routing" title="Segment Routing"></p>
+<p><img src="/images/ONOS-Segment-Routing.png" alt="Segment Routing" title="Segment Routing"></p>
 <p>所以ONOS的分段路由演示了服务提供商怎样在MPLS数据平面上构建简单的控制层，所以它兼具SR MPLS数据平面的简单性和SDN控制平面的灵活性。</p>
 
       

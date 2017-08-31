@@ -17,9 +17,9 @@
 为了解决上述问题，Openflow应运而生，其主要实现以下的目标：
 
 贯彻高性能和低">
-<meta property="og:image" content="http://iceccb.github.io/../images/Openflow-scope.png">
-<meta property="og:image" content="http://iceccb.github.io/../images/Openflow-switches.png">
-<meta property="og:updated_time" content="2017-08-31T01:01:37.689Z">
+<meta property="og:image" content="http://iceccb.github.io/images/Openflow-scope.png">
+<meta property="og:image" content="http://iceccb.github.io/images/Openflow-switches.png">
+<meta property="og:updated_time" content="2017-08-31T01:11:15.689Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据中心网络系列(2)--openflow">
 <meta name="twitter:description" content="Openflow简述随着互联网的发展，对于网络的要求越来越高，网络技术的变革显得尤为重要，但由于如今的网络过于依赖设备和协议，不易于进行网络技术的研究。网络设备厂商将设备与协议绑定，形成一个不开放的环境，让他们开放平台似乎是不可能的事，并且也没有有效的途径在生产网络上实验新的技术。这导致了网络技术的发展停滞不前。
@@ -119,7 +119,7 @@
 <li>一个加密通道，连接交换机和控制器，命令和数据包通过这个通道进行传输</li>
 <li>Openflow协议，提供开源和标准方法进行控制器和交换机通信</li>
 </ul>
-<p><img src="../images/Openflow-scope.png" alt="Openflow-scope.png" title=" Openflow scope"></p>
+<p><img src="/images/Openflow-scope.png" alt="Openflow-scope.png" title=" Openflow scope"></p>
 <p>专用Openflow交换机是集成Openflow协议和接口，但不支持L2和L3交换的商用交换机。专用Openflow交换机的每条流记录必须包含三个基本的行为：</p>
 <ul>
 <li>向特定端口转发这条流的数据包</li>
@@ -133,7 +133,7 @@
 <li>策略，跟踪数据包</li>
 </ul>
 <p>而其他支持Openflow交换机（在原来L2和L3交换基础上增加Openflow特性）必须支持：在交换机原来的处理管道中转发流数据包。且交换机必须隔离生产和实验测试网络。</p>
-<p><img src="../images/Openflow-switches.png" alt="Openflow switches" title="Openflow switches"></p>
+<p><img src="/images/Openflow-switches.png" alt="Openflow switches" title="Openflow switches"></p>
 <p>控制器负责在流表中添加和移除流记录，它可以是运行在PC上的简单应用。</p>
 <h2 id="Openflow应用"><a href="#Openflow应用" class="headerlink" title="Openflow应用"></a>Openflow应用</h2><ol>
 <li>网络管理和接入</li>

@@ -13,19 +13,19 @@ SDN的起源在数据">
 <meta property="og:site_name" content="Ice's Blog">
 <meta property="og:description" content="互联网的发展，伴随着云计算技术的革命，一开始大家关注的是依赖底层虚拟化技术将服务器资源虚拟化，提高资源利用率。而虚拟化也伴随着这波技术浪潮迅猛发展，但云计算时代下，单单虚拟化主机已经无法支撑起数据中心的发展，数据中心技术除了计算资源，还有存储和网络。因此软件定义存储（SDS）和软件定义网络（SDN）逐渐出现在大家视野，但SDN技术并不是云计算时代的产物，它的起源和发展由来已久。
 SDN的起源在数据">
-<meta property="og:image" content="http://iceccb.github.io/../images/网络Overlay.jpg">
-<meta property="og:image" content="http://iceccb.github.io/../images/主机Overlay.jpg">
-<meta property="og:image" content="http://iceccb.github.io/../images/混合Overlay组网.jpg">
-<meta property="og:image" content="http://iceccb.github.io/../images/NFV概念.jpg">
-<meta property="og:image" content="http://iceccb.github.io/../images/NFV架构.jpg">
-<meta property="og:image" content="http://iceccb.github.io/../images/SDN-NFV适用范围.jpeg">
-<meta property="og:image" content="http://iceccb.github.io/../images/SDN-NFV转变.jpeg">
-<meta property="og:image" content="http://iceccb.github.io/../images/SDN架构变化.jpeg">
-<meta property="og:image" content="http://iceccb.github.io/../images/NFV架构变化.jpeg">
-<meta property="og:image" content="http://iceccb.github.io/../images/SDN-NFV技术.jpeg">
-<meta property="og:image" content="http://iceccb.github.io/../images/网络虚拟化.jpg">
-<meta property="og:image" content="http://iceccb.github.io/../images/VCF.jpg">
-<meta property="og:updated_time" content="2017-08-31T01:01:48.552Z">
+<meta property="og:image" content="http://iceccb.github.io/images/网络Overlay.jpg">
+<meta property="og:image" content="http://iceccb.github.io/images/主机Overlay.jpg">
+<meta property="og:image" content="http://iceccb.github.io/images/混合Overlay组网.jpg">
+<meta property="og:image" content="http://iceccb.github.io/images/NFV概念.jpg">
+<meta property="og:image" content="http://iceccb.github.io/images/NFV架构.jpg">
+<meta property="og:image" content="http://iceccb.github.io/images/SDN-NFV适用范围.jpeg">
+<meta property="og:image" content="http://iceccb.github.io/images/SDN-NFV转变.jpeg">
+<meta property="og:image" content="http://iceccb.github.io/images/SDN架构变化.jpeg">
+<meta property="og:image" content="http://iceccb.github.io/images/NFV架构变化.jpeg">
+<meta property="og:image" content="http://iceccb.github.io/images/SDN-NFV技术.jpeg">
+<meta property="og:image" content="http://iceccb.github.io/images/网络虚拟化.jpg">
+<meta property="og:image" content="http://iceccb.github.io/images/VCF.jpg">
+<meta property="og:updated_time" content="2017-08-31T01:11:09.224Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据中心网络系列(1)--SDN">
 <meta name="twitter:description" content="互联网的发展，伴随着云计算技术的革命，一开始大家关注的是依赖底层虚拟化技术将服务器资源虚拟化，提高资源利用率。而虚拟化也伴随着这波技术浪潮迅猛发展，但云计算时代下，单单虚拟化主机已经无法支撑起数据中心的发展，数据中心技术除了计算资源，还有存储和网络。因此软件定义存储（SDS）和软件定义网络（SDN）逐渐出现在大家视野，但SDN技术并不是云计算时代的产物，它的起源和发展由来已久。
@@ -129,20 +129,20 @@ SDN的起源在数据">
 <li>VXLAN IP GW(VXLAN IP Gateway/三层网关)：用于终结 VXLAN 网络，将 VXLAN 报文转换成传统三层报文送至 IP 网络，适用于 VXLAN 网络内服务器与远端终端之间的三层互访；同时也用作不同VXLAN网络互通。</li>
 </ul>
 <h3 id="实现模式"><a href="#实现模式" class="headerlink" title="实现模式"></a>实现模式</h3><ul>
-<li>网络Overlay ：使用物理交换机做VxLAN网络设备。<br><img src="../images/网络Overlay.jpg" alt="网络Overlay" title="网络Overlay"></li>
-<li>主机Overlay：使用服务器上的软件实现VxLAN网络设备。<br><img src="../images/主机Overlay.jpg" alt="主机Overlay" title="主机Overlay"></li>
-<li>混合Overlay组网<br><img src="../images/混合Overlay组网.jpg" alt="混合Overlay组网" title="混合Overlay组网"></li>
+<li>网络Overlay ：使用物理交换机做VxLAN网络设备。<br><img src="/images/网络Overlay.jpg" alt="网络Overlay" title="网络Overlay"></li>
+<li>主机Overlay：使用服务器上的软件实现VxLAN网络设备。<br><img src="/images/主机Overlay.jpg" alt="主机Overlay" title="主机Overlay"></li>
+<li>混合Overlay组网<br><img src="/images/混合Overlay组网.jpg" alt="混合Overlay组网" title="混合Overlay组网"></li>
 </ul>
-<h1 id="NFV"><a href="#NFV" class="headerlink" title="NFV"></a>NFV</h1><p><img src="../images/NFV概念.jpg" alt="NFV概念" title="NFV概念"></p>
+<h1 id="NFV"><a href="#NFV" class="headerlink" title="NFV"></a>NFV</h1><p><img src="/images/NFV概念.jpg" alt="NFV概念" title="NFV概念"></p>
 <p>NFV(Network Functions Virtualization)是欧洲电信联盟提出，提倡数据机房由标准的交换机、标准的服务器和标注的存储设备组成，把所有的功能移到标准的服务器上实现，强调网络功能的虚拟化。</p>
-<p><img src="../images/NFV架构.jpg" alt="NFV架构" title="欧洲电信联盟给出的NFV架构"></p>
+<p><img src="/images/NFV架构.jpg" alt="NFV架构" title="欧洲电信联盟给出的NFV架构"></p>
 <h1 id="SDN和NFV对比"><a href="#SDN和NFV对比" class="headerlink" title="SDN和NFV对比"></a>SDN和NFV对比</h1><p>SDN处理OSI模型的2-3层，NFV处理4-7层。</p>
-<p><img src="../images/SDN-NFV适用范围.jpeg" alt="SDN-NFV适用范围" title="SDN-NFV适用范围"></p>
-<p><img src="../images/SDN-NFV转变.jpeg" alt="SDN-NFV转变" title="SDN-NFV转变"></p>
-<p><img src="../images/SDN架构变化.jpeg" alt="SDN架构变化" title="SDN架构变化"></p>
-<p><img src="../images/NFV架构变化.jpeg" alt="NFV架构变化" title="NFV架构变化"></p>
-<p><img src="../images/SDN-NFV技术.jpeg" alt="SDN-NFV技术" title="SDN-NFV技术"></p>
-<h1 id="网络虚拟化"><a href="#网络虚拟化" class="headerlink" title="网络虚拟化"></a>网络虚拟化</h1><p><img src="../images/网络虚拟化.jpg" alt="网络虚拟化" title="网络虚拟化"></p>
+<p><img src="/images/SDN-NFV适用范围.jpeg" alt="SDN-NFV适用范围" title="SDN-NFV适用范围"></p>
+<p><img src="/images/SDN-NFV转变.jpeg" alt="SDN-NFV转变" title="SDN-NFV转变"></p>
+<p><img src="/images/SDN架构变化.jpeg" alt="SDN架构变化" title="SDN架构变化"></p>
+<p><img src="/images/NFV架构变化.jpeg" alt="NFV架构变化" title="NFV架构变化"></p>
+<p><img src="/images/SDN-NFV技术.jpeg" alt="SDN-NFV技术" title="SDN-NFV技术"></p>
+<h1 id="网络虚拟化"><a href="#网络虚拟化" class="headerlink" title="网络虚拟化"></a>网络虚拟化</h1><p><img src="/images/网络虚拟化.jpg" alt="网络虚拟化" title="网络虚拟化"></p>
 <p>网络虚拟化由SDN、NFV、Overlay从各个层面支撑虚拟化：</p>
 <ul>
 <li>SDN：定义一种控制和管理的网络架构</li>
@@ -152,7 +152,7 @@ SDN的起源在数据">
 <h1 id="基于SDN的网络虚拟化解决方案"><a href="#基于SDN的网络虚拟化解决方案" class="headerlink" title="基于SDN的网络虚拟化解决方案"></a>基于SDN的网络虚拟化解决方案</h1><h2 id="纯软件方式"><a href="#纯软件方式" class="headerlink" title="纯软件方式"></a>纯软件方式</h2><p>以VMware的<a href="https://www.vmware.com/cn/products/nsx.html" title="NSX" target="_blank" rel="external">NSX</a>为代表，还有Juniper的Contrall、Midokura的MidoNet等公司的网络虚拟化方案。在SDN技术利用上，一种是把策略管理放在控制器上，转发表项由虚拟交换机生成；一种是控制下发转发表项。另一方面，OpenStack的网络组件Neutron则两种方式都支持。</p>
 <h2 id="硬件方式"><a href="#硬件方式" class="headerlink" title="硬件方式"></a>硬件方式</h2><p>以Cisco的<a href="http://www.cisco.com/c/zh_cn/solutions/data-center-virtualization/application-centric-infrastructure/index.html?CAMPAIGN=Insieme&amp;COUNTRY_SITE=cn&amp;POSITION=sl&amp;REFERRING_SITE=Cisco.com+homepage&amp;CREATIVE=homepage+spotlight+to+ACI+launch+landing&amp;stickynav=1" title="Cisco ACI" target="_blank" rel="external">ACI</a>为代表。</p>
 <h2 id="软件-硬件方式"><a href="#软件-硬件方式" class="headerlink" title="软件+硬件方式"></a>软件+硬件方式</h2><p>它是一个软件方案的思路，只是把部分对性能影响最大的操作offload到硬件SDN交换机，可以认为是一个超级网卡。</p>
-<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><p><img src="../images/VCF.jpg" alt="VCF" title="VCF"></p>
+<h1 id="部署"><a href="#部署" class="headerlink" title="部署"></a>部署</h1><p><img src="/images/VCF.jpg" alt="VCF" title="VCF"></p>
 <ul>
 <li>底层：基础设备，包括终端设备、网络设备和计算存储，也包括NFV虚拟的网络单元</li>
 <li>第二层：集中控制</li>
