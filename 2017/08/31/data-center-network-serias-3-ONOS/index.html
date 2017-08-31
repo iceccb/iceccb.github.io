@@ -15,13 +15,13 @@
 谷歌、微软等互联网公司均在SDN领域投入了大量的科研力量，思科、华为、爱立信、IBM、HP等IT厂商也正在研制SDN控制器和交换机。业界也成立了相应的标准化组织，比如">
 <meta property="og:image" content="http://iceccb.github.io/images/onos-distributed-core.png">
 <meta property="og:image" content="http://iceccb.github.io/images/onos-intent-framework.png">
-<meta property="og:image" content="http://iceccb.github.io/../iamges/onos-onos-layers.png">
+<meta property="og:image" content="http://iceccb.github.io/images/onos-onos-layers.png">
 <meta property="og:image" content="http://iceccb.github.io/images/onos-modules.png">
 <meta property="og:image" content="http://iceccb.github.io/images/ONOS-Multi-layer-SDN-control.png">
-<meta property="og:image" content="http://iceccb.github.io/iamge/ONOS-SDN-IP.png">
-<meta property="og:image" content="http://iceccb.github.io/ONOS-NFaaS-in-Central-Office.png">
+<meta property="og:image" content="http://iceccb.github.io/images/ONOS-SDN-IP.png">
+<meta property="og:image" content="http://iceccb.github.io/images/ONOS-NFaaS-in-Central-Office.png">
 <meta property="og:image" content="http://iceccb.github.io/images/ONOS-Segment-Routing.png">
-<meta property="og:updated_time" content="2017-08-31T01:11:21.986Z">
+<meta property="og:updated_time" content="2017-08-31T01:15:00.940Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据中心网络系列(3)--ONOS">
 <meta name="twitter:description" content="标准化组织目前全球SDN产业正从技术研究走向商用部署、方案落地，全球范围内已开始出现商业应用的案例。在电信网络中，SDN受到全球众多运营商和ICT企业的高度关注和推进。SDN已经开始向传输网路、云端服务、无线通讯等各个相关领域延伸。
@@ -157,7 +157,7 @@
 </ul>
 <p>北向接口抽象层和APIs将应用与网络细节进行隔离。而且也可以隔离需要了解网络事件（如链路中断）的应用和其它应用。将网络操作系统与应用隔离，网络操作系统可以管理来自多个、竞争应用的请求。从业务角度看，提高了应用开发速度，允许网络改变并且保证应用不会当机。</p>
 <h3 id="南向抽象层"><a href="#南向抽象层" class="headerlink" title="南向抽象层"></a>南向抽象层</h3><p>南向抽象层由网络组件如交换机、主机和链路组成。ONOS南向抽象层将每个网络组件在一个通用表中表示为对象。通过这种抽象，分布式核心可以在不用了解底层设备细节的情况下维护网络组件的状态。分布式核心可以实现南向接口协议和设备无感知。网络组件抽象允许添加新设备和协议，允许可插拨的形式支持扩展，插件根据规格映射（或翻译）通用网络组件描述或操控设备。因此ONOS可以控制和管理使用不同协议（Openflow、NetConf等）的设备。</p>
-<p><img src="../iamges/onos-onos-layers.png" alt="ONOS层次" title="ONOS层次"></p>
+<p><img src="/images/onos-onos-layers.png" alt="ONOS层次" title="ONOS层次"></p>
 <p>在架构上，底层为网络设备或组件，ONOS通过协议与之交互。协议细节被网络组件插件或适配器屏蔽。因此南向接口的核心可以在不了解道具体协议细节和网络组件的条件下维护网络组件对象（设备、主机、链路），通过适配层API，分布式核心可以与网络组件对象的状态保持一致，适配层API将分布式核心与协议细节和网络组件相隔离。</p>
 <p>南向抽象层的主要优点：</p>
 <ul>
@@ -192,10 +192,10 @@
 <h3 id="SDN-IP-Peering和SDN控制平面扩展"><a href="#SDN-IP-Peering和SDN控制平面扩展" class="headerlink" title="SDN-IP Peering和SDN控制平面扩展"></a>SDN-IP Peering和SDN控制平面扩展</h3><p>现今，自治系统（AS）与互联网连接，并通过BGP彼此共享路由信息。ONOS的SDN-IP peering应用帮助运营商有小到大发展他们的SDN网络。运营商可部署一个小型的SDN网络或孤岛如AS，并且通过SDN-IP peering应用利用BGP协议将SDN网络与网络其他部分进行无缝互联。这样，一个SDN网络对互联网其他部分而言只是另外一个AS。并可以通过互联各个SDN网络构建更大的SDN网络。</p>
 <p>SDN-IP 应用与AS边缘路由器互联，像现今标准自治系统间交换IP前缀路由信息。SDN-IP peering应用使用路由信息为SDN网络中多个网络前缀建立转发路径。所以，SDN网络对于一些前缀而言跟传输网一样可以向或者从任何可达IP地址转发IP流量。</p>
 <p>另外，SDN-IP应用可以被用来扩展以ONOS为基础的SDN控制平台。例如，SDN网络可以像非SDN自治系统一样通过BGP互联，考虑到这些SDN网络以同样的方式工作，其它互联网可以将一组SDN域看成是一个单独的AS。</p>
-<p><img src="iamge/ONOS-SDN-IP.png" alt="ONSO SDN-IP" title="ONSO SDN-IP"></p>
+<p><img src="/images/ONOS-SDN-IP.png" alt="ONSO SDN-IP" title="ONSO SDN-IP"></p>
 <h3 id="中心局的网络功能即服务（NFaaS）"><a href="#中心局的网络功能即服务（NFaaS）" class="headerlink" title="中心局的网络功能即服务（NFaaS）"></a>中心局的网络功能即服务（NFaaS）</h3><p>电信运行商拥有最宝贵的财富即中心局，这些中心局从地理位置上更靠近大量的终端用户，所以这也是保证电信运营商为大量用户提供灵活高效服务的关键。一个典型的中心局有很多接入、交换容量，各种网络功能的中间设备。尽管中心局对电信运营商很重要，但是已经发展了很多年并且在网络交换/路由、中间设备和用户终端方面复杂性越来越高，这就意味着需要大量的资本开支和运营开支。</p>
 <p>不出意外，电信运营商想重构中心局，希望将数据中心的经济、灵活应用到中心局。这就意味着使用SDN来设计中心局结构，将中间设备的网络功能以软件的形式转移到x86服务器（NFV网络功能虚拟化），通过编排系统为用户和企业用户编排网络功能和网络流量，动态地服务各类用户实现用户及提供者双方各种各样的策略。</p>
-<p><img src="ONOS-NFaaS-in-Central-Office.png" alt="NFaaS" title="NFaaS"></p>
+<p><img src="/images/ONOS-NFaaS-in-Central-Office.png" alt="NFaaS" title="NFaaS"></p>
 <p>中心局的这一转变可以让服务提供商能够快速地建立、部署、提供新的服务，与此同时大大缩减了成本开支和运营开支。ONOS及其应用和OpenFlow交换机将助推中心局网络结构转型为SDN结构，为网络功能即服务提供所需的灵活度。我们希望从两个方向深化这个用例：演示ONOS可以作为重新构建中心局的网络操作系统的灵活性和性能；演示SDN和网络功能即服务怎样适应更大规模的中心局架构。</p>
 <h3 id="分段路由-发展和改进MPLS"><a href="#分段路由-发展和改进MPLS" class="headerlink" title="分段路由-发展和改进MPLS"></a>分段路由-发展和改进MPLS</h3><p>如今，IP/MPLS网络非常复杂且难以管理。标签分发、路由工程和VPN都是复杂的操作和服务，依赖于控制平台上分布式协议的集合。网络调试难度大，很难顾及控制平台和标签交换数据平台上多个协议间的同步性和状态管理问题。</p>
 <p>IETF已经为MPLS引入了分段路由的概念。它引入了不需要每一跳都交换的全局标签。还引入了基于标签的源路由，消除对标签分发和LSP建立中复杂协议（如LDP、RSVP）的依赖。就这样分段路由简化了MPLS网络的控制层和数据层。然而SR的路由和标签分发依旧依赖一个内部网关协议，它使外部控制器可以控制源路由器发起的端到端隧道。</p>
