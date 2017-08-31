@@ -19,7 +19,7 @@
 贯彻高性能和低">
 <meta property="og:image" content="http://iceccb.github.io/../images/Openflow-scope.png">
 <meta property="og:image" content="http://iceccb.github.io/../images/Openflow-switches.png">
-<meta property="og:updated_time" content="2017-08-31T00:31:36.244Z">
+<meta property="og:updated_time" content="2017-08-31T01:01:37.689Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据中心网络系列(2)--openflow">
 <meta name="twitter:description" content="Openflow简述随着互联网的发展，对于网络的要求越来越高，网络技术的变革显得尤为重要，但由于如今的网络过于依赖设备和协议，不易于进行网络技术的研究。网络设备厂商将设备与协议绑定，形成一个不开放的环境，让他们开放平台似乎是不可能的事，并且也没有有效的途径在生产网络上实验新的技术。这导致了网络技术的发展停滞不前。
@@ -111,6 +111,7 @@
 <li>保证隔离实验和生产网络</li>
 <li>与设备厂商封闭平台需求保持一致</li>
 </ul>
+<a id="more"></a>
 <h2 id="组成"><a href="#组成" class="headerlink" title="组成"></a>组成</h2><p>现代以太网交换机和路由器包含流表来实现防火墙、NAT、QoS和收集策略，但每个厂商的设备的流表都不一样，缺乏统一兼容的协议。因此Openflow提供一个开源的协议来对流表进行编程。如此，管理员可以控制不同的流，选择数据包的路由和处理接受的包，这样可以隔离生产和实验测试网络，也可以进行新协议的研究。</p>
 <p>一个Openflow交换机由三部分组成：</p>
 <ul>

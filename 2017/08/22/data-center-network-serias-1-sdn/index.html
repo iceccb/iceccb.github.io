@@ -25,7 +25,7 @@ SDN的起源在数据">
 <meta property="og:image" content="http://iceccb.github.io/../images/SDN-NFV技术.jpeg">
 <meta property="og:image" content="http://iceccb.github.io/../images/网络虚拟化.jpg">
 <meta property="og:image" content="http://iceccb.github.io/../images/VCF.jpg">
-<meta property="og:updated_time" content="2017-08-31T00:26:50.540Z">
+<meta property="og:updated_time" content="2017-08-31T01:01:48.552Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据中心网络系列(1)--SDN">
 <meta name="twitter:description" content="互联网的发展，伴随着云计算技术的革命，一开始大家关注的是依赖底层虚拟化技术将服务器资源虚拟化，提高资源利用率。而虚拟化也伴随着这波技术浪潮迅猛发展，但云计算时代下，单单虚拟化主机已经无法支撑起数据中心的发展，数据中心技术除了计算资源，还有存储和网络。因此软件定义存储（SDS）和软件定义网络（SDN）逐渐出现在大家视野，但SDN技术并不是云计算时代的产物，它的起源和发展由来已久。
@@ -110,6 +110,7 @@ SDN的起源在数据">
         <p>互联网的发展，伴随着云计算技术的革命，一开始大家关注的是依赖底层虚拟化技术将服务器资源虚拟化，提高资源利用率。而虚拟化也伴随着这波技术浪潮迅猛发展，但云计算时代下，单单虚拟化主机已经无法支撑起数据中心的发展，数据中心技术除了计算资源，还有存储和网络。因此软件定义存储（SDS）和软件定义网络（SDN）逐渐出现在大家视野，但SDN技术并不是云计算时代的产物，它的起源和发展由来已久。</p>
 <h1 id="SDN的起源"><a href="#SDN的起源" class="headerlink" title="SDN的起源"></a>SDN的起源</h1><p>在数据中心网络领域，斯坦福大学的博士生 Martin Casado 敏锐地发现了问题：<em>网络设备中多平面的紧耦合导致的互相依赖，将会制约系统技术革新、稳定性、规模性，而规模问题可能带来性能问题</em>。Martin 领导了一个网络安全与管理的科研课题，实现一个灵活的、能够像计算机一样可编程的网络系统。2006 年，名为 Ethane 的网络模型作为项目成果发表，Ethane 包括了 SDN 架构中的两个重要内容：基于流表的转发和中央控制器。它不仅是 SDN 架构的雏形，也是 OpenFlow 的前身。</p>
 <p>《OpenFlow : Enabling Innovation in Campus Networks》，这篇于 2008 年发表在通信网络领域顶尖会议（ACM SIGCOMM）的文章，由 Martin 的导师 Nick 教授的团队提出。OpenFlow 浮出水面，软件定义网络（SDN）被首次提出。</p>
+<a id="more"></a>
 <h1 id="SDN的概念"><a href="#SDN的概念" class="headerlink" title="SDN的概念"></a>SDN的概念</h1><p>对于SDN，大多数人（包括Gartner）是这样定义的：<strong>控制跟转发分离+开放的可编程API</strong>。但是并非控制和转发不分离就一定不是SDN，如Cisco的ACI，它是把策略管理的功能分离到了控制器上，控制协议（OSPF、BGP等）仍然运行在交换机上。广泛来说<em>开放的可编程API以及由此带来的业务敏捷性</em>就是SDN，当然纠结于定义并没多大的意义，而应该关注于SDN带来的价值，及其在网络虚拟化中的应用，为网络领域带来的革命。</p>
 <p>SDN一般架构是控制和转发分离，中间是由OpenFLOW交换机组成的控制器，之上是运行在SDN的服务或应用。其中控制器和交换机的接口为南向接口，控制器和上层应用的接口为北向接口。</p>
 <p>在云计算时代，离不开网络虚拟化，需要在公共网络中实现多租户的独立专用网络，这个技术叫Overlay。</p>
