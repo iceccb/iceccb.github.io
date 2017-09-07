@@ -66,6 +66,89 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-Hadoop-architecture-1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/09/07/Hadoop-architecture-1/">Hadoop 体系（一）</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2017/09/07/Hadoop-architecture-1/" class="article-date">
+  <time datetime="2017-09-07T02:48:47.000Z" itemprop="datePublished">9月 7 2017</time>
+</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/big-data/">big-data</a></li></ul>
+
+      
+<a href="/2017/09/07/Hadoop-architecture-1/#comments" class="article-comment-link" data-thread-key="cj79v22iv0038wwvg6lip599a" data-short-name="iceccb" style="display:none">comments</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><p>Hadoop是一个处理大规模数据的分布式系统框架。Hadoop的框架最核心的设计就是：HDFS和MapReduce。HDFS为海量的数据提供了存储，则MapReduce为海量的数据提供了计算。</p>
+<h2 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h2><ul>
+<li>高可靠性</li>
+<li>高扩展性</li>
+<li>高效性</li>
+<li>高容错性</li>
+<li>低成本</li>
+</ul>
+<h1 id="核心架构"><a href="#核心架构" class="headerlink" title="核心架构"></a>核心架构</h1><p>Hadoop 由许多元素构成。其最底部是 Hadoop Distributed File System（HDFS），它存储 Hadoop集群中所有存储节点上的文件。HDFS（对于本文）的上一层是MapReduce 引擎，该引擎由 JobTrackers 和 TaskTrackers 组成。通过对Hadoop分布式计算平台最核心的分布式文件系统HDFS、MapReduce处理过程，以及数据仓库工具Hive和分布式数据库Hbase的介绍，基本涵盖了Hadoop分布式平台的所有技术核心。</p>
+<h2 id="HDFS"><a href="#HDFS" class="headerlink" title="HDFS"></a>HDFS</h2><p>HDFS（Hadoop Distributed File System）是一个分布式文件系统，其基于一组特定的节点构建的，这些节点包括 NameNode（仅一个），它在 HDFS 内部提供元数据服务；DataNode，它为 HDFS 提供存储块。由于仅存在一个 NameNode，因此这是 HDFS 的一个缺点（单点失败）。<br>存储在 HDFS 中的文件被分成块，然后将这些块复制到多个计算机中（DataNode）。HDFS 内部的所有通信都基于标准的 TCP/IP 协议。</p>
+<p>运行在HDFS上的应用和普通的应用不同，需要流式访问它们的数据集。HDFS的设计中更多的考虑到了数据批处理，而不是用户交互处理。比之数据访问的低延迟问题，更关键的在于数据访问的高吞吐量。</p>
+<p>HDFS应用需要一个“一次写入多次读取”的文件访问模型。一个文件经过创建、写入和关闭之后就不需要改变。这一假设简化了数据一致性问题，并且使高吞吐量的数据访问成为可能。</p>
+<h3 id="Namenode、Datanode"><a href="#Namenode、Datanode" class="headerlink" title="Namenode、Datanode"></a>Namenode、Datanode</h3><p>HDFS采用master/slave架构。一个HDFS集群是由一个Namenode和一定数目的Datanodes组成。Namenode是一个中心服务器，负责管理文件系统的名字空间(namespace)以及客户端对文件的访问。集群中的Datanode一般是一个节点一个，负责管理它所在节点上的存储。HDFS暴露了文件系统的名字空间，用户能够以文件的形式在上面存储数据。从内部看，一个文件其实被分成一个或多个数据块，这些块存储在一组Datanode上。Namenode执行文件系统的名字空间操作，比如打开、关闭、重命名文件或目录。它也负责确定数据块到具体Datanode节点的映射。Datanode负责处理文件系统客户端的读写请求。在Namenode的统一调度下进行数据块的创建、删除和复制。 </p>
+<p><img src="/images/hdfsarchitecture.gif" alt="HDFS架构图" title="HDFS架构图"></p>
+<h2 id="MapReduce"><a href="#MapReduce" class="headerlink" title="MapReduce"></a>MapReduce</h2><p>Map/Reduce是一个使用简易的软件框架，基于它写出来的应用程序能够运行在由上千个商用机器组成的大型集群上，并以一种可靠容错的方式并行处理上T级别的数据集。</p>
+<p>一个Map/Reduce 作业（job） 通常会把输入的数据集切分为若干独立的数据块，由 map任务（task）以完全并行的方式处理它们。框架会对map的输出先进行排序， 然后把结果输入给reduce任务。通常作业的输入和输出都会被存储在文件系统中。 整个框架负责任务的调度和监控，以及重新执行已经失败的任务。</p>
+<p>通常，Map/Reduce框架和分布式文件系统是运行在一组相同的节点上的，也就是说，计算节点和存储节点通常在一起。这种配置允许框架在那些已经存好数据的节点上高效地调度任务，这可以使整个集群的网络带宽被非常高效地利用。</p>
+<p>Map/Reduce框架由一个单独的master JobTracker 和每个集群节点一个slave TaskTracker共同组成。master负责调度构成一个作业的所有任务，这些任务分布在不同的slave上，master监控它们的执行，重新执行已经失败的任务。而slave仅负责执行由master指派的任务。</p>
+<p>应用程序至少应该指明输入/输出的位置（路径），并通过实现合适的接口或抽象类提供map和reduce函数。再加上其他作业的参数，就构成了作业配置（job configuration）。然后，Hadoop的 job client提交作业（jar包/可执行程序等）和配置信息给JobTracker，后者负责分发这些软件和配置信息给slave、调度任务并监控它们的执行，同时提供状态和诊断信息给job-client。</p>
+<h1 id="Hadoop体系"><a href="#Hadoop体系" class="headerlink" title="Hadoop体系"></a>Hadoop体系</h1><p><img src="/images/Hadoop_Family.png" alt="Hadoop Family" title="Hadoop Family"></p>
+<ul>
+<li>Apache Hadoop: 是Apache开源组织的一个分布式计算开源框架，提供了一个分布式文件系统子项目(HDFS)和支持MapReduce分布式计算的软件架构。</li>
+<li>Apache Hive: 是基于Hadoop的一个数据仓库工具，可以将结构化的数据文件映射为一张数据库表，通过类SQL语句快速实现简单的MapReduce统计，不必开发专门的MapReduce应用，十分适合数据仓库的统计分析。</li>
+<li>Apache Pig: 是一个基于Hadoop的大规模数据分析工具，它提供的SQL-LIKE语言叫Pig Latin，该语言的编译器会把类SQL的数据分析请求转换为一系列经过优化处理的MapReduce运算。</li>
+<li>Apache HBase: 是一个高可靠性、高性能、面向列、可伸缩的分布式存储系统，利用HBase技术可在廉价PC Server上搭建起大规模结构化存储集群。</li>
+<li>Apache Sqoop: 是一个用来将Hadoop和关系型数据库中的数据相互转移的工具，可以将一个关系型数据库（MySQL ,Oracle ,Postgres等）中的数据导进到Hadoop的HDFS中，也可以将HDFS的数据导进到关系型数据库中。</li>
+<li>Apache Zookeeper: 是一个为分布式应用所设计的分布的、开源的协调服务，它主要是用来解决分布式应用中经常遇到的一些数据管理问题，简化分布式应用协调及其管理的难度，提供高性能的分布式服务</li>
+<li>Apache Mahout:是基于Hadoop的机器学习和数据挖掘的一个分布式框架。Mahout用MapReduce实现了部分数据挖掘算法，解决了并行挖掘的问题。</li>
+<li>Apache Cassandra:是一套开源分布式NoSQL数据库系统。它最初由Facebook开发，用于储存简单格式数据，集Google BigTable的数据模型与Amazon Dynamo的完全分布式的架构于一身</li>
+<li>Apache Avro: 是一个数据序列化系统，设计用于支持数据密集型，大批量数据交换的应用。Avro是新的数据序列化格式与传输工具，将逐步取代Hadoop原有的IPC机制</li>
+<li>Apache Ambari: 是一种基于Web的工具，支持Hadoop集群的供应、管理和监控。</li>
+<li>Apache Chukwa: 是一个开源的用于监控大型分布式系统的数据收集系统，它可以将各种各样类型的数据收集成适合 Hadoop 处理的文件保存在 HDFS 中供 Hadoop 进行各种 MapReduce 操作。</li>
+<li>Apache Hama: 是一个基于HDFS的BSP（Bulk Synchronous Parallel)并行计算框架, Hama可用于包括图、矩阵和网络算法在内的大规模、大数据计算。</li>
+<li>Apache Flume: 是一个分布的、可靠的、高可用的海量日志聚合的系统，可用于日志数据收集，日志数据处理，日志数据传输。</li>
+<li>Apache Giraph: 是一个可伸缩的分布式迭代图处理系统， 基于Hadoop平台，灵感来自 BSP (bulk synchronous parallel) 和 Google 的 Pregel。</li>
+<li>Apache Oozie: 是一个工作流引擎服务器, 用于管理和协调运行在Hadoop平台上（HDFS、Pig和MapReduce）的任务。</li>
+<li>Apache Crunch: 是基于Google的FlumeJava库编写的Java库，用于创建MapReduce程序。与Hive，Pig类似，Crunch提供了用于实现如连接数据、执行聚合和排序记录等常见任务的模式库</li>
+<li>Apache Whirr: 是一套运行于云服务的类库（包括Hadoop），可提供高度的互补性。Whirr学支持Amazon EC2和Rackspace的服务。</li>
+<li>Apache Bigtop: 是一个对Hadoop及其周边生态进行打包，分发和测试的工具。</li>
+<li>Apache HCatalog: 是基于Hadoop的数据表和存储管理，实现中央的元数据和模式管理，跨越Hadoop和RDBMS，利用Pig和Hive提供关系视图。</li>
+<li>Cloudera Hue: 是一个基于WEB的监控和管理系统，实现对HDFS，MapReduce/YARN, HBase, Hive, Pig的web化操作和管理。</li>
+</ul>
+
+      
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
     <article id="post-p2v-transfer" class="article article-type-post" itemscope itemprop="blogPost">
   
   <div class="article-inner">
@@ -88,7 +171,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/虚拟机/">虚拟机</a></li></ul>
 
       
-<a href="/2017/09/01/p2v-transfer/#comments" class="article-comment-link" data-thread-key="cj71c7g6k001ooovglspyxxld" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2017/09/01/p2v-transfer/#comments" class="article-comment-link" data-thread-key="cj79v22gy001owwvgp5ui660h" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -250,7 +333,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/network-sdn/">network sdn</a></li></ul>
 
       
-<a href="/2017/08/31/data-center-network-serias-3-ONOS/#comments" class="article-comment-link" data-thread-key="cj71c7g7t002roovgh560tqor" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2017/08/31/data-center-network-serias-3-ONOS/#comments" class="article-comment-link" data-thread-key="cj79v22i8002rwwvgzm525vel" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -298,7 +381,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/network-openflow/">network openflow</a></li></ul>
 
       
-<a href="/2017/08/25/data-center-network-serias-2-openflow/#comments" class="article-comment-link" data-thread-key="cj71c7g7x002uoovgo5ek65bn" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2017/08/25/data-center-network-serias-2-openflow/#comments" class="article-comment-link" data-thread-key="cj79v22ib002uwwvgh1f62mtp" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -351,7 +434,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/network-sdn/">network sdn</a></li></ul>
 
       
-<a href="/2017/08/22/data-center-network-serias-1-sdn/#comments" class="article-comment-link" data-thread-key="cj71c7g80002xoovg8o1p83p1" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2017/08/22/data-center-network-serias-1-sdn/#comments" class="article-comment-link" data-thread-key="cj79v22if002xwwvgh8dox0jy" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -399,7 +482,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/云计算-方案/">云计算 方案</a></li></ul>
 
       
-<a href="/2017/08/01/finance-cloud-solution/#comments" class="article-comment-link" data-thread-key="cj71c7g770028oovg6k754kil" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2017/08/01/finance-cloud-solution/#comments" class="article-comment-link" data-thread-key="cj79v22hn0028wwvgp28bp1c7" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -446,7 +529,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/政策/">政策</a></li></ul>
 
       
-<a href="/2017/07/22/zhengfu-caigou/#comments" class="article-comment-link" data-thread-key="cj71c7g4m000aoovgxsnvgofn" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2017/07/22/zhengfu-caigou/#comments" class="article-comment-link" data-thread-key="cj79v22eu000awwvg5dsm1aef" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -554,7 +637,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
 
       
-<a href="/2016/03/13/suibi-20160313/#comments" class="article-comment-link" data-thread-key="cj71c7g4v000goovgy5u9qhxu" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/03/13/suibi-20160313/#comments" class="article-comment-link" data-thread-key="cj79v22f2000gwwvg1owg6vbw" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -604,7 +687,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
 
       
-<a href="/2016/03/13/console-note/#comments" class="article-comment-link" data-thread-key="cj71c7g84002zoovgzqvgzn1y" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/03/13/console-note/#comments" class="article-comment-link" data-thread-key="cj79v22ii002zwwvg1ancrkgj" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -664,7 +747,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
 
       
-<a href="/2016/02/29/webpack-note-1/#comments" class="article-comment-link" data-thread-key="cj71c7g4r000doovgpdhmmn50" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/02/29/webpack-note-1/#comments" class="article-comment-link" data-thread-key="cj79v22ey000dwwvg0p4ile7g" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -681,56 +764,6 @@
         
           <p class="article-more-link">
             <a href="/2016/02/29/webpack-note-1/#more">继续阅读</a>
-          </p>
-        
-      
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
-    <article id="post-react-note-2" class="article article-type-post" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/02/29/react-note-2/">React实践（一）</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2016/02/29/react-note-2/" class="article-date">
-  <time datetime="2016-02-29T12:57:23.000Z" itemprop="datePublished">2月 29 2016</time>
-</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
-
-      
-<a href="/2016/02/29/react-note-2/#comments" class="article-comment-link" data-thread-key="cj71c7g6a001ioovgrmsqo6fz" data-short-name="iceccb" style="display:none">comments</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="React组件实践"><a href="#React组件实践" class="headerlink" title="React组件实践"></a>React组件实践</h1><p>最近在学习React，上一篇写了自己React入门的一些笔记。组件<em>component</em>作为React的主要特性，于是作为自己的实践开发了评论组件，一般上是需要与后台交互，但为了简便就省了这一步，而直接在页面造了假数据进行测试。</p>
-<h2 id="组件结构"><a href="#组件结构" class="headerlink" title="组件结构"></a>组件结构</h2><p>|– CommentBox<br>    |– CommentList<br>        |– Comment<br>        |– Pagination<br>    |– CommentForm</p>
-<h2 id="Comment子组件"><a href="#Comment子组件" class="headerlink" title="Comment子组件"></a>Comment子组件</h2><p>该组件相对简单，作为每条评论的UI显示，包括用户名和评论。所以只需使用<code>render（）</code>方法即可。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var Comment = React.createClass(&#123;&#10;  render: function() &#123;&#10;    return (&#10;      &#60;div className=&#34;list-group-item&#34;&#62;&#10;        &#60;div className=&#34;row-action-primary&#34;&#62;&#10;            &#60;i className=&#34;mdi-file-folder&#34;&#62;&#60;/i&#62;&#10;        &#60;/div&#62;&#10;        &#60;div className=&#34;row-content&#34;&#62;&#10;          &#60;h4 className=&#34;list-group-item-heading&#34;&#62;&#123;this.props.username&#125;&#60;/h4&#62;&#10;          &#60;p className=&#34;list-group-item-text&#34;&#62;&#123;this.props.comment&#125;&#60;/p&#62;&#10;        &#60;/div&#62;&#10;      &#60;/div&#62;&#10;    );&#10;  &#125;&#10;&#125;);</span><br></pre></td></tr></table></figure>
-<p>用户名和评论分别使用组件的参数<code>this.props.username</code>和<code>this.props.comment</code>传递。</p>
-        
-          <p class="article-more-link">
-            <a href="/2016/02/29/react-note-2/#more">继续阅读</a>
           </p>
         
       
@@ -771,6 +804,10 @@
       <ul>
         
           <li>
+            <a href="/2017/09/07/Hadoop-architecture-1/">Hadoop 体系（一）</a>
+          </li>
+        
+          <li>
             <a href="/2017/09/01/p2v-transfer/">虚拟机p2v迁移介绍</a>
           </li>
         
@@ -786,10 +823,6 @@
             <a href="/2017/08/22/data-center-network-serias-1-sdn/">数据中心网络系列(1)--SDN</a>
           </li>
         
-          <li>
-            <a href="/2017/08/01/finance-cloud-solution/">金融云解决方案</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -799,7 +832,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title widget-title-tag">标签</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/ejs/" style="font-size: 16px;">ejs</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/language/" style="font-size: 10px;">language</a> <a href="/tags/network-openflow/" style="font-size: 10px;">network openflow</a> <a href="/tags/network-sdn/" style="font-size: 12px;">network sdn</a> <a href="/tags/nodejs/" style="font-size: 12px;">nodejs</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/云计算-方案/" style="font-size: 10px;">云计算 方案</a> <a href="/tags/政策/" style="font-size: 10px;">政策</a> <a href="/tags/电影/" style="font-size: 14px;">电影</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a> <a href="/tags/话剧/" style="font-size: 10px;">话剧</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a> <a href="/tags/读后感/" style="font-size: 14px;">读后感</a> <a href="/tags/随笔/" style="font-size: 18px;">随笔</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/big-data/" style="font-size: 10px;">big-data</a> <a href="/tags/ejs/" style="font-size: 16px;">ejs</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/language/" style="font-size: 10px;">language</a> <a href="/tags/network-openflow/" style="font-size: 10px;">network openflow</a> <a href="/tags/network-sdn/" style="font-size: 12px;">network sdn</a> <a href="/tags/nodejs/" style="font-size: 12px;">nodejs</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/云计算-方案/" style="font-size: 10px;">云计算 方案</a> <a href="/tags/政策/" style="font-size: 10px;">政策</a> <a href="/tags/电影/" style="font-size: 14px;">电影</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a> <a href="/tags/话剧/" style="font-size: 10px;">话剧</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a> <a href="/tags/读后感/" style="font-size: 14px;">读后感</a> <a href="/tags/随笔/" style="font-size: 18px;">随笔</a>
     </div>
   </div>
 
