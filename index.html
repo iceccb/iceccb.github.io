@@ -93,13 +93,11 @@
       
         <p>近期国家发展改革委印发了《“十三五”国家政务信息化工程建设规划》（发改高技〔2017〕1449号）。</p>
 <p><img src="/images/十三五国家政务信息化.jpg" alt="“十三五”国家政务信息化工程建设规划" title="“十三五”国家政务信息化工程建设规划"></p>
-<p>规划中提到了几个概念、名词，以下是具体的含义：</p>
-<h2 id="五位一体"><a href="#五位一体" class="headerlink" title="五位一体"></a>五位一体</h2><p>在十八大报道中，“建设中国特色社会主义，总依据是社会主义初级阶段，总布局是五位一体，总任务是实现社会主义现代化和中华民族伟大复兴……必须更加自觉地把全面协调可持续作为深入贯彻落实科学发展观的基本要求，全面落实 <em>经济建设、政治建设、文化建设、社会建设、生态文明建设</em>五位一体总体布局，促进现代化建设各方面相协调，促进生产关系与生产力、上层建筑与经济基础相协调，不断开拓生产发展、生活富裕、生态良好的文明发展道路”。</p>
-<h2 id="放管服"><a href="#放管服" class="headerlink" title="放管服"></a>放管服</h2><p>就是简政放权、放管结合、优化服务的简称。</p>
-<p>“放”中央政府下放行政权，减少没有法律依据和法律授权的行政权；理清多个部门重复管理的行政权。“管”政府部门要创新和加强监管职能，利用新技术新体制加强监管体制创新。“服”转变政府职能减少政府对市场进行干预，将市场的事推向市场来决定，减少对市场主体过多的行政审批等行为，降低市场主体的市场运行的行政成本，促进市场主体的活力和创新能力。简政放权是民之所望、施政所向。</p>
-<p>“放”即简政放权，降低准入门槛。 “管”即公正监管，促进公平竞争。 “服”即高效服务，营造便利环境。</p>
-<h2 id="四个全面"><a href="#四个全面" class="headerlink" title="四个全面"></a>四个全面</h2><p>即全面建成小康社会、全面深化改革、全面依法治国、全面从严治党。</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2017/09/07/135-zhengwu-IT-guihua/#more">继续阅读</a>
+          </p>
+        
       
     </div>
     
@@ -152,37 +150,11 @@
 <h2 id="HDFS"><a href="#HDFS" class="headerlink" title="HDFS"></a>HDFS</h2><p>HDFS（Hadoop Distributed File System）是一个分布式文件系统，其基于一组特定的节点构建的，这些节点包括 NameNode（仅一个），它在 HDFS 内部提供元数据服务；DataNode，它为 HDFS 提供存储块。由于仅存在一个 NameNode，因此这是 HDFS 的一个缺点（单点失败）。<br>存储在 HDFS 中的文件被分成块，然后将这些块复制到多个计算机中（DataNode）。HDFS 内部的所有通信都基于标准的 TCP/IP 协议。</p>
 <p>运行在HDFS上的应用和普通的应用不同，需要流式访问它们的数据集。HDFS的设计中更多的考虑到了数据批处理，而不是用户交互处理。比之数据访问的低延迟问题，更关键的在于数据访问的高吞吐量。</p>
 <p>HDFS应用需要一个“一次写入多次读取”的文件访问模型。一个文件经过创建、写入和关闭之后就不需要改变。这一假设简化了数据一致性问题，并且使高吞吐量的数据访问成为可能。</p>
-<h3 id="Namenode、Datanode"><a href="#Namenode、Datanode" class="headerlink" title="Namenode、Datanode"></a>Namenode、Datanode</h3><p>HDFS采用master/slave架构。一个HDFS集群是由一个Namenode和一定数目的Datanodes组成。Namenode是一个中心服务器，负责管理文件系统的名字空间(namespace)以及客户端对文件的访问。集群中的Datanode一般是一个节点一个，负责管理它所在节点上的存储。HDFS暴露了文件系统的名字空间，用户能够以文件的形式在上面存储数据。从内部看，一个文件其实被分成一个或多个数据块，这些块存储在一组Datanode上。Namenode执行文件系统的名字空间操作，比如打开、关闭、重命名文件或目录。它也负责确定数据块到具体Datanode节点的映射。Datanode负责处理文件系统客户端的读写请求。在Namenode的统一调度下进行数据块的创建、删除和复制。 </p>
-<p><img src="/images/hdfsarchitecture.gif" alt="HDFS架构图" title="HDFS架构图"></p>
-<h2 id="MapReduce"><a href="#MapReduce" class="headerlink" title="MapReduce"></a>MapReduce</h2><p>Map/Reduce是一个使用简易的软件框架，基于它写出来的应用程序能够运行在由上千个商用机器组成的大型集群上，并以一种可靠容错的方式并行处理上T级别的数据集。</p>
-<p>一个Map/Reduce 作业（job） 通常会把输入的数据集切分为若干独立的数据块，由 map任务（task）以完全并行的方式处理它们。框架会对map的输出先进行排序， 然后把结果输入给reduce任务。通常作业的输入和输出都会被存储在文件系统中。 整个框架负责任务的调度和监控，以及重新执行已经失败的任务。</p>
-<p>通常，Map/Reduce框架和分布式文件系统是运行在一组相同的节点上的，也就是说，计算节点和存储节点通常在一起。这种配置允许框架在那些已经存好数据的节点上高效地调度任务，这可以使整个集群的网络带宽被非常高效地利用。</p>
-<p>Map/Reduce框架由一个单独的master JobTracker 和每个集群节点一个slave TaskTracker共同组成。master负责调度构成一个作业的所有任务，这些任务分布在不同的slave上，master监控它们的执行，重新执行已经失败的任务。而slave仅负责执行由master指派的任务。</p>
-<p>应用程序至少应该指明输入/输出的位置（路径），并通过实现合适的接口或抽象类提供map和reduce函数。再加上其他作业的参数，就构成了作业配置（job configuration）。然后，Hadoop的 job client提交作业（jar包/可执行程序等）和配置信息给JobTracker，后者负责分发这些软件和配置信息给slave、调度任务并监控它们的执行，同时提供状态和诊断信息给job-client。</p>
-<h1 id="Hadoop体系"><a href="#Hadoop体系" class="headerlink" title="Hadoop体系"></a>Hadoop体系</h1><p><img src="/images/Hadoop_Family.png" alt="Hadoop Family" title="Hadoop Family"></p>
-<ul>
-<li>Apache Hadoop: 是Apache开源组织的一个分布式计算开源框架，提供了一个分布式文件系统子项目(HDFS)和支持MapReduce分布式计算的软件架构。</li>
-<li>Apache Hive: 是基于Hadoop的一个数据仓库工具，可以将结构化的数据文件映射为一张数据库表，通过类SQL语句快速实现简单的MapReduce统计，不必开发专门的MapReduce应用，十分适合数据仓库的统计分析。</li>
-<li>Apache Pig: 是一个基于Hadoop的大规模数据分析工具，它提供的SQL-LIKE语言叫Pig Latin，该语言的编译器会把类SQL的数据分析请求转换为一系列经过优化处理的MapReduce运算。</li>
-<li>Apache HBase: 是一个高可靠性、高性能、面向列、可伸缩的分布式存储系统，利用HBase技术可在廉价PC Server上搭建起大规模结构化存储集群。</li>
-<li>Apache Sqoop: 是一个用来将Hadoop和关系型数据库中的数据相互转移的工具，可以将一个关系型数据库（MySQL ,Oracle ,Postgres等）中的数据导进到Hadoop的HDFS中，也可以将HDFS的数据导进到关系型数据库中。</li>
-<li>Apache Zookeeper: 是一个为分布式应用所设计的分布的、开源的协调服务，它主要是用来解决分布式应用中经常遇到的一些数据管理问题，简化分布式应用协调及其管理的难度，提供高性能的分布式服务</li>
-<li>Apache Mahout:是基于Hadoop的机器学习和数据挖掘的一个分布式框架。Mahout用MapReduce实现了部分数据挖掘算法，解决了并行挖掘的问题。</li>
-<li>Apache Cassandra:是一套开源分布式NoSQL数据库系统。它最初由Facebook开发，用于储存简单格式数据，集Google BigTable的数据模型与Amazon Dynamo的完全分布式的架构于一身</li>
-<li>Apache Avro: 是一个数据序列化系统，设计用于支持数据密集型，大批量数据交换的应用。Avro是新的数据序列化格式与传输工具，将逐步取代Hadoop原有的IPC机制</li>
-<li>Apache Ambari: 是一种基于Web的工具，支持Hadoop集群的供应、管理和监控。</li>
-<li>Apache Chukwa: 是一个开源的用于监控大型分布式系统的数据收集系统，它可以将各种各样类型的数据收集成适合 Hadoop 处理的文件保存在 HDFS 中供 Hadoop 进行各种 MapReduce 操作。</li>
-<li>Apache Hama: 是一个基于HDFS的BSP（Bulk Synchronous Parallel)并行计算框架, Hama可用于包括图、矩阵和网络算法在内的大规模、大数据计算。</li>
-<li>Apache Flume: 是一个分布的、可靠的、高可用的海量日志聚合的系统，可用于日志数据收集，日志数据处理，日志数据传输。</li>
-<li>Apache Giraph: 是一个可伸缩的分布式迭代图处理系统， 基于Hadoop平台，灵感来自 BSP (bulk synchronous parallel) 和 Google 的 Pregel。</li>
-<li>Apache Oozie: 是一个工作流引擎服务器, 用于管理和协调运行在Hadoop平台上（HDFS、Pig和MapReduce）的任务。</li>
-<li>Apache Crunch: 是基于Google的FlumeJava库编写的Java库，用于创建MapReduce程序。与Hive，Pig类似，Crunch提供了用于实现如连接数据、执行聚合和排序记录等常见任务的模式库</li>
-<li>Apache Whirr: 是一套运行于云服务的类库（包括Hadoop），可提供高度的互补性。Whirr学支持Amazon EC2和Rackspace的服务。</li>
-<li>Apache Bigtop: 是一个对Hadoop及其周边生态进行打包，分发和测试的工具。</li>
-<li>Apache HCatalog: 是基于Hadoop的数据表和存储管理，实现中央的元数据和模式管理，跨越Hadoop和RDBMS，利用Pig和Hive提供关系视图。</li>
-<li>Cloudera Hue: 是一个基于WEB的监控和管理系统，实现对HDFS，MapReduce/YARN, HBase, Hive, Pig的web化操作和管理。</li>
-</ul>
-
+        
+          <p class="article-more-link">
+            <a href="/2017/09/07/Hadoop-architecture-1/#more">继续阅读</a>
+          </p>
+        
       
     </div>
     
