@@ -66,6 +66,66 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-console-note" class="article article-type-post" itemscope itemprop="blogPost">
+  
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/03/13/console-note/">console调试简介</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      <a href="/2016/03/13/console-note/" class="article-date">
+  <time datetime="2016-03-12T16:00:55.000Z" itemprop="datePublished">3月 13 2016</time>
+</a>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
+
+      
+<a href="/2016/03/13/console-note/#comments" class="article-comment-link" data-thread-key="cj7hctbnn002zwcvgwswvzbt3" data-short-name="iceccb" style="display:none">comments</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="console是什么"><a href="#console是什么" class="headerlink" title="console是什么"></a>console是什么</h1><p>现代的浏览器都自带功能非常完善且好用的web开发者工具，如firefox和chrome，或者firebug工具，提供element查看器、Console控制台、调试器、性能和网络等功能。而Console功能面板可以用于显示JS和DOM对象信息，如错误信息、调试信息、js和dom对象的信息等。并且提供了一个JS对象<code>console</code>，使用该对象api， 可以输出信息到Console面板中。打开该功能面板可以使用快捷键<code>Ctrl+Shift+k</code>（firefox）或F12（chrome、ie），下文以我常用的firefox浏览器为例介绍总结<code>console</code>。</p>
+<p><img src="/images/console_1.png" alt="firefox Console 面板" title="firefox Console 面板"></p>
+<h1 id="console-api"><a href="#console-api" class="headerlink" title="console api"></a>console api</h1><p>在控制台中输入<code>console</code>，会显示该对象，点击后右侧显示该对象的信息。</p>
+<p><img src="/images/console_2.png" alt="firefox Console API" title="firefox Console API"></p>
+<h2 id="console-log-debug"><a href="#console-log-debug" class="headerlink" title="console.log/debug"></a>console.log/debug</h2><p>这个方法是我们见到最多和使用最多的方法，简单输出信息到Console面板，支持多个参数。</p>
+<p><img src="/images/console_3.png" alt="firefox Console API" title="firefox Console API"></p>
+<p>log方法第一个参数支持字符串替换模式：</p>
+<ul>
+<li>%s 代替字符串</li>
+<li>%d 代替整数</li>
+<li>%f 代替浮点数</li>
+<li>%o 代替Object</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">console.log(&#39;%s,this is integer:%d,this is Object:%o&#39;,&#39;Hello&#39;,100,&#123;name:&#39;ice&#39;&#125;)&#10;// Hello,this is integer:100,this is Object: Object &#123; name: &#34;ice&#34; &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="console-info，warn，error-exception"><a href="#console-info，warn，error-exception" class="headerlink" title="console.info，warn，error/exception"></a>console.info，warn，error/exception</h2><p>这4种方法与<code>console.log</code>方法一样，只是显示的图标和文字颜色不一样。</p>
+        
+          <p class="article-more-link">
+            <a href="/2016/03/13/console-note/#more">继续阅读</a>
+          </p>
+        
+      
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+  
     <article id="post-webpack-note-1" class="article article-type-post" itemscope itemprop="blogPost">
   
   <div class="article-inner">
@@ -88,7 +148,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
 
       
-<a href="/2016/02/29/webpack-note-1/#comments" class="article-comment-link" data-thread-key="cj7a68mt0000dskvgwksau7e1" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/02/29/webpack-note-1/#comments" class="article-comment-link" data-thread-key="cj7hctbkc000dwcvglqogjlh1" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -142,7 +202,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
 
       
-<a href="/2016/02/29/react-note-2/#comments" class="article-comment-link" data-thread-key="cj7a68mug001iskvgz8aomai6" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/02/29/react-note-2/#comments" class="article-comment-link" data-thread-key="cj7hctblu001iwcvgunl8dtrc" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -192,7 +252,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/web/">web</a></li></ul>
 
       
-<a href="/2016/02/27/react-note-1/#comments" class="article-comment-link" data-thread-key="cj7a68muk001lskvgjfxhpnq5" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/02/27/react-note-1/#comments" class="article-comment-link" data-thread-key="cj7hctblz001lwcvgztvgve0s" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -247,7 +307,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
 
       
-<a href="/2016/02/20/suibi-20160220/#comments" class="article-comment-link" data-thread-key="cj7a68mta000lskvgi3yv562t" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/02/20/suibi-20160220/#comments" class="article-comment-link" data-thread-key="cj7hctbkl000lwcvg4rqzhwzz" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -299,7 +359,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读书笔记/">读书笔记</a></li></ul>
 
       
-<a href="/2016/02/18/suibi-20160218/#comments" class="article-comment-link" data-thread-key="cj7a68mtf000pskvgx5kc0i8g" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/02/18/suibi-20160218/#comments" class="article-comment-link" data-thread-key="cj7hctbkp000pwcvgc1otf0ot" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -364,7 +424,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/读后感/">读后感</a></li></ul>
 
       
-<a href="/2016/02/15/suibi-20160215/#comments" class="article-comment-link" data-thread-key="cj7a68mtj000tskvgnwlblse8" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/02/15/suibi-20160215/#comments" class="article-comment-link" data-thread-key="cj7hctbkt000twcvg5tcjiz2x" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -411,7 +471,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/电影/">电影</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
 
       
-<a href="/2016/02/12/suibi-20160212/#comments" class="article-comment-link" data-thread-key="cj7a68mtw000xskvgvb0m4f2p" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/02/12/suibi-20160212/#comments" class="article-comment-link" data-thread-key="cj7hctbkx000xwcvgjqmi23rs" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -459,7 +519,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/电影/">电影</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
 
       
-<a href="/2016/02/09/suibi-20160209/#comments" class="article-comment-link" data-thread-key="cj7a68mu00012skvgbbtmo7tj" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/02/09/suibi-20160209/#comments" class="article-comment-link" data-thread-key="cj7hctbld0012wcvgiqt80qgh" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -507,7 +567,7 @@
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/电影/">电影</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
 
       
-<a href="/2016/01/30/suibi-20160130/#comments" class="article-comment-link" data-thread-key="cj7a68mu50016skvgtb93mk5q" data-short-name="iceccb" style="display:none">comments</a>
+<a href="/2016/01/30/suibi-20160130/#comments" class="article-comment-link" data-thread-key="cj7hctbli0016wcvgfov6nlxt" data-short-name="iceccb" style="display:none">comments</a>
 
     </div>
     <div class="article-entry" itemprop="articleBody">
@@ -533,55 +593,9 @@
 
 
   
-    <article id="post-suibi-20160123" class="article article-type-post" itemscope itemprop="blogPost">
-  
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/01/23/suibi-20160123/">谎言</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-meta">
-      <a href="/2016/01/23/suibi-20160123/" class="article-date">
-  <time datetime="2016-01-23T15:22:53.000Z" itemprop="datePublished">1月 23 2016</time>
-</a>
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/话剧/">话剧</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/随笔/">随笔</a></li></ul>
-
-      
-<a href="/2016/01/23/suibi-20160123/#comments" class="article-comment-link" data-thread-key="cj7a68mu9001askvgi20mxt35" data-short-name="iceccb" style="display:none">comments</a>
-
-    </div>
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="chapter-1"><a href="#chapter-1" class="headerlink" title="chapter 1"></a>chapter 1</h1><p>阿香从小喜欢说谎，她在每次说谎中得到乐趣得到满足，即使母亲都打骂教育她不能说谎，但她总是左耳进右耳出。一天，她见好友买了新鞋便欺骗对方父亲也给她买了，只是过几天才能穿。她在河边找到了正在垂钓的父亲，想问父亲拿钱，在父亲的追问下道出想买鞋的实情，还说父亲上次答应了考100分就可以买鞋。父亲问她把考卷拿出来看，她支支吾吾把考卷拿出来但却不肯给父亲看，最后特意扔进湖。阿香和父亲的感情很好，在打闹嬉笑中父女之情表露无遗。父亲笑着说我帮你捡起来随之跳进湖里，却再也没起来过。当然阿香没考100，当然阿香没想到一个小小的谎言葬送了父亲的性命，当然阿香无法原谅自己。从此阿香不再说谎，她母亲也是个不说谎的人，只是阿香无法向任何人说真话父亲是自己害死的。说真话的阿香不再是以前受人欢迎的那个嘴巴甜的姑娘，长大后阿香要去城市里，母亲告诉她城里是个没有谎言、充满真理的地方。阿香告别母亲，前往那个没有谎言的地方。可是前途未知，阿香不知道，世上根本不存在没有谎言的地方。</p>
-        
-          <p class="article-more-link">
-            <a href="/2016/01/23/suibi-20160123/#more">继续阅读</a>
-          </p>
-        
-      
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
     </nav>
   
 </section>
@@ -604,6 +618,10 @@
       <ul>
         
           <li>
+            <a href="/2017/09/12/Hadoop-architecture-2/">Hadoop 体系（二）</a>
+          </li>
+        
+          <li>
             <a href="/2017/09/07/135-zhengwu-IT-guihua/">一图读懂“十三五”国家政务信息化工程建设规划</a>
           </li>
         
@@ -619,10 +637,6 @@
             <a href="/2017/08/31/data-center-network-serias-3-ONOS/">数据中心网络系列(3)--ONOS</a>
           </li>
         
-          <li>
-            <a href="/2017/08/25/data-center-network-serias-2-openflow/">数据中心网络系列(2)--openflow</a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -632,7 +646,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title widget-title-tag">标签</h3>
     <div class="widget tagcloud">
-      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/big-data/" style="font-size: 10px;">big-data</a> <a href="/tags/ejs/" style="font-size: 16px;">ejs</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/language/" style="font-size: 10px;">language</a> <a href="/tags/network-openflow/" style="font-size: 10px;">network openflow</a> <a href="/tags/network-sdn/" style="font-size: 12px;">network sdn</a> <a href="/tags/nodejs/" style="font-size: 12px;">nodejs</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/云计算-方案/" style="font-size: 10px;">云计算 方案</a> <a href="/tags/政策/" style="font-size: 10px;">政策</a> <a href="/tags/电影/" style="font-size: 14px;">电影</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a> <a href="/tags/话剧/" style="font-size: 10px;">话剧</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a> <a href="/tags/读后感/" style="font-size: 14px;">读后感</a> <a href="/tags/随笔/" style="font-size: 18px;">随笔</a>
+      <a href="/tags/CSS/" style="font-size: 10px;">CSS</a> <a href="/tags/HTML/" style="font-size: 10px;">HTML</a> <a href="/tags/big-data/" style="font-size: 10px;">big-data</a> <a href="/tags/ejs/" style="font-size: 16px;">ejs</a> <a href="/tags/javascript/" style="font-size: 16px;">javascript</a> <a href="/tags/language/" style="font-size: 10px;">language</a> <a href="/tags/network-openflow/" style="font-size: 10px;">network openflow</a> <a href="/tags/network-sdn/" style="font-size: 12px;">network sdn</a> <a href="/tags/nodejs/" style="font-size: 12px;">nodejs</a> <a href="/tags/web/" style="font-size: 20px;">web</a> <a href="/tags/云计算-方案/" style="font-size: 10px;">云计算 方案</a> <a href="/tags/大数据-Hadoop/" style="font-size: 10px;">大数据 Hadoop</a> <a href="/tags/政策/" style="font-size: 10px;">政策</a> <a href="/tags/电影/" style="font-size: 14px;">电影</a> <a href="/tags/虚拟机/" style="font-size: 10px;">虚拟机</a> <a href="/tags/话剧/" style="font-size: 10px;">话剧</a> <a href="/tags/读书笔记/" style="font-size: 10px;">读书笔记</a> <a href="/tags/读后感/" style="font-size: 14px;">读后感</a> <a href="/tags/随笔/" style="font-size: 18px;">随笔</a>
     </div>
   </div>
 
