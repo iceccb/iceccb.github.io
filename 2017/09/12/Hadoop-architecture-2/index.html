@@ -13,14 +13,14 @@ HBaseHBase是一个分布式的、面向列的开源数据库，该技术来源�
 <meta property="og:site_name" content="Ice's Blog">
 <meta property="og:description" content="上文简单介绍了Hadoop，以及Hadoop体系成员。接下来将对每个成员进行简单的介绍。
 HBaseHBase是一个分布式的、面向列的开源数据库，该技术来源于 Fay Chang 所撰写的Google论文“Bigtable：一个结构化数据的分布式存储系统”。就像Bigtable利用了Google文件系统（File System）所提供的分布式数据存储一样，HBase在Hadoop之上提供了类似于B">
-<meta property="og:image" content="http://iceccb.github.io/../image/Chukwa架构.png">
-<meta property="og:image" content="http://iceccb.github.io/../image/Chukwa整体架构.jpg">
-<meta property="og:image" content="http://iceccb.github.io/../image/Girph.png">
-<meta property="og:image" content="http://iceccb.github.io/../image/Hive技术架构.png">
-<meta property="og:image" content="http://iceccb.github.io/../image/Hive执行流程.png">
-<meta property="og:image" content="http://iceccb.github.io/../image/sqoop架构.jpg">
-<meta property="og:image" content="http://iceccb.github.io/../image/Mesos_sharing.jpg">
-<meta property="og:updated_time" content="2017-09-12T08:47:03.341Z">
+<meta property="og:image" content="http://iceccb.github.io/images/Chukwa架构.png">
+<meta property="og:image" content="http://iceccb.github.io/images/Chukwa整体架构.jpg">
+<meta property="og:image" content="http://iceccb.github.io/images/Girph.png">
+<meta property="og:image" content="http://iceccb.github.io/images/Hive技术架构.png">
+<meta property="og:image" content="http://iceccb.github.io/images/Hive执行流程.png">
+<meta property="og:image" content="http://iceccb.github.io/images/sqoop架构.jpg">
+<meta property="og:image" content="http://iceccb.github.io/images/Mesos_sharing.jpg">
+<meta property="og:updated_time" content="2017-09-25T03:36:12.523Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hadoop 体系（二）">
 <meta name="twitter:description" content="上文简单介绍了Hadoop，以及Hadoop体系成员。接下来将对每个成员进行简单的介绍。
@@ -162,6 +162,7 @@ HBaseHBase是一个分布式的、面向列的开源数据库，该技术来源�
 </tr>
 </tbody>
 </table>
+<a id="more"></a>
 <h1 id="Cassandra"><a href="#Cassandra" class="headerlink" title="Cassandra"></a>Cassandra</h1><p>Cassandra是一个开源的分布式NoSQL数据存储系统，在实现了BigTable的数据模型的同时，使用了基于Amazon的Dynamo的系统架构来存储数据。</p>
 <h2 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h2><p>Cassandra使用了Google 设计的 BigTable的数据模型，与面向行(row)的传统的关系型数据库或键值存储的key-value数据库不同，Cassandra使用的是宽列存储模型(Wide Column Stores)，每行数据由row key唯一标识之后，可以有最多20亿个列，每个列由一个column key标识，每个column key下对应若干value。</p>
 <h2 id="存储模型"><a href="#存储模型" class="headerlink" title="存储模型"></a>存储模型</h2><p>Cassandra的数据并不存储在分布式文件系统如GFS或HDFS中，而是直接存于本地。与BigTable一样，Cassandra也是日志型数据库，即把新写入的数据存储在内存的Memtable中并通过磁盘中的CommitLog来做持久化，内存填满后将数据按照key的顺序写进一个只读文件SSTable中，每次读取数据时将所有SSTable和内存中的数据进行查找和合并。这种系统的特点是写入比读取更快，因为写入一条数据是顺序计入commit log中，不需要随机读取磁盘以及搜索。</p>
@@ -192,8 +193,8 @@ HBaseHBase是一个分布式的、面向列的开源数据库，该技术来源�
 </tbody>
 </table>
 <h1 id="Chukwa"><a href="#Chukwa" class="headerlink" title="Chukwa"></a>Chukwa</h1><p>chukwa 是一个开源的用于监控大型分布式系统的数据收集系统。这是构建在 hadoop 的 hdfs 和 map/reduce 框架之上的。还包含了一个强大和灵活的工具集，可用于展示、监控和分析已收集的数据。</p>
-<h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><p><img src="../image/Chukwa架构.png" alt="Chukwa架构" title="Chukwa架构"></p>
-<p><img src="../image/Chukwa整体架构.jpg" alt="Chukwa整体架构" title="Chukwa整体架构"></p>
+<h2 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h2><p><img src="/images/Chukwa架构.png" alt="Chukwa架构" title="Chukwa架构"></p>
+<p><img src="/images/Chukwa整体架构.jpg" alt="Chukwa整体架构" title="Chukwa整体架构"></p>
 <ul>
 <li>agents : 负责采集最原始的数据,并发送给 collectors</li>
 <li>adaptor : 直接采集数据的接口和工具,一个 agent 可以管理多个 adaptor 的数据采集</li>
@@ -208,7 +209,7 @@ HBaseHBase是一个分布式的、面向列的开源数据库，该技术来源�
 <h2 id="功能可扩展性"><a href="#功能可扩展性" class="headerlink" title="功能可扩展性"></a>功能可扩展性</h2><p>用户可以根据需要添加自己的agent，collector或者storage。此外，Flume自带了很多组件，包括各种agent（file， syslog等），collector和storage（file，HDFS等）。</p>
 <h1 id="Giraph"><a href="#Giraph" class="headerlink" title="Giraph"></a>Giraph</h1><p>Giraph是一个迭代的图计算系统。Giraph计算的输入是由点和直连的边组成的图。是基于Hadoop建立的。</p>
 <p>现在的大数据的图问题又很多，例如表达人与人之间的关系的有社交网络，搜索引擎需要经常计算网页与网页之间的关系，而map-reduce接口不太适合实现图算法。</p>
-<p><img src="../image/Girph.png" alt="Giraph" title="Giraph"></p>
+<p><img src="/images/Girph.png" alt="Giraph" title="Giraph"></p>
 <h1 id="Hama"><a href="#Hama" class="headerlink" title="Hama"></a>Hama</h1><p>Apache Hama是一个建立在Hadoop上基于BSP（Bulk Synchronous Parallel）的计算框架，模仿了Google的Pregel。用来处理大规模的科学计算，特别是矩阵和图计算。集群环境中的系统架构由 BSPMaster/GroomServer（Computation Engine）、Zookeeper（Distributed Locking）、HDFS/HBase（Storage Systems）这3大块组成。 </p>
 <h2 id="BSP"><a href="#BSP" class="headerlink" title="BSP"></a>BSP</h2><p>整体同步并行计算模型(Bulk Synchronous Parallel Computing Model，简称BSP模型)，又名大同步模型或BSP模型。</p>
 <p>BSP模型最早作为一 个并行计算领域中软件和硬件之间 的“ 过渡模型” 而提 出的。它的设计目标是为 现有 和未来 可能出现的各种 并行体系结构提供一个独立于具体体系结构、具有可扩展并行性能的软件开发的良好的理论模型基础。<br>一个BSP计算机由一组通过通讯网络互连的处理器——内存单元组成。它主要有三个部分:</p>
@@ -221,14 +222,14 @@ HBaseHBase是一个分布式的、面向列的开源数据库，该技术来源�
 <h1 id="HCatalog"><a href="#HCatalog" class="headerlink" title="HCatalog"></a>HCatalog</h1><p>HCatalog是Hadoop的元数据和数据表的管理系统。它基于Hive中的元数据层，通过类似SQL的语言展现Hadoop数据的关联关系。 HCatalog允许用户通过Hive，Pig，MapReduce共享数据和元数据。它的另一特点就是在用户编写应用程序时无需关心数据怎么存储，在哪里存储，还避免用户因schema和存储格式的改变而受到影响。</p>
 <h1 id="Hive"><a href="#Hive" class="headerlink" title="Hive"></a>Hive</h1><p>Hive是基于Hadoop的一个数据仓库工具，可以将结构化的数据文件映射为一张数据库表，并提供简单的sql查询功能，可以将sql语句转换为MapReduce任务进行运行。</p>
 <p>它提供了一系列的工具，可以用来进行数据提取转化加载（ETL），这是一种可以存储、查询和分析存储在 Hadoop 中的大规模数据的机制。Hive 定义了简单的类 SQL 查询语言，称为 HQL，它允许熟悉 SQL 的用户查询数据。Hive 并不适合那些需要低延迟的应用，例如，联机事务处理（OLTP）。</p>
-<h2 id="技术架构"><a href="#技术架构" class="headerlink" title="技术架构"></a>技术架构</h2><p><img src="../image/Hive技术架构.png" alt="Hive技术架构图" title="Hive技术架构图"></p>
+<h2 id="技术架构"><a href="#技术架构" class="headerlink" title="技术架构"></a>技术架构</h2><p><img src="/images/Hive技术架构.png" alt="Hive技术架构图" title="Hive技术架构图"></p>
 <h3 id="Driver组件"><a href="#Driver组件" class="headerlink" title="Driver组件"></a>Driver组件</h3><p>该组件包括Complier、Optimizer和Executor，它的作用是将HQL语句进行解析、编译优化，生成执行计划，然后调用底层的mapreduce计算框架。</p>
 <h3 id="Metastore组件"><a href="#Metastore组件" class="headerlink" title="Metastore组件"></a>Metastore组件</h3><p>元数据服务组件，这个组件存储hive的元数据，hive的元数据存储在关系数据库里，hive支持的关系数据库有derby、mysql。元数据对于hive十分重要，因此hive支持把metastore服务独立出来，安装到远程的服务器集群里，从而解耦hive服务和metastore服务，保证hive运行的健壮性。</p>
 <h3 id="Thrift服务"><a href="#Thrift服务" class="headerlink" title="Thrift服务"></a>Thrift服务</h3><p>thrift是facebook开发的一个软件框架，它用来进行可扩展且跨语言的服务的开发，hive集成了该服务，能让不同的编程语言调用hive的接口。</p>
 <h3 id="CLI"><a href="#CLI" class="headerlink" title="CLI"></a>CLI</h3><p>命令行。</p>
 <h3 id="Thrift-client"><a href="#Thrift-client" class="headerlink" title="Thrift client"></a>Thrift client</h3><p>hive架构的许多客户端接口是建立在thrift客户端之上，包括JDBC和ODBC接口。</p>
 <h3 id="Web-GUI"><a href="#Web-GUI" class="headerlink" title="Web GUI"></a>Web GUI</h3><p>一种通过网页的方式访问hive所提供的服务。</p>
-<h2 id="Hive执行流程"><a href="#Hive执行流程" class="headerlink" title="Hive执行流程"></a>Hive执行流程</h2><p><img src="../image/Hive执行流程.png" alt="Hive执行流程" title="Hive执行流程"></p>
+<h2 id="Hive执行流程"><a href="#Hive执行流程" class="headerlink" title="Hive执行流程"></a>Hive执行流程</h2><p><img src="/images/Hive执行流程.png" alt="Hive执行流程" title="Hive执行流程"></p>
 <h1 id="Hue"><a href="#Hue" class="headerlink" title="Hue"></a>Hue</h1><p>HUE（Hadoop User Experience）是一个开源的Apache Hadoop UI系统，由Cloudera Desktop演化而来，最后Cloudera公司将其贡献给Apache基金会的Hadoop社区，它是基于Python Web框架Django实现的。</p>
 <p>通过使用Hue我们可以在浏览器端的Web控制台上与Hadoop集群进行交互来分析处理数据，例如操作HDFS上的数据，运行MapReduce Job，执行Hive的SQL语句，浏览HBase数据库等等。</p>
 <h2 id="核心功能"><a href="#核心功能" class="headerlink" title="核心功能"></a>核心功能</h2><ul>
@@ -240,12 +241,12 @@ HBaseHBase是一个分布式的、面向列的开源数据库，该技术来源�
 <h1 id="Oozie"><a href="#Oozie" class="headerlink" title="Oozie"></a>Oozie</h1><p>在Hadoop中执行的任务有时候需要把多个Map/Reduce作业连接到一起，这样才能够达到目的。Oozie可以把多个Map/Reduce作业组合到一个逻辑工作单元中，从而完成更大型的任务。</p>
 <p>Oozie是一种Java Web应用程序，它运行在Java servlet容器——即Tomcat——中，并使用数据库来存储以下内容：工作流定义；当前运行的工作流实例，包括实例的状态和变量。</p>
 <h1 id="Sqoop"><a href="#Sqoop" class="headerlink" title="Sqoop"></a>Sqoop</h1><p>主要用来在Hadoop和关系数据库中传递数据。通过sqoop，我们可以方便的将数据从关系数据库导入到HDFS，或者将数据从HDFS导出到关系数据库。</p>
-<h2 id="架构-1"><a href="#架构-1" class="headerlink" title="架构"></a>架构</h2><p><img src="../image/sqoop架构.jpg" alt="sqoop架构" title="sqoop架构"></p>
+<h2 id="架构-1"><a href="#架构-1" class="headerlink" title="架构"></a>架构</h2><p><img src="/images/sqoop架构.jpg" alt="sqoop架构" title="sqoop架构"></p>
 <h1 id="Yarn"><a href="#Yarn" class="headerlink" title="Yarn"></a>Yarn</h1><p>Apache Hadoop YARN （Yet Another Resource Negotiator，另一种资源协调者）是一种新的 Hadoop 资源管理器，它是一个通用资源管理系统，可为上层应用提供统一的资源管理和调度，它的引入为集群在利用率、资源统一管理和数据共享等方面带来了巨大好处。</p>
 <h1 id="Mesos"><a href="#Mesos" class="headerlink" title="Mesos"></a>Mesos</h1><p>不同的分布式运算框架(spark,hadoop,ES,MPI,Cassandra,etc.)中的任务往往需要的不同的资源（内存，CPU，网络IO等），它们运行在同一个集群中，会相互干扰，为此，应该提供一种资源隔离机制避免任务之间由资源争用导致效率下降,考虑到资源利用率，运维成本，数据共享等因素，便诞生了资源统一管理与调度平台,典型的代表就是mesos和yarn。</p>
 <p>Mesos的目标就是在不同的framework之间高效的共享硬件资源，同时简化自身的调度逻辑，使其具有尽可能大的兼容性和可扩展性，以保证在大规模集群使用环境下的健壮性和对各种可能的运算框架的普遍适用性。</p>
 <p>Mesos最大的好处是能够对分布式集群做细粒度资源分配。Mesos的分配逻辑很简单，只要不停地报告哪些是可用资源就可以了。Mesos资源分配方法也有一个潜在的缺点，就是无中心化的分配方式，所以有可能不会带来全局最优的方式。</p>
-<p><img src="../image/Mesos_sharing.jpg" alt="Mesos sharing" title="Mesos sharing"></p>
+<p><img src="/images/Mesos_sharing.jpg" alt="Mesos sharing" title="Mesos sharing"></p>
 <h2 id="Mesos-master"><a href="#Mesos-master" class="headerlink" title="Mesos-master"></a>Mesos-master</h2><p>协调全部的slave，并确定每个节点的可用资源，聚合计算跨节点的所有可用资源的报告，然后向注册到Master的Framework发出资源邀约。</p>
 <h2 id="Mesos-slave"><a href="#Mesos-slave" class="headerlink" title="Mesos-slave"></a>Mesos-slave</h2><p>向master汇报自己的空闲资源和任务的状态，负责管理本节点上的各个mesos-task，在framework成功向Master申请资源后,收到消息的slave会启动相应framework的exexutor。</p>
 <h2 id="Framework"><a href="#Framework" class="headerlink" title="Framework"></a>Framework</h2><p>Hadoop，Spark等，通过 <strong>MesosSchedulerDiver</strong> 接入Mesos。</p>
